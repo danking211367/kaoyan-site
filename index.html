@@ -1773,6 +1773,95 @@ const universities = [
   { name: '广西大学', city: '广西南宁', region: '广西', type: ['211','双一流'], rank: 100, color: '#059669', enrollment: '~4000', ratio: '~12.0%', hotMajors: ['土木工程','电气工程','应用经济学'], subjects: ['土木工程','电气工程','应用经济学'], requirements: {'土木工程': {score: 275, lang: '英一', math: '数一', note: '结构力学', extra: 'B区211，分数线低'}}, desc: '广西唯一211高校，土木工程、电气工程等学科实力突出。' },
 ];
 
+// 院校研究生招生官网链接
+const uniUrls = {
+  '清华大学': 'https://yz.tsinghua.edu.cn/',
+  '北京大学': 'https://admission.pku.edu.cn/',
+  '浙江大学': 'http://www.grs.zju.edu.cn/',
+  '复旦大学': 'https://gsao.fudan.edu.cn/',
+  '上海交通大学': 'https://yzb.sjtu.edu.cn/',
+  '南京大学': 'https://yzb.nju.edu.cn/',
+  '中国科学技术大学': 'https://yz.ustc.edu.cn/',
+  '华中科技大学': 'http://gszs.hust.edu.cn/',
+  '武汉大学': 'https://gs.whu.edu.cn/',
+  '西安交通大学': 'http://yz.xjtu.edu.cn/',
+  '哈尔滨工业大学': 'http://yzb.hit.edu.cn/',
+  '中山大学': 'https://graduate.sysu.edu.cn/',
+  '同济大学': 'https://yz.tongji.edu.cn/',
+  '北京航空航天大学': 'https://yzb.buaa.edu.cn/',
+  '四川大学': 'https://yz.scu.edu.cn/',
+  '中国人民大学': 'http://pgs.ruc.edu.cn/',
+  '东南大学': 'https://yzb.seu.edu.cn/',
+  '南开大学': 'https://yzb.nankai.edu.cn/',
+  '北京师范大学': 'https://yz.bnu.edu.cn/',
+  '厦门大学': 'https://yjsy.xmu.edu.cn/',
+  '天津大学': 'http://yzb.tju.edu.cn/',
+  '山东大学': 'https://www.yz.sdu.edu.cn/',
+  '吉林大学': 'http://yzb.jlu.edu.cn/',
+  '中南大学': 'https://yz.csu.edu.cn/',
+  '大连理工大学': 'http://gs.dlut.edu.cn/',
+  '电子科技大学': 'https://yz.uestc.edu.cn/',
+  '北京理工大学': 'https://yz.bit.edu.cn/',
+  '西北工业大学': 'https://yzb.nwpu.edu.cn/',
+  '华南理工大学': 'https://yanzhao.scut.edu.cn/',
+  '重庆大学': 'http://yz.cqu.edu.cn/',
+  '湖南大学': 'http://yzb.hnu.edu.cn/',
+  '华东师范大学': 'https://yjszs.ecnu.edu.cn/',
+  '中国农业大学': 'http://yz.cau.edu.cn/',
+  '兰州大学': 'https://yz.lzu.edu.cn/',
+  '东北大学': 'http://yz.neu.edu.cn/',
+  '深圳大学': 'https://yz.szu.edu.cn/',
+  '北京邮电大学': 'https://yzb.bupt.edu.cn/',
+  '西安电子科技大学': 'https://yzb.xidian.edu.cn/',
+  '北京科技大学': 'https://yzxc.ustb.edu.cn/',
+  '南京航空航天大学': 'http://www.graduate.nuaa.edu.cn/',
+  '南京理工大学': 'http://gs.njust.edu.cn/',
+  '北京交通大学': 'https://gs.bjtu.edu.cn/',
+  '华东理工大学': 'https://gschool.ecust.edu.cn/',
+  '苏州大学': 'https://yjs.suda.edu.cn/',
+  '上海大学': 'https://yjszs.shu.edu.cn/',
+  '郑州大学': 'http://gs.zzu.edu.cn/',
+  '武汉理工大学': 'http://gd.whut.edu.cn/',
+  '暨南大学': 'https://yz.jnu.edu.cn/',
+  '中国地质大学(武汉)': 'https://zhinengdayi.com/yjsy/',
+  '中国石油大学(华东)': 'http://zs.gs.upc.edu.cn/',
+  '中国矿业大学': 'http://yz.cumt.edu.cn/',
+  '江南大学': 'https://yz.jiangnan.edu.cn/',
+  '西南交通大学': 'https://yz.swjtu.edu.cn/',
+  '河海大学': 'https://gs.hhu.edu.cn/',
+  '南京师范大学': 'http://yz.njnu.edu.cn/',
+  '西北大学': 'http://yjs.nwu.edu.cn/',
+  '陕西师范大学': 'http://yz.snnu.edu.cn/',
+  '北京工业大学': 'http://yanzhao.bjut.edu.cn/',
+  '南昌大学': 'http://yjsy.ncu.edu.cn/',
+  '合肥工业大学': 'http://yjszs.hfut.edu.cn/',
+  '哈尔滨工程大学': 'http://yzb.hrbeu.edu.cn/',
+  '燕山大学': 'http://zsb.ysu.edu.cn/',
+  '浙江工业大学': 'http://www.yz.zjut.edu.cn/',
+  '杭州电子科技大学': 'http://grs.hdu.edu.cn/',
+  '南京邮电大学': 'http://yzb.njupt.edu.cn/',
+  '南方科技大学': 'https://gs.sustech.edu.cn/',
+  '上海科技大学': 'https://yanzhao.shanghaitech.edu.cn/',
+  '南方医科大学': 'https://portal.smu.edu.cn/yjszs/',
+  '上海中医药大学': 'http://yjsy.shutcm.edu.cn/',
+  '北京外国语大学': 'https://graduate.bfsu.edu.cn/',
+  '上海外国语大学': 'http://yz.shisu.edu.cn/',
+  '中国政法大学': 'http://yjsy.cupl.edu.cn/',
+  '中央财经大学': 'http://gs.cufe.edu.cn/',
+  '上海财经大学': 'https://gs.sufe.edu.cn/',
+  '对外经济贸易大学': 'http://yjsy.uibe.edu.cn/',
+  '西南财经大学': 'http://yz.swufe.edu.cn/',
+  '中南财经政法大学': 'http://yzb.zuel.edu.cn/',
+  '北京体育大学': 'https://zs.bsu.edu.cn/',
+  '中央美术学院': 'http://www.cafa.edu.cn/',
+  '中国音乐学院': 'http://www.ccmusic.edu.cn/',
+  '中国美术学院': 'http://www.caa.edu.cn/',
+  '太原理工大学': 'http://yz.tyut.edu.cn/',
+  '宁波大学': 'http://graduate.nbu.edu.cn/',
+  '云南大学': 'http://www.grs.ynu.edu.cn/',
+  '广西大学': 'http://yjszs.gxu.edu.cn/',
+};
+
 // ========== 院校库分页 ==========
 let uniCurrentPage = 1;
 const uniPageSize = 12;
@@ -2153,6 +2242,107 @@ const majorData = [
   },
 ];
 
+// 专业→院校推荐关键字映射
+const majorSchoolKeywords = {
+  '计算机': ['计算机', '计算机科学', '计算机技术'],
+  '电子信息': ['电子信息', '电子', '信息与通信'],
+  '软件工程': ['软件工程', '软件'],
+  '人工智能': ['人工智能', '智能'],
+  '机械工程': ['机械'],
+  '电气工程': ['电气'],
+  '土木工程': ['土木'],
+  '化学工程': ['化工', '化学工程'],
+  '航空航天': ['航空', '航天'],
+  '能源动力': ['能源', '动力'],
+  '环境科学': ['环境'],
+  '自动化': ['自动化', '控制'],
+  '通信工程': ['通信', '信息与通信'],
+  '数学': ['数学'],
+  '物理': ['物理', '物理学'],
+  '化学': ['化学'],
+  '生物学': ['生物', '生物学', '生命科学'],
+  '统计学': ['统计'],
+  '地理学': ['地理', '地质'],
+  '临床医学': ['临床'],
+  '口腔医学': ['口腔'],
+  '药学': ['药学'],
+  '护理学': ['护理'],
+  '基础医学': ['基础医学'],
+  '公共卫生': ['公共卫生'],
+  '金融': ['金融'],
+  '经济学': ['经济', '经济学'],
+  '管理学': ['管理', '管理科学', '管理科学与工程'],
+  '会计': ['会计'],
+  '工商管理': ['工商', 'MBA'],
+  '公共管理': ['公共管理', 'MPA'],
+  '法学': ['法学', '法律'],
+  '新闻传播': ['新闻', '传播'],
+  '中国语言文学': ['文学', '中文', '汉语言', '中国语言'],
+  '外国语言文学': ['外语', '翻译', '英语', '语言'],
+  '教育学': ['教育', '教育学'],
+  '心理学': ['心理', '心理学'],
+  '体育学': ['体育'],
+  '艺术学': ['艺术', '美术'],
+  '历史学': ['历史'],
+  '哲学': ['哲学'],
+  '农学': ['农学', '园艺', '作物'],
+  '林学': ['林学'],
+  '兽医学': ['兽医'],
+  '食品科学': ['食品', '食品科学'],
+};
+
+// 推荐院校函数：根据专业名查找匹配院校，按分数分为冲刺/稳妥/保底三档
+function getSchoolRecommendations(majorName) {
+  const keywords = majorSchoolKeywords[majorName];
+  if (!keywords || keywords.length === 0) return { chongci: [], wentuo: [], baodi: [] };
+
+  // 收集所有匹配的{学校,专业,分数,城市,类型}
+  let matches = [];
+  universities.forEach(uni => {
+    if (uni.requirements) {
+      Object.entries(uni.requirements).forEach(([reqMajor, req]) => {
+        const matched = keywords.some(k => reqMajor.includes(k));
+        if (matched) {
+          matches.push({
+            name: uni.name,
+            city: uni.city,
+            major: reqMajor,
+            score: req.score,
+            type: uni.type,
+            rank: uni.rank || 999
+          });
+        }
+      });
+    }
+  });
+
+  // 去重：同一学校取最高分的专业
+  const unique = {};
+  matches.forEach(m => {
+    if (!unique[m.name] || m.score > unique[m.name].score) {
+      unique[m.name] = m;
+    }
+  });
+  const allSchools = Object.values(unique);
+
+  // 按分数降序排序
+  allSchools.sort((a, b) => b.score - a.score);
+
+  // 分三档：冲刺(前30%)、稳妥(中间40%)、保底(后30%)
+  const total = allSchools.length;
+  if (total === 0) return { chongci: [], wentuo: [], baodi: [] };
+
+  const chongciCount = Math.max(1, Math.ceil(total * 0.3));
+  const baodiCount = Math.max(1, Math.ceil(total * 0.3));
+  const wentuoCount = total - chongciCount - baodiCount;
+
+  return {
+    chongci: allSchools.slice(0, chongciCount).map(s => ({ ...s, label: '冲刺', level: 'high' })),
+    wentuo: allSchools.slice(chongciCount, chongciCount + wentuoCount).map(s => ({ ...s, label: '稳妥', level: 'mid' })),
+    baodi: allSchools.slice(chongciCount + wentuoCount).map(s => ({ ...s, label: '保底', level: 'low' }))
+  };
+}
+
 // 热门文章 - 每个都附带研招网对应链接
 const hotArticles = [
   { title: '【04月29日】教育部发布：2027年全国硕士研究生招生考试公告', tag: 'hot', meta: '考研通 · 04月29日', summary: '教育部正式发布2027年全国硕士研究生招生工作管理规定，明确了报名条件、初试科目、复试要求等重要事项。', points: ["📌 全国统一命题科目保持稳定", "📌 调剂政策有新变化，需重点关注", "📌 资格审查将更加严格", "💡 建议：仔细阅读官方公告原文"], sourceUrl: 'https://yz.chsi.com.cn/kyzx/jybzc/202509/20250924/2293432108.html', sourceText: '查看官方公告' },
@@ -2490,6 +2680,71 @@ function showMajorDetail(index) {
   
   if (!modal || !body) return;
   
+  // 获取推荐院校
+  const rec = getSchoolRecommendations(m.name);
+  const hasSchools = rec.chongci.length > 0 || rec.wentuo.length > 0 || rec.baodi.length > 0;
+  
+  // 生成推荐院校HTML
+  function renderSchoolCard(s) {
+    const typeBadge = s.type.includes('985') ? '<span style="display:inline-block;padding:1px 6px;background:#1D4E89;color:white;border-radius:4px;font-size:10px;margin-right:4px;">985</span>' : '';
+    const badge211 = s.type.includes('211') && !s.type.includes('985') ? '<span style="display:inline-block;padding:1px 6px;background:#059669;color:white;border-radius:4px;font-size:10px;margin-right:4px;">211</span>' : '';
+    const selfLine = s.type.includes('自主划线') ? '<span style="display:inline-block;padding:1px 6px;background:#D97706;color:white;border-radius:4px;font-size:10px;margin-right:4px;">自划线</span>' : '';
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:white;border-radius:8px;margin-bottom:6px;border:1px solid var(--border);cursor:pointer;" onclick="showUniDetail('${s.name.replace(/'/g, "\\'")}')">
+      <div style="flex:1;">
+        <div style="font-weight:600;font-size:14px;">${s.name}</div>
+        <div style="font-size:11px;color:var(--text-light);margin-top:2px;">${s.city} · ${s.major} ${typeBadge}${badge211}${selfLine}</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:16px;font-weight:700;color:var(--primary);">${s.score}分</div>
+        <div style="font-size:11px;color:var(--text-light);">专业线</div>
+      </div>
+    </div>`;
+  }
+  
+  let schoolsHTML = '';
+  if (hasSchools) {
+    schoolsHTML = `
+    <div style="margin-top: 20px;">
+      <h4 style="font-size: 16px; color: var(--primary); margin-bottom: 8px;">🎯 推荐院校</h4>
+      <p style="font-size: 12px; color: var(--text-light); margin-bottom: 12px;">基于院校历年分数线数据自动推荐，仅供参考</p>
+      ${rec.chongci.length > 0 ? `
+      <div style="margin-bottom: 14px;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+          <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#EF4444;"></span>
+          <span style="font-size:13px;font-weight:600;color:#DC2626;">冲刺院校（${rec.chongci.length}所）</span>
+          <span style="font-size:11px;color:var(--text-lighter);">分数要求较高，适合高分冲刺</span>
+        </div>
+        ${rec.chongci.map(renderSchoolCard).join('')}
+      </div>` : ''}
+      ${rec.wentuo.length > 0 ? `
+      <div style="margin-bottom: 14px;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+          <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#F59E0B;"></span>
+          <span style="font-size:13px;font-weight:600;color:#D97706;">稳妥院校（${rec.wentuo.length}所）</span>
+          <span style="font-size:11px;color:var(--text-lighter);">分数匹配度高，推荐重点考虑</span>
+        </div>
+        ${rec.wentuo.map(renderSchoolCard).join('')}
+      </div>` : ''}
+      ${rec.baodi.length > 0 ? `
+      <div style="margin-bottom: 14px;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+          <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#10B981;"></span>
+          <span style="font-size:13px;font-weight:600;color:#059669;">保底院校（${rec.baodi.length}所）</span>
+          <span style="font-size:11px;color:var(--text-lighter);">录取把握大，适合保底选择</span>
+        </div>
+        ${rec.baodi.map(renderSchoolCard).join('')}
+      </div>` : ''}
+      <p style="font-size: 11px; color: var(--text-lighter); margin-top: 8px;">💡 点击院校名称可查看该校详情</p>
+    </div>`;
+  } else {
+    schoolsHTML = `
+    <div style="margin-top: 20px; padding: 20px; text-align: center; background: #F8FAFC; border-radius: 8px;">
+      <div style="font-size: 32px; margin-bottom: 8px;">🔍</div>
+      <p style="font-size: 13px; color: var(--text-light);">暂无该专业的推荐院校数据</p>
+      <p style="font-size: 12px; color: var(--text-lighter);">院校数据正在持续更新中</p>
+    </div>`;
+  }
+  
   body.innerHTML = `
     <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
       <div style="font-size: 48px;">${m.icon}</div>
@@ -2508,10 +2763,12 @@ function showMajorDetail(index) {
       <p style="line-height: 1.8; color: var(--text-light);">${m.employment}</p>
     </div>
     
-    <div>
+    <div style="margin-bottom: 20px;">
       <h4 style="font-size: 16px; color: var(--warning); margin-bottom: 8px;">🚀 发展方向</h4>
       <p style="line-height: 1.8; color: var(--text-light);">${m.development}</p>
     </div>
+    
+    ${schoolsHTML}
   `;
   
   modal.classList.add('show');
@@ -2676,6 +2933,15 @@ function showUniDetail(name) {
         <div style="font-size: 16px; font-weight: 600; margin-top: 4px;">第 ${u.rank} 名</div>
       </div>
     </div>
+    
+    ${uniUrls[u.name] ? `
+    <div style="margin-bottom: 16px;">
+      <a href="${uniUrls[u.name]}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:linear-gradient(135deg,var(--primary),#1D4E89);color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500;transition:all .2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+        <span>🔗</span>
+        <span>访问 ${u.name} 研究生招生官网</span>
+        <span style="font-size:12px;opacity:0.7;">↗</span>
+      </a>
+    </div>` : ''}
     
     ${majorDetails}
     
