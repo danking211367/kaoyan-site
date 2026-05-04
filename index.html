@@ -861,6 +861,114 @@
     background: linear-gradient(90deg, #EF4444, #F87171);
   }
 
+  /* ========== 院校对比按钮 & 对比栏 ========== */
+  .compare-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: white;
+    font-size: 12px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .compare-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: #F0F4FF;
+  }
+  .compare-btn.active {
+    border-color: var(--primary);
+    color: white;
+    background: var(--primary);
+  }
+
+  /* 底部浮动对比栏 */
+  .compare-bar-wrap {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 150;
+    padding: 12px 20px;
+    background: white;
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 20px rgba(0,0,0,.1);
+    transform: translateY(100%);
+    transition: transform .3s ease;
+  }
+  .compare-bar-wrap.show {
+    transform: translateY(0);
+  }
+  .compare-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .compare-bar-items {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+  .compare-bar-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px 6px 14px;
+    background: #F0F4FF;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--primary);
+  }
+  .compare-bar-item .remove-btn {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: none;
+    background: #DBEAFE;
+    color: var(--primary);
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s;
+  }
+  .compare-bar-item .remove-btn:hover {
+    background: var(--primary);
+    color: white;
+  }
+  .compare-bar-go {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--primary), #1D4E89);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .compare-bar-go:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+  }
+  .compare-bar-empty {
+    font-size: 13px;
+    color: var(--text-lighter);
+  }
+
   /* ========== FOOTER ========== */
   .footer {
     max-width: 1200px;
@@ -1540,7 +1648,7 @@
             <div class="card-title">⚖️ 院校对比工具</div>
           </div>
           <div class="card-body">
-            <p style="color: var(--text-light); margin-bottom: 16px; font-size: 14px;">选择两所院校进行多维度对比，帮助你做出更明智的选择。</p>
+            <p style="color: var(--text-light); margin-bottom: 16px; font-size: 14px;">选择2-4所院校进行多维度对比，帮助你做出更明智的选择。也可以从院校库中点击 <strong>⚖️ 对比</strong> 按钮加入底部对比栏后一键对比。</p>
             <div class="form-row" style="margin-bottom: 20px;">
               <div class="form-group">
                 <label class="form-label">院校 A</label>
@@ -1561,6 +1669,9 @@
                 <input type="hidden" id="compareB">
               </div>
             </div>
+            <!-- 隐藏字段，由底部对比栏自动填充C/D -->
+            <input type="hidden" id="compareC">
+            <input type="hidden" id="compareD">
             <div style="margin-bottom: 20px;">
               <button class="form-btn" onclick="runCompare()" style="width: auto; padding: 12px 32px;">🔄 开始对比</button>
             </div>
@@ -1652,6 +1763,16 @@
       <button class="modal-close" onclick="closeModal()">×</button>
     </div>
     <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ========== 底部浮动对比栏 ========== -->
+<div class="compare-bar-wrap" id="compareBar">
+  <div class="compare-bar-inner">
+    <div class="compare-bar-items" id="compareBarItems">
+      <span class="compare-bar-empty">点击院校卡片上的 ⚖️ 按钮加入对比</span>
+    </div>
+    <button class="compare-bar-go" onclick="goCompare()">⚖️ 开始对比</button>
   </div>
 </div>
 
@@ -2465,8 +2586,9 @@ function renderUniList(data, containerId, limit = 12) {
       const cls = t === '985' ? 'tag-985' : t === '211' ? 'tag-211' : t === '双一流' ? 'tag-double' : t === '自主划线' ? 'tag-self' : '';
       return `<span class="uni-card-tag ${cls}">${t}</span>`;
     }).join('');
+    const inCompare = isInCompare(u.name);
     
-    return `<div class="uni-card" onclick="showUniDetail('${u.name}')">
+    return `<div class="uni-card" onclick="showUniDetail('${u.name.replace(/'/g, "\\'")}')">
       <div class="uni-card-header" style="background: linear-gradient(135deg, ${u.color}, ${u.color}CC)">
         <h4>${u.name}</h4>
         <p>📍 ${u.city} · 📊 ${u.ratio}</p>
@@ -2474,6 +2596,9 @@ function renderUniList(data, containerId, limit = 12) {
       <div class="uni-card-body">
         ${tags}
         <p style="font-size: 12px; color: var(--text-light); margin-top: 8px;">热门：${u.hotMajors.slice(0,2).join('、')}</p>
+        <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end;">
+          <button class="compare-btn ${inCompare ? 'active' : ''} uni-card-compare" data-name="${u.name.replace(/'/g, "\\'")}" onclick="event.stopPropagation();toggleCompare('${u.name.replace(/'/g, "\\'")}')">${inCompare ? '✓ 已对比' : '⚖️ 对比'}</button>
+        </div>
       </div>
     </div>`;
   }).join('');
@@ -2950,6 +3075,12 @@ function showUniDetail(name) {
       <div style="display: flex; gap: 8px; flex-wrap: wrap;">
         ${u.hotMajors.map(m => `<span class="uni-card-tag" style="background: #FEF3C7; color: #D97706;">${m}</span>`).join('')}
       </div>
+    </div>
+    <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);">
+      <button class="compare-btn ${isInCompare(u.name) ? 'active' : ''}" onclick="toggleCompare('${u.name.replace(/'/g, "\\'")}');closeModal();" style="padding: 8px 20px; font-size: 13px;">
+        ${isInCompare(u.name) ? '✓ 已对比 — 点击移除' : '⚖️ 加入对比'}
+      </button>
+      <span style="font-size: 12px; color: var(--text-lighter); margin-left: 8px;">加入后可与其他院校对比分析</span>
     </div>
   `;
   
@@ -3544,6 +3675,82 @@ function renderAdjustTimeline() {
 }
 
 // 院校对比搜索功能
+// ========== 院校对比增强功能 ==========
+let compareList = [];
+
+function isInCompare(name) {
+  return compareList.indexOf(name) !== -1;
+}
+
+function toggleCompare(name) {
+  const idx = compareList.indexOf(name);
+  if (idx !== -1) {
+    compareList.splice(idx, 1);
+  } else {
+    if (compareList.length >= 4) {
+      alert('最多同时对比 4 所院校');
+      return;
+    }
+    compareList.push(name);
+  }
+  updateCompareBar();
+  // 刷新院校卡片的状态
+  const cards = document.querySelectorAll('.uni-card-compare[data-name="' + name.replace(/'/g, "\\'") + '"]');
+  cards.forEach(function(c) {
+    c.classList.toggle('active', isInCompare(name));
+    c.innerHTML = isInCompare(name) ? '✓ 已对比' : '⚖️ 对比';
+  });
+}
+
+function updateCompareBar() {
+  const bar = document.getElementById('compareBar');
+  const items = document.getElementById('compareBarItems');
+  if (!bar || !items) return;
+
+  if (compareList.length === 0) {
+    bar.classList.remove('show');
+    return;
+  }
+
+  bar.classList.add('show');
+  items.innerHTML = compareList.map(function(name) {
+    const u = universities.find(function(x) { return x.name === name; });
+    return '<span class="compare-bar-item">'
+      + '<span>' + (u ? u.name : name) + '</span>'
+      + '<button class="remove-btn" onclick="event.stopPropagation();toggleCompare(\'' + name.replace(/'/g, "\\'") + '\')">✕</button>'
+      + '</span>';
+  }).join('') + '<span style="font-size:12px;color:var(--text-lighter);">（已选 ' + compareList.length + ' 所）</span>';
+}
+
+function goCompare() {
+  if (compareList.length < 2) {
+    alert('请至少选择 2 所院校进行对比');
+    return;
+  }
+  // 跳转到对比tab
+  const navItem = document.querySelector('[data-tab="compare"]');
+  if (navItem) switchTab('compare', navItem);
+  
+  // 重置所有隐藏字段和搜索框
+  ['A','B','C','D'].forEach(function(l) {
+    document.getElementById('compare' + l).value = '';
+    var input = document.getElementById('searchCompare' + l);
+    if (input) input.value = '';
+  });
+  
+  // 自动填充对比tab（最多4所）
+  var labels = ['A','B','C','D'];
+  compareList.forEach(function(name, i) {
+    if (i < 4) {
+      document.getElementById('compare' + labels[i]).value = name;
+      var input = document.getElementById('searchCompare' + labels[i]);
+      if (input) input.value = name;
+    }
+  });
+  // 自动执行对比
+  setTimeout(function() { runCompare(); }, 300);
+}
+
 function handleCompareSearch(letter, keyword) {
   const container = document.getElementById('compareSearch' + letter);
   if (!container) return;
@@ -3606,108 +3813,190 @@ function initCompareSelects() {
 }
 
 function runCompare() {
-  var nameA = document.getElementById('compareA').value;
-  var nameB = document.getElementById('compareB').value;
   var container = document.getElementById('compareResult');
   if (!container) return;
-  if (!nameA || !nameB) { 
-    alert('请选择两所院校进行对比！');
-    return; 
-  }
-  if (nameA === nameB) {
-    alert('请选择两所不同的院校进行对比！');
+
+  // 读取所有院校（A/B/C/D，支持2-4所）
+  var ids = ['compareA','compareB','compareC','compareD'];
+  var names = ids.map(function(id) { return document.getElementById(id).value; }).filter(function(v) { return v && v.trim(); });
+  names = names.filter(function(v, i, a) { return a.indexOf(v) === i; }); // 去重
+
+  if (names.length < 2) {
+    alert('请至少选择 2 所不同的院校进行对比（可从院校库加入底部对比栏）');
     return;
   }
-  var a = universities.find(function(u) { return u.name === nameA; });
-  var b = universities.find(function(u) { return u.name === nameB; });
-  if (!a || !b) { 
-    alert('未找到匹配的院校，请重新选择！'); 
-    return; 
+
+  var schools = names.map(function(n) { return universities.find(function(u) { return u.name === n; }); }).filter(function(s) { return s; });
+  if (schools.length < 2) {
+    alert('未找到匹配的院校，请重新选择');
+    return;
   }
 
-  var aTypes = a.type.join(' · ');
-  var bTypes = b.type.join(' · ');
-  var aMajors = (a.hotMajors || []).join('、');
-  var bMajors = (b.hotMajors || []).join('、');
+  var count = schools.length;
+  var colors = ['var(--primary)', '#059669', '#D97706', '#7C3AED'];
+  var labels = ['A', 'B', 'C', 'D'];
 
-  // 获取两校最低分数线
-  var aScores = a.requirements ? Object.values(a.requirements) : [];
-  var bScores = b.requirements ? Object.values(b.requirements) : [];
-  var aMin = aScores.length > 0 ? Math.min.apply(null, aScores.map(function(r){return r.score;})) : '-';
-  var bMin = bScores.length > 0 ? Math.min.apply(null, bScores.map(function(r){return r.score;})) : '-';
-  
-  // 计算保研率（根据院校类型估算）
-  var aRate = a.type.includes('985') ? '20-30%' : a.type.includes('211') ? '10-20%' : '5-15%';
-  var bRate = b.type.includes('985') ? '20-30%' : b.type.includes('211') ? '10-20%' : '5-15%';
-  
-  // 根据排名判断院校层次
-  var getLevel = function(rank) {
-    if (rank <= 10) return '顶尖';
-    if (rank <= 30) return '一流';
-    if (rank <= 60) return '知名';
-    return '重点';
-  };
-  
   container.style.display = 'block';
-  
-  // 生成对比表格HTML（增加更多维度）
-  var tableHTML = '<table class="data-table" style="margin-top:16px;">'
-    + '<thead><tr><th style="width:20%;">对比维度</th><th style="width:40%;"><span style="color: var(--primary);">📌 ' + a.name + '</span></th><th style="width:40%;"><span style="color: #059669;">📌 ' + b.name + '</span></th></tr></thead>'
-    + '<tbody>'
-    + '<tr><td><strong>🏷️ 院校标签</strong></td><td>' + aTypes + '</td><td>' + bTypes + '</td></tr>'
-    + '<tr><td><strong>📍 所在城市</strong></td><td>' + a.city + '</td><td>' + b.city + '</td></tr>'
-    + '<tr><td><strong>🏆 全国排名</strong></td><td>第 ' + a.rank + ' 名 <span style="color: var(--text-lighter); font-size: 12px;">(' + getLevel(a.rank) + ')</span></td><td>第 ' + b.rank + ' 名 <span style="color: var(--text-lighter); font-size: 12px;">(' + getLevel(b.rank) + ')</span></td></tr>'
-    + '<tr><td><strong>📊 招生规模</strong></td><td>' + a.enrollment + '</td><td>' + b.enrollment + '</td></tr>'
-    + '<tr><td><strong>📈 报录比</strong></td><td>' + a.ratio + '</td><td>' + b.ratio + '</td></tr>'
-    + '<tr><td><strong>🎯 最低专业线</strong></td><td class="' + (aMin !== '-' && aMin >= 350 ? 'score-high' : aMin !== '-' && aMin >= 320 ? 'score-mid' : 'score-low') + '">' + aMin + (aMin !== '-' ? '分' : '') + '</td><td class="' + (bMin !== '-' && bMin >= 350 ? 'score-high' : bMin !== '-' && bMin >= 320 ? 'score-mid' : 'score-low') + '">' + bMin + (bMin !== '-' ? '分' : '') + '</td></tr>'
-    + '<tr><td><strong>🎓 估算保研率</strong></td><td>' + aRate + '</td><td>' + bRate + '</td></tr>'
-    + '<tr><td><strong>🔥 热门专业</strong></td><td>' + aMajors + '</td><td>' + bMajors + '</td></tr>'
-    + '<tr><td><strong>📝 学校简介</strong></td><td style="font-size:12px;">' + a.desc + '</td><td style="font-size:12px;">' + b.desc + '</td></tr>'
-    + '</tbody></table>';
-  
-  // 添加可视化对比条
-  var maxRank = Math.max(a.rank, b.rank);
-  var aRankWidth = (1 - a.rank / maxRank) * 100;
-  var bRankWidth = (1 - b.rank / maxRank) * 100;
-  
-  var visualCompare = '<div style="margin-top: 20px; padding: 16px; background: #F8FAFC; border-radius: 8px;">'
-    + '<h4 style="margin-bottom: 12px;">📊 关键指标对比</h4>'
-    + '<div style="margin-bottom: 12px;">'
-    + '<div style="font-size: 12px; color: var(--text-light); margin-bottom: 4px;">全国排名（数值越小越好）</div>'
-    + '<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">'
-    + '<div style="width: 45%; text-align: right; font-size: 12px;">' + a.name + '</div>'
-    + '<div style="width: 55%; height: 20px; background: #E5E7EB; border-radius: 4px; overflow: hidden;">'
-    + '<div style="width: ' + aRankWidth + '%; height: 100%; background: var(--primary); border-radius: 4px;"></div>'
-    + '</div></div>'
-    + '<div style="display: flex; align-items: center; gap: 8px;">'
-    + '<div style="width: 45%; text-align: right; font-size: 12px;">' + b.name + '</div>'
-    + '<div style="width: 55%; height: 20px; background: #E5E7EB; border-radius: 4px; overflow: hidden;">'
-    + '<div style="width: ' + bRankWidth + '%; height: 100%; background: #059669; border-radius: 4px;"></div>'
-    + '</div></div>'
-    + '</div>'
+
+  function getLevel(rank) {
+    if (rank <= 10) return '顶尖'; if (rank <= 30) return '一流'; if (rank <= 60) return '知名'; return '重点';
+  }
+
+  function getRate(u) {
+    return u.type.includes('985') ? '20-30%' : u.type.includes('211') ? '10-20%' : '5-15%';
+  }
+
+  function getMinScore(u) {
+    var scores = u.requirements ? Object.values(u.requirements) : [];
+    return scores.length > 0 ? Math.min.apply(null, scores.map(function(r){return r.score;})) : null;
+  }
+
+  function getMaxScore(u) {
+    var scores = u.requirements ? Object.values(u.requirements) : [];
+    return scores.length > 0 ? Math.max.apply(null, scores.map(function(r){return r.score;})) : null;
+  }
+
+  // 判断是否最优（排名取最小，其他取最大）
+  var bestRank = Math.min.apply(null, schools.map(function(s){return s.rank;}));
+  var bestEnroll = Math.max.apply(null, schools.map(function(s){return parseInt(s.enrollment.replace(/[~,]/g,''));}));
+
+  var rankMedal = {};
+  schools.forEach(function(s) {
+    if (s.rank === bestRank) rankMedal[s.name] = ' 🥇';
+    else {
+      var sorted = schools.slice().sort(function(a,b){return a.rank-b.rank;});
+      if (sorted[1] && s.name === sorted[1].name) rankMedal[s.name] = ' 🥈';
+      else if (sorted[2] && s.name === sorted[2].name) rankMedal[s.name] = ' 🥉';
+      else rankMedal[s.name] = '';
+    }
+  });
+
+  // A. 顶部院校概览卡片
+  var cardWidth = count <= 2 ? '50%' : count === 3 ? '33.33%' : '25%';
+  var cardsHTML = '<div style="display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;">';
+  schools.forEach(function(s, i) {
+    var tagHTML = s.type.slice(0, 3).map(function(t) {
+      var cls = t === '985' ? 'tag-985' : t === '211' ? 'tag-211' : t === '双一流' ? 'tag-double' : 'tag-self';
+      return '<span class="uni-card-tag ' + cls + '" style="margin-bottom:0;">' + t + '</span>';
+    }).join('');
+    cardsHTML += '<div style="flex:1;min-width:' + (count <= 2 ? '250px' : '200px') + ';padding:16px;background:linear-gradient(135deg,' + s.color + ',' + s.color + 'CC);border-radius:12px;color:white;">'
+      + '<div style="font-size:16px;font-weight:700;margin-bottom:4px;">' + s.name + rankMedal[s.name] + '</div>'
+      + '<div style="font-size:12px;opacity:0.85;margin-bottom:8px;">📍 ' + s.city + ' · 🏆 第' + s.rank + '名</div>'
+      + '<div>' + tagHTML + '</div>'
+      + '</div>';
+  });
+  cardsHTML += '</div>';
+
+  // B. 多维度对比表格
+  var tableRows = '';
+  var dimensions = [
+    { key: 'type', label: '🏷️ 院校标签', fn: function(s) { return s.type.join(' · '); } },
+    { key: 'city', label: '📍 所在城市', fn: function(s) { return s.city; } },
+    { key: 'rank', label: '🏆 全国排名', fn: function(s) { return '第' + s.rank + '名 <span style="color:var(--text-lighter);font-size:11px;">(' + getLevel(s.rank) + ')</span>'; }, best: 'low' },
+    { key: 'enrollment', label: '📊 招生规模', fn: function(s) { return s.enrollment; }, best: 'high' },
+    { key: 'ratio', label: '📈 报录比', fn: function(s) { return s.ratio; } },
+    { key: 'minScore', label: '🎯 最低专业线', fn: function(s) { var m = getMinScore(s); return m !== null ? m + '分' : '-'; }, best: 'low' },
+    { key: 'maxScore', label: '📈 最高专业线', fn: function(s) { var m = getMaxScore(s); return m !== null ? m + '分' : '-'; } },
+    { key: 'rate', label: '🎓 保研率', fn: function(s) { return getRate(s); } },
+    { key: 'hotMajors', label: '🔥 热门专业', fn: function(s) { return (s.hotMajors || []).join('、'); } }
+  ];
+
+  dimensions.forEach(function(dim) {
+    var vals = schools.map(function(s) { return dim.fn(s); });
+    tableRows += '<tr><td style="font-weight:600;white-space:nowrap;">' + dim.label + '</td>';
+    schools.forEach(function(s, i) {
+      var isBest = false;
+      if (dim.best === 'low') {
+        var nums = schools.map(function(x) { 
+          if (dim.key === 'rank') return x.rank;
+          var m = getMinScore(x);
+          return m !== null ? m : 999;
+        });
+        var bestVal = Math.min.apply(null, nums);
+        isBest = (dim.key === 'rank' && s.rank === bestVal) || (dim.key === 'minScore' && getMinScore(s) === bestVal);
+      } else if (dim.best === 'high') {
+        var nums = schools.map(function(x) { return parseInt(x.enrollment.replace(/[~,]/g,'')); });
+        var bestVal = Math.max.apply(null, nums);
+        isBest = (parseInt(s.enrollment.replace(/[~,]/g,'')) === bestVal);
+      }
+      tableRows += '<td' + (isBest ? ' style="background:#F0FDF4;color:#059669;font-weight:600;"' : '') + '>' + vals[i] + '</td>';
+    });
+    tableRows += '</tr>';
+  });
+
+  var tableHTML = '<h4 style="margin-bottom:12px;">📋 多维度对比</h4>'
+    + '<div style="overflow-x:auto;"><table class="data-table">'
+    + '<thead><tr><th style="width:16%;">对比维度</th>'
+    + schools.map(function(s, i) { return '<th style="color:' + colors[i] + ';">📌 ' + s.name + rankMedal[s.name] + '</th>'; }).join('')
+    + '</tr></thead><tbody>' + tableRows + '</tbody></table></div>';
+
+  // C. 可视化条形图
+  var maxRank = Math.max.apply(null, schools.map(function(s){return s.rank;}));
+  var barHTML = '<h4 style="margin-top:20px;margin-bottom:12px;">📊 关键指标可视化</h4><div style="padding:16px;background:#F8FAFC;border-radius:8px;">';
+
+  // 排名图
+  barHTML += '<div style="margin-bottom:16px;"><div style="font-size:13px;font-weight:600;margin-bottom:8px;">🏆 全国排名（数值越小越好）</div>';
+  schools.slice().sort(function(a,b){return a.rank-b.rank;}).forEach(function(s, i) {
+    var w = Math.max(5, (1 - (s.rank-1) / maxRank) * 100);
+    var rankColors = ['#2563EB','#059669','#D97706','#7C3AED'];
+    barHTML += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">'
+      + '<div style="width:100px;text-align:right;font-size:12px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + s.name + '</div>'
+      + '<div style="flex:1;height:22px;background:#E5E7EB;border-radius:6px;overflow:hidden;">'
+      + '<div style="width:' + w + '%;height:100%;background:' + rankColors[i] + ';border-radius:6px;display:flex;align-items:center;padding-left:8px;font-size:11px;color:white;font-weight:600;">第' + s.rank + '名</div>'
+      + '</div></div>';
+  });
+  barHTML += '</div>';
+
+  // 最低分数线图
+  var minScores = schools.map(function(s){return getMinScore(s);});
+  var hasScores = minScores.some(function(v){return v !== null;});
+  if (hasScores) {
+    var maxScore = Math.max.apply(null, minScores.filter(function(v){return v !== null;}));
+    barHTML += '<div style="margin-bottom:16px;"><div style="font-size:13px;font-weight:600;margin-bottom:8px;">🎯 最低专业线对比</div>';
+    schools.slice().sort(function(a,b){return (getMinScore(a)||999)-(getMinScore(b)||999);}).forEach(function(s) {
+      var score = getMinScore(s);
+      if (score === null) return;
+      var w = Math.max(5, score / (maxScore || 400) * 100);
+      barHTML += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">'
+        + '<div style="width:100px;text-align:right;font-size:12px;font-weight:500;">' + s.name + '</div>'
+        + '<div style="flex:1;height:22px;background:#E5E7EB;border-radius:6px;overflow:hidden;">'
+        + '<div style="width:' + w + '%;height:100%;background:linear-gradient(90deg,#F59E0B,#EF4444);border-radius:6px;display:flex;align-items:center;padding-left:8px;font-size:11px;color:white;font-weight:600;">' + score + '分</div>'
+        + '</div></div>';
+    });
+    barHTML += '</div>';
+  }
+  barHTML += '</div>';
+
+  // D. 综合推荐
+  var ranked = schools.slice().sort(function(a,b){return a.rank-b.rank;});
+  var recHTML = '<h4 style="margin-top:20px;margin-bottom:12px;">💡 综合推荐</h4>'
+    + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">';
+
+  // 冲刺推荐（排名最好）
+  recHTML += '<div style="padding:14px;background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border-radius:10px;">'
+    + '<div style="font-size:14px;font-weight:600;color:' + colors[0] + ';margin-bottom:6px;">🏆 排名最优</div>'
+    + '<div style="font-size:13px;font-weight:600;">' + ranked[0].name + '</div>'
+    + '<div style="font-size:12px;color:var(--text-light);margin-top:4px;">全国第' + ranked[0].rank + '名，' + getLevel(ranked[0].rank) + '院校，综合实力最强</div>'
     + '</div>';
-  
-  // 添加优劣势分析
-  var analysis = '<div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">'
-    + '<div style="padding: 16px; background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border-radius: 8px;">'
-    + '<h4 style="color: var(--primary); margin-bottom: 8px;">✅ ' + a.name + ' 优势</h4>'
-    + '<ul style="font-size: 13px; color: var(--text-light); padding-left: 20px;">'
-    + (a.rank < b.rank ? '<li>排名更高（第' + a.rank + '名 vs 第' + b.rank + '名）</li>' : '')
-    + (a.type.includes('985') && !b.type.includes('985') ? '<li>985工程院校，综合实力更强</li>' : '')
-    + (a.type.includes('211') && !b.type.includes('211') ? '<li>211工程院校，行业认可度高</li>' : '')
-    + (a.enrollment > b.enrollment ? '<li>招生规模更大，录取机会更多</li>' : '')
-    + '</ul></div>'
-    + '<div style="padding: 16px; background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border-radius: 8px;">'
-    + '<h4 style="color: #059669; margin-bottom: 8px;">✅ ' + b.name + ' 优势</h4>'
-    + '<ul style="font-size: 13px; color: var(--text-light); padding-left: 20px;">'
-    + (b.rank < a.rank ? '<li>排名更高（第' + b.rank + '名 vs 第' + a.rank + '名）</li>' : '')
-    + (b.type.includes('985') && !a.type.includes('985') ? '<li>985工程院校，综合实力更强</li>' : '')
-    + (b.type.includes('211') && !a.type.includes('211') ? '<li>211工程院校，行业认可度高</li>' : '')
-    + (b.enrollment > a.enrollment ? '<li>招生规模更大，录取机会更多</li>' : '')
-    + '</ul></div>'
+
+  // 性价比推荐（排名/分数比最好）
+  recHTML += '<div style="padding:14px;background:linear-gradient(135deg,#F0FDF4,#DCFCE7);border-radius:10px;">'
+    + '<div style="font-size:14px;font-weight:600;color:#059669;margin-bottom:6px;">🎯 性价比之选</div>'
+    + '<div style="font-size:13px;font-weight:600;">' + ranked[ranked.length-1].name + '</div>'
+    + '<div style="font-size:12px;color:var(--text-light);margin-top:4px;">全国第' + ranked[ranked.length-1].rank + '名，分数线相对较低，' + getLevel(ranked[ranked.length-1].rank) + '院校</div>'
     + '</div>';
-  
-  container.innerHTML = tableHTML + visualCompare + analysis;
+
+  // 招生最多
+  var mostEnroll = schools.slice().sort(function(a,b){return parseInt(b.enrollment.replace(/[~,]/g,''))-parseInt(a.enrollment.replace(/[~,]/g,''));})[0];
+  recHTML += '<div style="padding:14px;background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-radius:10px;">'
+    + '<div style="font-size:14px;font-weight:600;color:#D97706;margin-bottom:6px;">📚 招生最多</div>'
+    + '<div style="font-size:13px;font-weight:600;">' + mostEnroll.name + '</div>'
+    + '<div style="font-size:12px;color:var(--text-light);margin-top:4px;">招生规模' + mostEnroll.enrollment + '，录取机会相对更多</div>'
+    + '</div>';
+
+  recHTML += '</div>';
+
+  container.innerHTML = cardsHTML + tableHTML + barHTML + recHTML;
 }
 
 // ========== INIT ==========
