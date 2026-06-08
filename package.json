@@ -1,0 +1,14 @@
+{
+  "name": "kaoyan-info-platform",
+  "version": "1.0.0",
+  "description": "考研通信息聚合平台 - 每日自动更新",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "update": "node scripts/update-data.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
