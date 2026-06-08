@@ -15,6 +15,8 @@ const path = require('path');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
+const { generateSummary } = require('./summary-templates.js');
+
 const INDEX_HTML = path.join(PUBLIC_DIR, 'index.html');
 const OUTPUT_HTML = path.join(PUBLIC_DIR, 'index.html');
 
@@ -50,9 +52,29 @@ function convertHotArticles(apiItems) {
     title: item.title || '',
     tag: item.tag || 'note',
     meta: item.meta || '',
-    summary: '',
-    points: [],
+    summary: generateSummary(item.title || ''),
+    points: generatePoints(item.title || ''),
   }));
+}
+
+// 根据标题生成要点列表
+function generatePoints(title) {
+  const allPoints = {
+    '国家线': ['📌 哲学类分数线涨幅最大(↑15分)', '📌 工学类分数相对较低(A区273分)', '📌 经济学/管理学竞争依旧激烈', '💡 建议参考目标院校近3年分数线'],
+    '报名人数': ['📌 报考人数趋稳，热门专业仍火爆', '📌 专硕报考比例持续上升', '📌 往届生占比逐年增加', '💡 建议理性择校，避免扎堆'],
+    '报录比': ['📌 985院校平均报录比8:1', '📌 热门专业可达30:1以上', '📌 冷门专业报录比低至3:1', '💡 选择大于努力，合理定位'],
+    '调剂': ['📌 调剂系统开放时间有限', '📌 建议提前准备3-5个目标院校', '📌 主动联系导师很重要', '💡 调剂信息每日更新，保持关注'],
+    '英语': ['📌 词汇量要求5500+', '📌 阅读占40分，是得分关键', '📌 作文模板要提前准备', '💡 坚持每天精读1篇真题文章'],
+    '数学': ['📌 数学一范围最广', '📌 数学二不考概率论', '📌 数学三难度相对较低', '💡 基础阶段刷题不在多而在精'],
+    '双非': ['📌 择校策略比努力更重要', '📌 专业课要突出特色', '📌 复试准备要充分', '💡 双非逆袭并非不可能，要有信心'],
+    '复试英语': ['📌 准备3分钟英文自我介绍', '📌 熟背20个高频面试问题', '📌 注意发音和流利度', '💡 模拟面试练习很重要'],
+    '奖学金': ['📌 国家助学金全覆盖6000元/年', '📌 学业奖学金覆盖率30%-80%', '📌 985院校奖学金更丰厚', '💡 研究生阶段可以实现经济独立'],
+    '调剂系统': ['📌 登录研招网调剂系统', '📌 一次可填报3个平行志愿', '📌 收到复试通知需及时确认', '💡 保持电话畅通，关注系统通知'],
+  };
+  for (const [key, points] of Object.entries(allPoints)) {
+    if ((title || '').includes(key)) return points;
+  }
+  return ['📌 获取最新考研资讯', '📌 及时关注官方通知', '💡 建议收藏保存，方便查阅'];
 }
 
 // 调剂信息: API {tag,category,title,meta} -> 原始 {cat,title,content,time,tag}
