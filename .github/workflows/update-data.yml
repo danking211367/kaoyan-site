@@ -1,4 +1,4 @@
-name: 📊 每日数据自动更新
+name: 📊 每日数据自动更新 + 静态站点生成
 
 on:
   schedule:
@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 jobs:
-  update-data:
+  build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
@@ -27,13 +27,16 @@ jobs:
       - name: 📦 安装依赖
         run: npm ci
 
-      - name: 🔄 运行数据更新
+      - name: 🔄 更新数据
         run: node scripts/update-data-v2.js
 
-      - name: 📤 提交并推送更新
+      - name: 🏗️ 生成静态站点（数据注入 HTML）
+        run: node scripts/build-static.js
+
+      - name: 📤 提交并推送
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/ public/index.html
-          git diff --staged --quiet || git commit -m "📊 每日数据自动更新 - $(date +'%Y-%m-%d %H:%M' --utc)"
+          git diff --staged --quiet || git commit -m "📊 每日数据更新 + 静态站点重建 - $(date +'%Y-%m-%d %H:%M' --utc)"
           git push

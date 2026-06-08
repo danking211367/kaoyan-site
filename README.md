@@ -89,40 +89,43 @@ kaoyan/
 
 ### 方式一：GitHub Actions（推荐）
 
-创建 `.github/workflows/update-data.yml`，GitHub 会自动在每天 8:00 和 20:00 运行更新脚本并推送到仓库：
+项目已自带 `.github/workflows/update-data.yml`，推送仓库后 GitHub 会自动在每天 8:00 和 20:00 运行更新脚本并重新生成静态 HTML：
 
 ```yaml
-name: 每日数据更新
+name: 📊 每日数据自动更新 + 静态站点生成
 on:
   schedule:
     - cron: '0 0,12 * * *'
   workflow_dispatch:
 
 jobs:
-  update:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm install
-      - run: node scripts/update-data-v2.js
+      - run: npm ci
+      - run: node scripts/update-data-v2.js    # 更新数据
+      - run: node scripts/build-static.js       # 生成静态 HTML
       - run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add data/
-          git diff --staged --quiet || git commit -m "📊 每日数据自动更新 $(date +'%Y-%m-%d')"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ public/index.html
+          git diff --staged --quiet || git commit -m "📊 每日更新"
           git push
 ```
 
-### 方式二：本地定时任务
+### 方式二：本地手动更新
 
-Windows 下创建计划任务，每天定时运行：
+一键更新数据并生成静态站：
 
 ```bash
-node scripts/update-data-v2.js
+node scripts/update-data-v2.js && node scripts/build-static.js
 ```
+
+现在 `public/index.html` 已经包含了最新数据，直接用浏览器打开就能看到新内容。
 
 ## 🛠 技术栈
 
