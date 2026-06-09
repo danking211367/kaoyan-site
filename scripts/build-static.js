@@ -338,6 +338,9 @@ for (const [pattern, newValue] of replacements) {
 console.log('\n💾 写入...');
 fs.writeFileSync(OUTPUT_HTML, output, 'utf8');
 fs.writeFileSync(path.join(PUBLIC_DIR, 'index_static.html'), output, 'utf8');
+// 也写入根目录（GitHub Pages 从根目录服务）
+fs.writeFileSync(path.join(__dirname, '..', 'index.html'), output, 'utf8');
+console.log('  ✅ 同时写入根目录 index.html (用于 GitHub Pages)');
 
 const elapsed = Date.now() - startTime;
 const size = (Buffer.byteLength(output, 'utf8') / 1024).toFixed(1);
