@@ -1,7 +1,8 @@
 {
-  "updatedAt": "2026-06-09T02:37:46.751Z",
+  "updatedAt": "2026-06-09T05:23:04.864Z",
   "success": 8,
   "failed": 0,
-  "duration": 21,
-  "version": "v2"
+  "duration": 17,
+  "version": "v2",
+  "note": "手动触发更新 - 内容已丰富"
 }
