@@ -1,18 +1,16 @@
-name: 📊 每日数据自动更新 + 静态站点生成
+name: ⏱ 每日数据更新（本地联网备份）
 
 on:
   schedule:
-    # 每天北京时间 8:00 = UTC 0:00
+    # 每天 8:00 执行，仅当本地未联网更新时才跑
     - cron: '0 0 * * *'
-  # 支持手动触发
   workflow_dispatch:
 
-# 设置写权限
 permissions:
   contents: write
 
 jobs:
-  build-and-deploy:
+  fallback-update:
     runs-on: ubuntu-latest
     
     steps:
@@ -27,16 +25,37 @@ jobs:
       - name: 📦 安装依赖
         run: npm ci
 
-      - name: 🔄 更新数据
+      - name: 🔍 检查今天是否已有联网更新
+        id: check
+        run: |
+          if [ -f data/last-update.json ]; then
+            TODAY=$(date +%Y-%m-%d)
+            UPDATE_DATE=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/last-update.json','utf8')).updatedAt.substring(0,10))" 2>/dev/null)
+            MODE=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/last-update.json','utf8')).mode || '')" 2>/dev/null)
+            if [ "$TODAY" = "$UPDATE_DATE" ] && [ "$MODE" = "web" ]; then
+              echo "✅ 今天已有本地联网更新，跳过轮换"
+              echo "skip=true" >> $GITHUB_OUTPUT
+            else
+              echo "⏳ 今天未联网更新，运行静态轮换"
+              echo "skip=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 🔄 静态轮换更新
+        if: steps.check.outputs.skip != 'true'
         run: node scripts/update-data.js
 
-      - name: 🏗️ 生成静态站点（数据注入 HTML）
+      - name: 🏗️ 生成静态站点
+        if: steps.check.outputs.skip != 'true'
         run: node scripts/build-static.js
 
       - name: 📤 提交并推送
+        if: steps.check.outputs.skip != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/ public/index.html index.html
-          git diff --staged --quiet || git commit -m "📊 每日数据更新 + 静态站点重建 - $(date +'%Y-%m-%d %H:%M' --utc)"
+          git diff --staged --quiet || git commit -m "📊 静态轮换更新 - $(date +'%Y-%m-%d %H:%M' --utc)"
           git push
