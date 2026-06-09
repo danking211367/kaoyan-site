@@ -28,7 +28,7 @@ jobs:
         run: npm ci
 
       - name: 🔄 更新数据
-        run: node scripts/update-data-v2.js
+        run: node scripts/update-data.js
 
       - name: 🏗️ 生成静态站点（数据注入 HTML）
         run: node scripts/build-static.js

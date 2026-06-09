@@ -1343,7 +1343,7 @@
         <div class="banner-stat-label">报名人数</div>
       </div>
       <div class="banner-stat">
-        <div class="banner-stat-num">30所</div>
+        <div class="banner-stat-num">120+所</div>
         <div class="banner-stat-label">重点高校</div>
       </div>
       <div class="banner-stat">
@@ -1357,7 +1357,7 @@
     </div>
   
     <div style="background: rgba(255,255,255,0.15); padding: 12px 16px; border-radius: 8px; margin-top: 16px; font-size: 14px;">
-        <span style="font-weight: 600;">💡 每日提示：</span>专业课背诵要建立知识框架，用思维导图梳理逻辑 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-09 16:40:59</span>
+        <span style="font-weight: 600;">💡 每日提示：</span>专业课背诵要建立知识框架，用思维导图梳理逻辑 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-09 17:05:48</span>
     </div></div>
 
   <!-- ========== MAIN GRID ========== -->
@@ -1978,6 +1978,15 @@ const universities = [
   { name: '宁波大学', city: '浙江宁波', region: '浙江', type: ['双一流'], rank: 85, color: '#0891B2', enrollment: '~3500', ratio: '~11.0%', hotMajors: ['力学','水产','通信工程'], subjects: ['力学','水产','信息与通信工程'], requirements: {'力学': {score: 280, lang: '英一', math: '数一', note: '理论力学', extra: '双一流，力学特色'}}, desc: '双一流高校，力学学科特色鲜明，地处宁波区位好。' },
   { name: '云南大学', city: '云南昆明', region: '云南', type: ['211','双一流'], rank: 80, color: '#059669', enrollment: '~3800', ratio: '~11.0%', hotMajors: ['生态学','民族学','政治学'], subjects: ['生态学','民族学','政治学','生物学'], requirements: {'生态学': {score: 280, lang: '英一', math: '数二/无', note: '生态学基础', extra: 'A学科，B区211'}}, desc: '西部211高校，生态学A学科，民族学特色鲜明。' },
   { name: '广西大学', city: '广西南宁', region: '广西', type: ['211','双一流'], rank: 100, color: '#059669', enrollment: '~4000', ratio: '~12.0%', hotMajors: ['土木工程','电气工程','应用经济学'], subjects: ['土木工程','电气工程','应用经济学'], requirements: {'土木工程': {score: 275, lang: '英一', math: '数一', note: '结构力学', extra: 'B区211，分数线低'}}, desc: '广西唯一211高校，土木工程、电气工程等学科实力突出。' },
+  { name: '首都医科大学', city: '北京', region: '北京', type: ['重点'], rank: 70, color: '#C53030', enrollment: '~3000', ratio: '~10%', hotMajors: ['临床医学','基础医学','口腔医学','药学'], subjects: ['临床医学','基础医学','口腔医学','生物学','药学'], requirements: {'临床医学': {score: 320, lang: '英一', math: '无', note: '西医综合', extra: '非211但医学实力全国前十'}}, desc: '非211重点医科院校，临床医学、基础医学学科实力突出，附属医院资源丰富。' },
+  { name: '南方科技大学', city: '广东深圳', region: '广东', type: ['双一流'], rank: 75, color: '#0891B2', enrollment: '~1800', ratio: '~8%', hotMajors: ['材料科学','计算机','生物科学','物理学'], subjects: ['材料科学与工程','计算机科学与技术','生物科学','物理学'], requirements: {'材料科学与工程': {score: 310, lang: '英一', math: '数一/数二', note: '材料科学基础', extra: '新兴研究型大学，科研经费充足'}}, desc: '新型研究型大学，材料科学、计算机等学科发展迅猛，师资力量雄厚。' },
+  { name: '北京外国语大学', city: '北京', region: '北京', type: ['211','双一流'], rank: 70, color: '#7C3AED', enrollment: '~1500', ratio: '~8%', hotMajors: ['英语','翻译','国际关系','外交学'], subjects: ['外国语言文学','翻译学','国际关系','外交学'], requirements: {'外国语言文学': {score: 355, lang: '英一', math: '无', note: '外语基础/翻译', extra: '全国外语类顶尖高校，A+学科'}}, desc: '外语类顶尖211高校。外国语言文学A+学科，翻译、外交学全国领先。' },
+  { name: '上海科技大学', city: '上海', region: '上海', type: ['双一流'], rank: 78, color: '#0891B2', enrollment: '~1500', ratio: '~8%', hotMajors: ['材料科学','计算机','生物科学'], subjects: ['材料科学与工程','计算机科学与技术','物理学'], requirements: {'计算机科学与技术': {score: 320, lang: '英一', math: '数一', note: '计算机基础', extra: '中科院共建，国际化培养'}}, desc: '中科院与上海共建的新型研究型大学，科研实力突出，国际化程度高。' },
+  { name: '南京医科大学', city: '江苏南京', region: '江苏', type: ['双一流'], rank: 72, color: '#C53030', enrollment: '~2500', ratio: '~10%', hotMajors: ['临床医学','公共卫生','口腔医学','护理学'], subjects: ['临床医学','公共卫生与预防医学','口腔医学'], requirements: {'临床医学': {score: 315, lang: '英一', math: '无', note: '西医综合', extra: '双一流医学，江苏最强医学院'}}, desc: '双一流医科院校，公共卫生与预防医学A+学科，临床医学实力强劲。' },
+  { name: '中国社会科学院大学', city: '北京', region: '北京', type: ['重点'], rank: 65, color: '#7C3AED', enrollment: '~1200', ratio: '~10%', hotMajors: ['经济学','法学','社会学','历史学'], subjects: ['经济学','法学','社会学','历史学'], requirements: {'经济学': {score: 350, lang: '英一', math: '数三', note: '经济学综合', extra: '社科院师资，科研导向'}}, desc: '社科院直属高校，经济学、法学、社会学等文科专业科研实力极强。' },
+  { name: '外交学院', city: '北京', region: '北京', type: ['双一流'], rank: 90, color: '#7C3AED', enrollment: '~800', ratio: '~12%', hotMajors: ['外交学','国际关系','英语'], subjects: ['外交学','国际关系','英语'], requirements: {'外交学': {score: 340, lang: '英一', math: '无', note: '外交学综合', extra: '外交部直属，就业优势明显'}}, desc: '外交部直属高校，外交学、国际关系学科特色鲜明，被誉为中国外交官摇篮。' },
+  { name: '香港中文大学(深圳)', city: '广东深圳', region: '广东', type: ['重点'], rank: 82, color: '#0891B2', enrollment: '~1800', ratio: '~9%', hotMajors: ['金融','计算机','数据科学','经济学'], subjects: ['金融','计算机科学与技术','数据科学','应用经济学'], requirements: {'计算机科学与技术': {score: 330, lang: '英一', math: '数一', note: '计算机基础', extra: '国际化教学，全英文授课'}}, desc: '中外合作办学典范，国际化教育模式，金融和计算机专业就业竞争力强。' },
+  { name: '上海纽约大学', city: '上海', region: '上海', type: ['重点'], rank: 88, color: '#0891B2', enrollment: '~500', ratio: '~8%', hotMajors: ['金融','数据科学','交互媒体'], subjects: ['金融','数据科学','交互媒体'], requirements: {'金融': {score: 340, lang: '英一', math: '数三', note: '经济学基础', extra: '中美双学位，国际化教学'}}, desc: '中美合办研究型大学，全英文教学，培养国际化高端人才。' },
 ];
 
 // 院校研究生招生官网链接
@@ -2082,15 +2091,15 @@ const lineData = [
     "bTotal": 316,
     "subA": 42,
     "subB": 41,
-    "trend": 18
+    "trend": 15
   },
   {
     "cat": "经济学",
-    "aTotal": 344,
-    "bTotal": 334,
-    "subA": 45,
-    "subB": 43,
-    "trend": 7
+    "aTotal": 351,
+    "bTotal": 341,
+    "subA": 46,
+    "subB": 44,
+    "trend": 10
   },
   {
     "cat": "法学",
@@ -2098,7 +2107,7 @@ const lineData = [
     "bTotal": 334,
     "subA": 45,
     "subB": 43,
-    "trend": 14
+    "trend": 12
   },
   {
     "cat": "教育学",
@@ -2106,39 +2115,39 @@ const lineData = [
     "bTotal": 343,
     "subA": 46,
     "subB": 45,
-    "trend": 8
-  },
-  {
-    "cat": "文学",
-    "aTotal": 369,
-    "bTotal": 359,
-    "subA": 48,
-    "subB": 47,
-    "trend": 11
-  },
-  {
-    "cat": "历史学",
-    "aTotal": 333,
-    "bTotal": 323,
-    "subA": 43,
-    "subB": 42,
-    "trend": 7
-  },
-  {
-    "cat": "理学",
-    "aTotal": 286,
-    "bTotal": 276,
-    "subA": 37,
-    "subB": 36,
     "trend": 5
   },
   {
+    "cat": "文学",
+    "aTotal": 368,
+    "bTotal": 358,
+    "subA": 48,
+    "subB": 47,
+    "trend": 8
+  },
+  {
+    "cat": "历史学",
+    "aTotal": 339,
+    "bTotal": 329,
+    "subA": 44,
+    "subB": 43,
+    "trend": 10
+  },
+  {
+    "cat": "理学",
+    "aTotal": 293,
+    "bTotal": 283,
+    "subA": 38,
+    "subB": 37,
+    "trend": 8
+  },
+  {
     "cat": "工学",
-    "aTotal": 270,
-    "bTotal": 260,
-    "subA": 35,
-    "subB": 34,
-    "trend": 3
+    "aTotal": 276,
+    "bTotal": 266,
+    "subA": 36,
+    "subB": 35,
+    "trend": 5
   },
   {
     "cat": "农学",
@@ -2146,15 +2155,15 @@ const lineData = [
     "bTotal": 245,
     "subA": 33,
     "subB": 32,
-    "trend": 3
+    "trend": 0
   },
   {
     "cat": "医学",
-    "aTotal": 301,
-    "bTotal": 291,
-    "subA": 39,
-    "subB": 38,
-    "trend": 5
+    "aTotal": 307,
+    "bTotal": 297,
+    "subA": 40,
+    "subB": 39,
+    "trend": 8
   },
   {
     "cat": "军事学",
@@ -2162,15 +2171,15 @@ const lineData = [
     "bTotal": 253,
     "subA": 34,
     "subB": 33,
-    "trend": 3
+    "trend": 0
   },
   {
     "cat": "管理学",
-    "aTotal": 347,
-    "bTotal": 337,
-    "subA": 45,
-    "subB": 44,
-    "trend": 9
+    "aTotal": 353,
+    "bTotal": 343,
+    "subA": 46,
+    "subB": 45,
+    "trend": 12
   },
   {
     "cat": "艺术学",
@@ -2178,82 +2187,82 @@ const lineData = [
     "bTotal": 355,
     "subA": 47,
     "subB": 46,
-    "trend": 11
+    "trend": 8
   }
 ];
 
 const degreeData = [
   {
     "cat": "金融/应用统计/税务",
-    "aTotal": 344,
-    "bTotal": 334,
+    "aTotal": 349,
+    "bTotal": 339,
     "subA": 45,
-    "subB": 43,
-    "trend": 7
+    "subB": 44,
+    "trend": 10
   },
   {
     "cat": "法律(非法学/法学)",
-    "aTotal": 328,
-    "bTotal": 318,
+    "aTotal": 332,
+    "bTotal": 322,
     "subA": 43,
-    "subB": 41,
-    "trend": 5
-  },
-  {
-    "cat": "教育/汉语国际教育",
-    "aTotal": 353,
-    "bTotal": 343,
-    "subA": 46,
-    "subB": 45,
+    "subB": 42,
     "trend": 8
   },
   {
-    "cat": "翻译/新闻与传播",
-    "aTotal": 369,
-    "bTotal": 359,
-    "subA": 48,
-    "subB": 47,
-    "trend": 11
-  },
-  {
-    "cat": "电子信息/机械/材料",
-    "aTotal": 270,
-    "bTotal": 260,
-    "subA": 35,
-    "subB": 34,
-    "trend": 3
-  },
-  {
-    "cat": "临床医学/口腔医学",
-    "aTotal": 301,
-    "bTotal": 291,
-    "subA": 39,
-    "subB": 38,
+    "cat": "教育/汉语国际教育",
+    "aTotal": 351,
+    "bTotal": 341,
+    "subA": 46,
+    "subB": 44,
     "trend": 5
   },
   {
+    "cat": "翻译/新闻与传播",
+    "aTotal": 366,
+    "bTotal": 356,
+    "subA": 48,
+    "subB": 46,
+    "trend": 8
+  },
+  {
+    "cat": "电子信息/机械/材料",
+    "aTotal": 274,
+    "bTotal": 264,
+    "subA": 36,
+    "subB": 34,
+    "trend": 5
+  },
+  {
+    "cat": "临床医学/口腔医学",
+    "aTotal": 305,
+    "bTotal": 295,
+    "subA": 40,
+    "subB": 38,
+    "trend": 8
+  },
+  {
     "cat": "工商管理/MBA",
-    "aTotal": 170,
-    "bTotal": 160,
+    "aTotal": 168,
+    "bTotal": 158,
     "subA": 22,
     "subB": 21,
-    "trend": 6
+    "trend": 3
   },
   {
     "cat": "公共管理/MPA",
-    "aTotal": 178,
-    "bTotal": 168,
+    "aTotal": 176,
+    "bTotal": 166,
     "subA": 23,
     "subB": 22,
-    "trend": 6
+    "trend": 3
   },
   {
     "cat": "会计/审计",
-    "aTotal": 198,
-    "bTotal": 188,
+    "aTotal": 202,
+    "bTotal": 192,
     "subA": 26,
-    "subB": 24,
-    "trend": 3
+    "subB": 25,
+    "trend": 5
   }
 ];
 
@@ -2695,6 +2704,41 @@ const majorData = [
     intro: '研究食品的科学原理和技术方法的学科，涵盖食品化学、食品微生物学、食品加工等领域。是保障食品安全和营养的重要专业。',
     employment: '就业方向包括食品企业、检测机构、监管部门等。起薪8-14K/月，有经验后可达15-22K/月。',
     development: '未来方向：功能性食品、食品安全检测、食品智能制造、营养健康等。建议关注食品安全和健康管理需求。'
+  },
+  {
+    icon: '🌐',
+    name: '数据科学',
+    intro: '研究数据采集、存储、分析和应用的交叉学科，涵盖机器学习、大数据技术、数据可视化等领域。是数字化时代的核心专业之一。',
+    employment: '就业前景极好，各行各业都需要数据分析师和数据科学家。互联网企业、金融行业、科技公司均有大量需求。起薪15-25K/月，资深专家年薪可达50万+。',
+    development: '未来方向：AI大模型、数据治理、商业智能、推荐系统等。建议扎实掌握统计学和编程基础，多参与实际项目。'
+  },
+  {
+    icon: '🏥',
+    name: '临床医学',
+    intro: '研究人类疾病诊断、治疗和预防的学科，涵盖内科学、外科学、儿科学、妇产科学等各个临床分支。是医学领域的核心专业。',
+    employment: '就业前景稳定，三甲医院要求博士学历，社区医院硕士可入职。起薪同地区差异大，8-15K/月，主治医师后可达20-40K/月。',
+    development: '未来方向：精准医疗、微创手术、远程医疗、AI辅助诊断等。建议持续学习，规培期间积累临床经验。'
+  },
+  {
+    icon: '📈',
+    name: '金融学',
+    intro: '研究资金融通、投资决策和金融市场的学科，涵盖公司金融、投资学、金融工程等领域。是经济管理类最热门的专业之一。',
+    employment: '就业方向广泛，包括银行、券商、基金、保险、金融科技等。起薪12-25K/月，PE/VC和量化岗可达30K+。',
+    development: '未来方向：金融科技、量化投资、ESG投资、跨境金融等。建议考取CFA/FRM证书，积累实习经验。'
+  },
+  {
+    icon: '🎓',
+    name: '教育学',
+    intro: '研究教育现象和教育规律的学科，涵盖教育学原理、课程与教学论、教育史等领域。是培养教育工作者和教育管理人才的核心专业。',
+    employment: '就业方向包括学校教师、教育机构、教育行政部门等。起薪7-12K/月，一线城市重点学校可达15K+。',
+    development: '未来方向：在线教育、教育科技、特殊教育、职业教育等。建议考取教师资格证，关注教育改革政策。'
+  },
+  {
+    icon: '🎨',
+    name: '设计学',
+    intro: '研究视觉传达、产品设计和环境设计的学科，涵盖平面设计、工业设计、交互设计等领域。是创意产业的核心专业。',
+    employment: '就业方向包括互联网公司UI/UX设计、产品设计、品牌设计等。起薪10-18K/月，资深设计师年薪可达30-50万。',
+    development: '未来方向：AI辅助设计、用户体验研究、服务设计、可持续设计等。建议掌握设计工具和用户研究方法。'
   },
 ];
 
@@ -4177,20 +4221,6 @@ var adjustData = [
     "content": "辽宁大连 · 数学三",
     "time": "辽宁大连",
     "tag": "new"
-  },
-  {
-    "cat": "cs",
-    "title": "【机械】燕山大学机械工程学院调剂信息",
-    "content": "河北秦皇岛 · 过A区线",
-    "time": "河北秦皇岛",
-    "tag": "note"
-  },
-  {
-    "cat": "econ",
-    "title": "【MBA】华东理工大学非全日制MBA调剂",
-    "content": "上海 · 工作经验要求",
-    "time": "上海",
-    "tag": "important"
   }
 ];
 
