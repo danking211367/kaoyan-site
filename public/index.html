@@ -1357,7 +1357,7 @@
     </div>
   
     <div style="background: rgba(255,255,255,0.15); padding: 12px 16px; border-radius: 8px; margin-top: 16px; font-size: 14px;">
-        <span style="font-weight: 600;">💡 每日提示：</span>专业课背诵要建立知识框架，用思维导图梳理逻辑 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-09 13:39:53</span>
+        <span style="font-weight: 600;">💡 每日提示：</span>专业课背诵要建立知识框架，用思维导图梳理逻辑 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-09 13:43:18</span>
     </div></div>
 
   <!-- ========== MAIN GRID ========== -->
@@ -4207,7 +4207,7 @@ function renderAdjustList(data) {
   var list = document.getElementById('adjustList');
   if (!list) return;
   list.innerHTML = data.map(function(d) {
-    return '<li class="article-item">'
+    return '<li class="article-item" onclick="showAdjustDetail(' + idx + ')" style="cursor:pointer;">'
       + '<span class="article-tag tag-' + d.tag + '">' + (d.tag === 'hot' ? '热' : d.tag === 'new' ? '新' : '荐') + '</span>'
       + '<div class="article-content">'
       + '<div class="article-title">' + d.title + '</div>'
@@ -4221,6 +4221,38 @@ function filterAdjust(cat, btn) {
   btn.classList.add('active');
   var data = cat === 'all' ? adjustData : adjustData.filter(function(d) { return d.cat === cat; });
   renderAdjustList(data);
+}
+
+  window._adjustData = data;
+}
+
+function showAdjustDetail(idx) {
+  var d = window._adjustData ? window._adjustData[idx] : null;
+  if (!d) return;
+  const modal = document.getElementById('modalOverlay');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalBody = document.getElementById('modalBody');
+  var tags = d.tag === 'hot' ? '🔥 热门' : d.tag === 'new' ? '✨ 最新' : '📌 推荐';
+  var catLabel = d.cat === 'cs' ? '工学' : d.cat === 'econ' ? '经管' : d.cat === 'law' ? '法学' : d.cat === 'edu' ? '教育' : d.cat === 'med' ? '医学' : '综合';
+  modalTitle.textContent = '调剂信息详情';
+  modalBody.innerHTML = '<div style="padding:20px;">'
+    + '<div style="background:linear-gradient(135deg,var(--accent)0%,var(--accent-light)100%);color:white;padding:16px;border-radius:8px;margin-bottom:16px;">'
+    + '<div style="font-size:14px;opacity:0.9;">' + tags + ' · ' + catLabel + '</div>'
+    + '<div style="font-size:18px;font-weight:600;margin-top:8px;">' + d.title + '</div></div>'
+    + '<div style="background:#f8f9fa;padding:16px;border-radius:8px;margin-bottom:16px;">'
+    + '<div style="font-size:14px;color:#666;line-height:1.8;">'
+    + (d.content && d.content !== d.time ? '<p><strong>📋 说明：</strong>' + d.content + '</p>' : '')
+    + '<p style="margin-top:8px;"><strong>📅 类别：</strong>' + catLabel + '</p>'
+    + '</div></div>'
+    + '<div style="background:#fff3e0;padding:16px;border-radius:8px;margin-bottom:16px;border-left:4px solid var(--accent);">'
+    + '<div style="font-size:14px;color:#333;line-height:1.8;"><strong>💡 调剂提醒：</strong><br>'
+    + '• 调剂系统开放时间有限，建议提前准备<br>'
+    + '• 一次可填报3个平行志愿，注意院校锁定时间<br>'
+    + '• 收到复试通知后需及时确认，逾期作废<br>'
+    + '• 保持电话畅通，关注研招网系统通知</div></div>'
+    + '<div style="margin-top:20px;padding-top:16px;border-top:1px solid #eee;">'
+    + '<a href="https://yz.chsi.com.cn/yztj/" target="_blank" style="display:inline-block;background:var(--accent);color:white;padding:10px 20px;border-radius:6px;text-decoration:none;font-size:14px;">📋 进入研招网调剂系统</a></div></div>';
+  modal.classList.add('show');
 }
 
 function renderAdjustTimeline() {
