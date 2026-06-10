@@ -1,8 +1,8 @@
-name: ⏱ 每日数据更新（本地联网备份）
+name: ⏱ 每日轮换（电脑关机时备用）
 
 on:
   schedule:
-    # 每天 8:00 执行，仅当本地未联网更新时才跑
+    # 每天 8:00 UTC (16:00 CST) 执行，仅当本地未轮换时才跑
     - cron: '0 0 * * *'
   workflow_dispatch:
 
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  fallback-update:
+  daily-rotate:
     runs-on: ubuntu-latest
     
     steps:
@@ -25,25 +25,24 @@ jobs:
       - name: 📦 安装依赖
         run: npm ci
 
-      - name: 🔍 检查今天是否已有联网更新
+      - name: 🔍 检查今天是否已有轮换
         id: check
         run: |
           if [ -f data/last-update.json ]; then
             TODAY=$(date +%Y-%m-%d)
             UPDATE_DATE=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/last-update.json','utf8')).updatedAt.substring(0,10))" 2>/dev/null)
-            MODE=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/last-update.json','utf8')).mode || '')" 2>/dev/null)
-            if [ "$TODAY" = "$UPDATE_DATE" ] && [ "$MODE" = "web" ]; then
-              echo "✅ 今天已有本地联网更新，跳过轮换"
+            if [ "$TODAY" = "$UPDATE_DATE" ]; then
+              echo "✅ 今天已有更新，跳过"
               echo "skip=true" >> $GITHUB_OUTPUT
             else
-              echo "⏳ 今天未联网更新，运行静态轮换"
+              echo "⏳ 今天未更新，运行轮换"
               echo "skip=false" >> $GITHUB_OUTPUT
             fi
           else
             echo "skip=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: 🔄 静态轮换更新
+      - name: 🔄 轮换更新（自动优先周包，无则静态轮换）
         if: steps.check.outputs.skip != 'true'
         run: node scripts/update-data.js
 
@@ -57,5 +56,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/ public/index.html index.html
-          git diff --staged --quiet || git commit -m "📊 静态轮换更新 - $(date +'%Y-%m-%d %H:%M' --utc)"
+          git diff --staged --quiet || git commit -m "📊 每日轮换 - $(date +'%Y-%m-%d %H:%M' --utc)"
           git push

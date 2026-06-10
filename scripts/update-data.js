@@ -1,12 +1,14 @@
 /**
- * 考研通 - 每日数据更新脚本 (v5 — 双模式)
+ * 考研通 - 每日数据更新脚本 (v6 — 三模式)
  *
  * 模式 A：联网模式 — 读取 data/web/*.json（由 OpenClaw web_search 生成）
- * 模式 B：静态轮换 — 7 套内容按日期轮换（GitHub Actions 无搜索工具时使用）
+ * 模式 B：周包轮换 — 读取 data/weekly-pack.json 的 7 套内容轮换（每周更新一次）
+ * 模式 C：静态轮换 — 7 套硬编码内容按日期轮换（兜底）
  *
  * 用法：
- *   node scripts/update-data.js             → 模式 B（7套轮换）
+ *   node scripts/update-data.js             → 优先周包，无则静态轮换
  *   node scripts/update-data.js --web       → 模式 A（读取 data/web/ 的搜索结果）
+ *   node scripts/update-data.js --weekly    → 模式 B（强制周包轮换）
  */
 
 const fs = require('fs');
@@ -26,11 +28,67 @@ const FILES = {
   scores: path.join(DATA_DIR, 'scores.json'),
   lastUpdate: path.join(DATA_DIR, 'last-update.json'),
 };
+const WEEKLY_PACK = path.join(DATA_DIR, 'weekly-pack.json');
 
 function saveJson(fp, data) { fs.writeFileSync(fp, JSON.stringify(data, null, 2), 'utf8'); }
 function readJson(fp) {
   try { if (fs.existsSync(fp)) return JSON.parse(fs.readFileSync(fp, 'utf8')); } catch(e) {}
   return null;
+}
+
+// ============ 模式 C：从周包轮换 ============
+function useWeeklyPack() {
+  const pack = readJson(WEEKLY_PACK);
+  if (!pack || !pack.hot || pack.hot.length < 7) {
+    console.log('  ⚠️  周包不存在或数据不足，回退静态轮换');
+    return false;
+  }
+
+  const now = new Date();
+  const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+  const setIdx = dayOfYear % 7;
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+
+  console.log(`  📦 周包第 ${setIdx + 1}/7 套 (周起始: ${pack.weekStart})`);
+
+  // 热门推荐
+  saveJson(FILES.hotArticles, { updatedAt: now.toISOString(), items: pack.hot[setIdx] });
+  console.log(`  ✅ 热门推荐 (周包 ${setIdx + 1}/7)`);
+
+  // 备考指南
+  saveJson(FILES.tips, {
+    updatedAt: now.toISOString(),
+    items: pack.tips[setIdx],
+    source: '联网搜索整理',
+  });
+  console.log(`  ✅ 备考指南 (周包 ${setIdx + 1}/7)`);
+
+  // 调剂信息
+  saveJson(FILES.adjust, { updatedAt: now.toISOString(), items: pack.adjust[setIdx] });
+  console.log(`  ✅ 调剂信息 (周包 ${setIdx + 1}/7)`);
+
+  // 每日提示
+  const phases = ['复试准备期','复试调剂期','录取与规划期','暑假黄金备考期','报名与冲刺期','冲刺与考试期','备考规划期'];
+  let phase = '';
+  if (month >= 1 && month <= 2) phase = '复试准备期';
+  else if (month >= 3 && month <= 4) phase = '复试调剂期';
+  else if (month >= 5 && month <= 6) phase = '录取与规划期';
+  else if (month >= 7 && month <= 8) phase = '暑假黄金备考期';
+  else if (month >= 9 && month <= 10) phase = '报名与冲刺期';
+  else phase = '冲刺与考试期';
+  saveJson(FILES.dailyTip, {
+    date: `${now.getFullYear()}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`,
+    phase,
+    tip: pack.dailyTips[setIdx],
+  });
+  console.log(`  ✅ 每日提示 (周包 ${setIdx + 1}/7)`);
+
+  // 国家线
+  saveJson(FILES.scores, { updatedAt: now.toISOString(), ...pack.scores[setIdx] });
+  console.log(`  ✅ 国家线参考数据 (周包 ${setIdx + 1}/7)`);
+
+  return true;
 }
 
 // ============ 日期种子 ============
@@ -256,7 +314,7 @@ function rotateSets() {
 
 // ============ 主入口 ============
 const startTime = Date.now();
-console.log(`🔄 考研通每日数据更新 (v5)`);
+console.log(`🔄 考研通每日数据更新 (v6)`);
 console.log(`📅 ${now.toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}\n`);
 
 const isWebMode = process.argv.includes('--web');
@@ -336,23 +394,32 @@ try {
   });
   console.log('  ✅ 实用链接');
 
-  // 联网模式 or 静态轮换
+  // 联网模式 or 周包轮换 or 静态轮换
   let webOk = false;
+  let weeklyOk = false;
   if (isWebMode) {
     webOk = useWebData();
     if (webOk) console.log('\n🌐 联网模式成功！使用了实时搜索结果');
-    else console.log('\n⚠️  联网数据不足，回退到静态轮换');
+    else console.log('\n⚠️  联网数据不足，回退到周包/静态轮换');
   }
   if (!isWebMode || !webOk) {
-    rotateSets();
+    // 优先使用周包
+    const isWeekly = isWebMode ? false : (process.argv.includes('--weekly') || fs.existsSync(WEEKLY_PACK));
+    if (isWeekly) {
+      weeklyOk = useWeeklyPack();
+      if (weeklyOk) console.log('\n📦 周包轮换模式成功！');
+    }
+    if (!weeklyOk) {
+      rotateSets();
+    }
   }
 
   const elapsed = Date.now() - startTime;
   console.log(`\n✅ 更新完成！耗时 ${elapsed}ms`);
   saveJson(FILES.lastUpdate, {
     updatedAt: now.toISOString(), success: 8, failed: 0,
-    duration: elapsed, version: 'v5',
-    mode: (isWebMode && webOk) ? 'web' : 'rotate',
+    duration: elapsed, version: 'v6',
+    mode: (isWebMode && webOk) ? 'web' : (weeklyOk ? 'weekly' : 'rotate'),
   });
 } catch (err) {
   console.error(`\n❌ 更新失败: ${err.message}`);
