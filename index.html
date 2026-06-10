@@ -1357,7 +1357,7 @@
     </div>
   
     <div style="background: rgba(255,255,255,0.15); padding: 12px 16px; border-radius: 8px; margin-top: 16px; font-size: 14px;">
-        <span style="font-weight: 600;">💡 每日提示：</span>录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 【周一规划】制定本周复习计划，明确每天的任务 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-10 12:52:08</span>
+        <span style="font-weight: 600;">💡 每日提示：</span>录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 【周一规划】制定本周复习计划，明确每天的任务 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-10 13:01:48</span>
     </div></div>
 
   <!-- ========== MAIN GRID ========== -->
@@ -1655,6 +1655,22 @@
 
       <!-- ========== PREPARE TAB ========== -->
       <div id="tab-prepare" class="tab-content">
+        <!-- 考研倒计时 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📅 考研倒计时</div>
+            <span class="card-more" id="preparePhase"></span>
+          </div>
+          <div class="card-body">
+            <div id="countdownDisplay" style="text-align:center;padding:16px 0;">
+              <div id="countdownDays" style="font-size:48px;font-weight:bold;color:#e74c3c;">--</div>
+              <div id="countdownLabel" style="font-size:14px;color:#666;margin-top:4px;">距离 2027考研初试</div>
+              <div id="countdownPhase" style="font-size:13px;color:#3498db;margin-top:8px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 备考指南 -->
         <div class="card">
           <div class="card-header">
             <div class="card-title">✍️ 备考指南</div>
@@ -1663,9 +1679,41 @@
             <ul class="article-list" id="tipsList"></ul>
           </div>
         </div>
+
+        <!-- 各科复习规划 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📋 各科复习规划</div>
+          </div>
+          <div class="card-body">
+            <div id="studyPlanList"></div>
+          </div>
+        </div>
+
+        <!-- 每日作息推荐 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">⏰ 高效作息参考</div>
+            <span class="card-more">根据当前阶段自动适配</span>
+          </div>
+          <div class="card-body">
+            <div id="scheduleDisplay"></div>
+          </div>
+        </div>
+
+        <!-- 备考资料推荐 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📚 推荐资源</div>
+            <span class="card-more">研招网 · 考研帮</span>
+          </div>
+          <div class="card-body">
+            <ul class="article-list" id="resourceList"></ul>
+          </div>
+        </div>
       </div>
 
-      <!-- ========== ADJUST TAB ========== -->
+      <!-- ==========ADJUST TAB ========== -->
       <div id="tab-adjust" class="tab-content">
         <!-- 调剂信息 -->
         <div class="card">
@@ -3442,7 +3490,227 @@ function renderTips() {
   }
 }
 
-// 渲染热门文章
+// 渲染热
+// 渲染考研倒计时
+function renderCountdown() {
+  const now = new Date();
+  // 2027考研初试时间（一般12月第三个周末）
+  const exam = new Date(2026, 11, 19);
+  const diff = exam - now;
+  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+  const daysEl = document.getElementById('countdownDays');
+  const labelEl = document.getElementById('countdownLabel');
+  const phaseEl = document.getElementById('countdownPhase');
+  const phaseTag = document.getElementById('preparePhase');
+
+  if (!daysEl) return;
+
+  if (days > 0) {
+    daysEl.textContent = days;
+    daysEl.style.color = days <= 30 ? '#e74c3c' : days <= 90 ? '#e67e22' : '#2ecc71';
+    labelEl.textContent = '距离 2027考研初试';
+  } else if (days > -180) {
+    daysEl.textContent = '📋';
+    daysEl.style.fontSize = '36px';
+    labelEl.textContent = '初试已结束，准备复试中';
+  } else {
+    daysEl.textContent = '🎓';
+    daysEl.style.fontSize = '36px';
+    labelEl.textContent = '新一届考研准备期';
+  }
+
+  // 当前阶段
+  const m = now.getMonth() + 1;
+  let phase = '', phaseTagText = '';
+  if (days > 180) { phase = '基础夯实期：确定目标，打牢英语和数学基础'; phaseTagText = '📖 基础阶段'; }
+  else if (days > 90) { phase = '强化提升期：刷真题，攻克薄弱环节'; phaseTagText = '🔥 强化阶段'; }
+  else if (days > 30) { phase = '冲刺突破期：模拟训练，查漏补缺'; phaseTagText = '⚡ 冲刺阶段'; }
+  else if (days > 0) { phase = '考前冲刺：调整作息，稳住心态'; phaseTagText = '🎯 临考阶段'; }
+  else if (m >= 1 && m <= 4) { phase = '复试与调剂阶段：准备复试材料，关注调剂信息'; phaseTagText = '📋 复试阶段'; }
+  else { phase = '新一届备考规划期：确定目标，制定全年计划'; phaseTagText = '🌱 规划期'; }
+
+  if (phaseEl) phaseEl.textContent = '当前：' + phase;
+  if (phaseTag) phaseTag.textContent = phaseTagText;
+}
+
+// 渲染各科复习规划
+function renderStudyPlan() {
+  const now = new Date();
+  const exam = new Date(2026, 11, 19);
+  const diff = exam - now;
+  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+  const container = document.getElementById('studyPlanList');
+  if (!container) return;
+
+  // 各科规划数据
+  const plans = [
+    {
+      subject: '📖 英语', icon: '🇬🇧',
+      items: days > 180
+        ? ['单词：每天 50-80 个，坚持艾宾浩斯曲线','语法：长难句分析，每天 3-5 句','阅读：每天精读 1 篇真题阅读']
+        : days > 90
+        ? ['阅读：真题二刷，逐题分析题型','作文：整理模板，每周写 2 篇','翻译+完形：真题专项训练']
+        : days > 0
+        ? ['作文：背诵模板+素材，限时写作','阅读：保持手感，每天 1 篇','模考：整套真题 3 小时模拟']
+        : ['复试英语：准备英文自我介绍','专业英语：阅读相关英文文献','日常口语：每天练习 15 分钟']
+    },
+    {
+      subject: '🧮 数学', icon: '📐',
+      items: days > 180
+        ? ['高数：教材+基础习题一轮','线代、概率：同步推进','错题本：建立错题记录制度']
+        : days > 90
+        ? ['强化训练：高频题型专项突破','真题：近 10 年真题精做','模拟卷：每周 2 套限时训练']
+        : days > 0
+        ? ['回归基础：重做错题本上错题','模拟：每两天一套保持手感','公式：考前默写所有核心公式']
+        : ['无需额外准备，按个人规划进行']
+    },
+    {
+      subject: '📕 政治', icon: '🏛️',
+      items: days > 180
+        ? ['暂时不必投入大量时间','零散刷选择题即可','关注时政热点大事记']
+        : days > 90
+        ? ['选择题：大量刷题，建立错题库','分析题：学习答题框架和模板','时政：每周跟进时事热点']
+        : days > 0
+        ? ['分析题：背诵核心考点','时政：重点看全年大事记','模拟：整套选择题限时训练']
+        : ['无需额外准备，按个人规划进行']
+    },
+    {
+      subject: '🔬 专业课', icon: '📚',
+      items: days > 180
+        ? ['参考书：通读指定教材第一遍','框架：建立学科知识思维导图','真题：浏览近 3 年真题风格']
+        : days > 90
+        ? ['精读：二轮精读重点章节','背诵：核心知识点系统记忆','真题：按章节分类做真题']
+        : days > 0
+        ? ['背诵：重点知识反复记忆','真题：整套限时模拟','预测：根据命题趋势押重点']
+        : ['复试专业准备：深入研究导师方向','阅读专业前沿论文']
+    }
+  ];
+
+  container.innerHTML = plans.map(p => {
+    // 进度条
+    let progress = 0;
+    if (days > 180) progress = 15;
+    else if (days > 90) progress = 40;
+    else if (days > 30) progress = 70;
+    else if (days > 0) progress = 90;
+    else progress = 100;
+
+    return '<div style="margin-bottom:16px;padding:12px;background:#f8f9fa;border-radius:10px;">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">' +
+        '<div style="font-weight:bold;font-size:15px;">' + p.subject + '</div>' +
+        '<span style="font-size:12px;color:#666;">' + p.icon + '</span>' +
+      '</div>' +
+      '<div style="height:6px;background:#e9ecef;border-radius:3px;margin-bottom:10px;overflow:hidden;">' +
+        '<div style="height:100%;width:' + progress + '%;background:linear-gradient(90deg,#3498db,#2ecc71);border-radius:3px;transition:width 0.5s;"></div>' +
+      '</div>' +
+      p.items.map(item => '<div style="font-size:13px;color:#444;padding:3px 0;display:flex;align-items:center;gap:6px;"><span style="color:#3498db;">▸</span>' + item + '</div>').join('') +
+    '</div>';
+  }).join('');
+}
+
+// 渲染每日作息推荐
+function renderSchedule() {
+  const container = document.getElementById('scheduleDisplay');
+  if (!container) return;
+
+  const now = new Date();
+  const exam = new Date(2026, 11, 19);
+  const diff = exam - now;
+  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+  let schedule;
+  if (days > 180) {
+    schedule = [
+      ['07:00-07:30', '起床洗漱，喝一杯温水', '🌅'],
+      ['07:30-08:00', '晨读：英语单词/政治', '📖'],
+      ['08:00-11:30', '数学/专业课（高强度脑力）', '🧠'],
+      ['11:30-13:30', '午餐 + 午休 30分钟', '🍚'],
+      ['13:30-16:00', '英语阅读/专业课', '📝'],
+      ['16:00-17:30', '政治/专业课背诵', '📕'],
+      ['17:30-19:00', '晚餐 + 散步运动', '🚶'],
+      ['19:00-21:00', '当日复盘 + 错题整理', '🔄'],
+      ['21:00-22:30', '自由安排/薄弱科目补充', '✨'],
+      ['22:30-23:00', '洗漱准备睡觉', '🛌'],
+    ];
+  } else if (days > 90) {
+    schedule = [
+      ['06:30-07:00', '起床，快速清醒', '🌅'],
+      ['07:00-07:30', '英语作文/政治背诵', '📖'],
+      ['07:30-11:30', '真题模拟（按考试时间）', '📝'],
+      ['11:30-13:30', '午餐 + 午休 20分钟', '🍚'],
+      ['13:30-16:00', '英语/专业课强化', '🧠'],
+      ['16:00-17:30', '政治刷题+分析题训练', '📕'],
+      ['17:30-18:30', '晚餐 + 短暂放松', '🍚'],
+      ['18:30-21:00', '当日错题复盘 + 薄弱攻克', '🔄'],
+      ['21:00-22:00', '明日计划 + 时政阅读', '📋'],
+      ['22:00-22:30', '洗漱休息', '🛌'],
+    ];
+  } else if (days > 0) {
+    schedule = [
+      ['06:00-06:30', '起床，适量运动唤醒身体', '🌅'],
+      ['06:30-07:00', '政治/专业课快速回顾', '📖'],
+      ['07:00-11:30', '全真模拟（严格按考试时间）', '📝'],
+      ['11:30-13:00', '午餐 + 午休 15分钟', '🍚'],
+      ['13:00-17:00', '英语/专业课查漏补缺', '🧠'],
+      ['17:00-18:00', '晚餐 + 散步', '🍚'],
+      ['18:00-20:00', '当日错题复盘', '🔄'],
+      ['20:00-21:00', '背诵记忆类科目', '📕'],
+      ['21:00-22:00', '放松 + 早睡', '🛌'],
+    ];
+  } else {
+    schedule = [
+      ['07:00-08:00', '起床，早餐，关注研招信息', '🌅'],
+      ['08:00-10:00', '准备复试材料/联系导师', '📋'],
+      ['10:00-12:00', '专业知识深研 & 前沿论文', '📚'],
+      ['12:00-14:00', '午餐 + 午休', '🍚'],
+      ['14:00-16:00', '英语口语/听力练习', '🎤'],
+      ['16:00-18:00', '阅读专业文献/整理笔记', '📝'],
+      ['18:00-19:00', '晚餐 + 放松', '🍚'],
+      ['19:00-21:00', '模拟面试/自我介绍练习', '🎯'],
+      ['21:00-22:00', '今日总结 + 明日计划', '📋'],
+    ];
+  }
+
+  let rows = '';
+  schedule.forEach((s, i) => {
+    const isCurrent = i === Math.floor(new Date().getHours() / 3);
+    rows += '<div style="display:flex;align-items:center;padding:8px 12px;' +
+      (isCurrent ? 'background:#e8f4fd;border-radius:8px;' : '') +
+      'border-bottom:1px solid #f0f0f0;">' +
+      '<div style="font-size:18px;margin-right:10px;">' + s[2] + '</div>' +
+      '<div style="flex:0 0 100px;font-size:13px;color:#666;font-family:monospace;">' + s[0] + '</div>' +
+      '<div style="flex:1;font-size:13px;color:#333;">' + s[1] + '</div>' +
+    '</div>';
+  });
+  container.innerHTML = rows;
+}
+
+// 渲染推荐资源
+function renderResources() {
+  const list = document.getElementById('resourceList');
+  if (!list) return;
+
+  const resources = [
+    { name: '📖 中国研究生招生信息网', url: 'https://yz.chsi.com.cn', desc: '报名、查分、调剂官方平台' },
+    { name: '📚 考研帮 - 备考社区', url: 'https://www.kaoyan.com', desc: '经验贴、资料分享、备考工具' },
+    { name: '🏫 中国教育在线考研频道', url: 'https://kaoyan.eol.cn', desc: '院校信息、分数线、报录比' },
+    { name: '📝 51考研网', url: 'https://www.51kywang.com', desc: '专业课资料、院校信息库' },
+    { name: '📊 软科排名', url: 'https://www.shanghairanking.cn', desc: '学科排名、院校排名参考' },
+    { name: '🎯 研招网调剂系统', url: 'https://yz.chsi.com.cn/yztj/', desc: '官方调剂信息平台' },
+  ];
+
+  list.innerHTML = resources.map(r => {
+    return '<li class="article-item" style="cursor:pointer;" onclick="window.open(' + r.url + ', '_blank')">' +
+      '<div class="article-content">' +
+        '<div class="article-title" style="font-size:14px;">' + r.name + '</div>' +
+        '<div class="article-meta" style="margin-top:2px;font-size:12px;color:#888;">' + r.desc + '</div>' +
+      '</div>' +
+      '<span style="color:#3498db;font-size:12px;">→</span>' +
+    '</li>';
+  }).join('');
+}
+门文章
 function renderHotArticles() {
   const list = document.getElementById('hotArticlesList');
   if (list) {
@@ -4645,6 +4913,10 @@ function init() {
   renderScoreTable(lineData);
   renderMajors();
   renderTips();
+  renderCountdown();
+  renderStudyPlan();
+  renderSchedule();
+  renderResources();
   renderHotArticles();
   renderLinks();
   renderExamTable(examData);
