@@ -1,8 +1,8 @@
-name: ⏱ 每日轮换（电脑关机时备用）
+name: 🔄 备用更新（电脑关机时执行）
 
 on:
   schedule:
-    # 每天 8:00 UTC (16:00 CST) 执行，仅当本地未轮换时才跑
+    # 每天 16:00 CST (8:00 UTC)，仅当本地未更新时才跑
     - cron: '0 0 * * *'
   workflow_dispatch:
 
@@ -10,9 +10,9 @@ permissions:
   contents: write
 
 jobs:
-  daily-rotate:
+  backup-update:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: ⬇️ 检出代码
         uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
       - name: 📦 安装依赖
         run: npm ci
 
-      - name: 🔍 检查今天是否已有轮换
+      - name: 🔍 检查今天是否已有更新
         id: check
         run: |
           if [ -f data/last-update.json ]; then
@@ -34,13 +34,35 @@ jobs:
             if [ "$TODAY" = "$UPDATE_DATE" ]; then
               echo "✅ 今天已有更新，跳过"
               echo "skip=true" >> $GITHUB_OUTPUT
-            else
-              echo "⏳ 今天未更新，运行轮换"
-              echo "skip=false" >> $GITHUB_OUTPUT
+              exit 0
             fi
-          else
-            echo "skip=false" >> $GITHUB_OUTPUT
           fi
+
+          # 判断今日星期几（1=周一, 7=周日）
+          DOW=$(date +%u)
+          echo "dow=$DOW" >> $GITHUB_OUTPUT
+
+          # 检查周包是否需要刷新（周一且周包不是本周的）
+          if [ "$DOW" = "1" ] && [ -f data/weekly-pack.json ]; then
+            PACK_WEEK=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/weekly-pack.json','utf8')).weekStart)" 2>/dev/null)
+            THIS_MONDAY=$(date -d 'last monday' +%F 2>/dev/null || date -d 'monday-7 days' +%F 2>/dev/null || date +%F)
+            if [ "$PACK_WEEK" != "$THIS_MONDAY" ]; then
+              echo "📦 周一需刷新周包 (旧:$PACK_WEEK, 新:$THIS_MONDAY)"
+              echo "refresh_pack=true" >> $GITHUB_OUTPUT
+            else
+              echo "✅ 周包已是最新"
+            fi
+          elif [ "$DOW" = "1" ] && [ ! -f data/weekly-pack.json ]; then
+            echo "📦 周包不存在，周一需生成"
+            echo "refresh_pack=true" >> $GITHUB_OUTPUT
+          fi
+
+          echo "⏳ 运行更新"
+          echo "skip=false" >> $GITHUB_OUTPUT
+
+      - name: 📦 刷新周包（周一备用）
+        if: steps.check.outputs.skip != 'true' && steps.check.outputs.refresh_pack == 'true'
+        run: node scripts/generate-weekly-pack.js --static
 
       - name: 🔄 轮换更新（自动优先周包，无则静态轮换）
         if: steps.check.outputs.skip != 'true'
@@ -55,6 +77,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ public/index.html index.html
-          git diff --staged --quiet || git commit -m "📊 每日轮换 - $(date +'%Y-%m-%d %H:%M' --utc)"
+          git add data/ public/index.html index.html scripts/
+          git diff --staged --quiet || git commit -m "📊 备用更新 - $(date +'%Y-%m-%d %H:%M' --utc)"
           git push

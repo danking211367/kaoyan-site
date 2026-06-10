@@ -1,10 +1,12 @@
 /**
- * 考研通 - 周包生成脚本
+ * 考研通 - 周包生成脚本 (v2)
  *
  * 读取 data/web/ 的联网搜索数据，生成 7 套差异化的内容包，
  * 供每日轮换使用。每周跑一次。
  *
- * 用法: node scripts/generate-weekly-pack.js
+ * 用法:
+ *   node scripts/generate-weekly-pack.js           → 优先联网，数据不足则回退静态
+ *   node scripts/generate-weekly-pack.js --static  → 强制静态（GA 备用）
  */
 
 const fs = require('fs');
@@ -19,7 +21,6 @@ function readJson(fp) {
   return null;
 }
 
-// ============ 打乱数组（Fisher-Yates） ============
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -29,38 +30,54 @@ function shuffle(arr) {
   return a;
 }
 
-// ============ 旋转 ============
 function rotate(arr, n) {
   const a = [...arr];
   const k = n % a.length;
   return [...a.slice(k), ...a.slice(0, k)];
 }
 
-// ============ 从 web 数据生成 7 套内容 ============
+function saveJson(fp, data) {
+  fs.writeFileSync(fp, JSON.stringify(data, null, 2), 'utf8');
+}
+
 function generatePack() {
   const now = new Date();
   const weekStart = new Date(now);
-  weekStart.setDate(now.getDate() - now.getDay() + 1); // 本周一
+  weekStart.setDate(now.getDate() - now.getDay() + 1);
 
   console.log(`📦 生成周包 - 起始: ${weekStart.toISOString().substring(0, 10)}`);
 
-  // ----- 热门推荐 -----
-  const webHot = readJson(path.join(WEB_DIR, 'hot-articles.json'));
-  if (!webHot || !webHot.items || webHot.items.length < 5) {
-    console.error('❌ web/hot-articles.json 数据不足 (< 5 条)');
-    return false;
-  }
-  const hotPool = webHot.items;
+  const STATIC_MODE = process.argv.includes('--static');
 
-  // 7 套: 每次轮转偏移
+  // ==================== 热门推荐 ====================
+  const webHot = readJson(path.join(WEB_DIR, 'hot-articles.json'));
+  let hotPool;
+  if (webHot && webHot.items && webHot.items.length >= 5) {
+    hotPool = webHot.items;
+    console.log(`  🌐 热门推荐: 联网 ${hotPool.length} 条`);
+  } else {
+    console.log(`  📦 热门推荐: 静态数据`);
+    hotPool = [
+      { title: '2027年考研国家线全面分析与解读', tag: 'hot', meta: '阅读 2.3万' },
+      { title: '各省市考研报名人数统计及趋势分析', tag: 'new', meta: '阅读 1.8万' },
+      { title: '985/211院校历年报录比汇总', tag: 'hot', meta: '阅读 1.5万' },
+      { title: '考研调剂全流程指南（附成功经验）', tag: 'new', meta: '阅读 1.2万' },
+      { title: '考研英语大纲变化深度解读', tag: 'note', meta: '阅读 9800' },
+      { title: '考研数学一二三区别与选择建议', tag: 'note', meta: '阅读 8500' },
+      { title: '双非考生逆袭985的真实经验分享', tag: 'hot', meta: '阅读 7600' },
+      { title: '考研复试英语口语常见问题与模板', tag: 'new', meta: '阅读 6200' },
+      { title: '各高校研究生奖学金政策汇总', tag: 'note', meta: '阅读 5800' },
+      { title: '考研调剂系统操作指南与注意事项', tag: 'new', meta: '阅读 5100' },
+    ];
+    if (!STATIC_MODE && !webHot) return false;
+  }
+
   const hotSets = [];
   for (let i = 0; i < 7; i++) {
     const rotated = rotate(hotPool, i * 2);
-    // 取前 10 条，不够就循环补
     const set = [];
     for (let j = 0; j < 10; j++) {
       const item = { ...rotated[j % rotated.length] };
-      // 微调 meta 阅读量，产生差异
       const baseViews = parseInt((item.meta || '0').replace(/[^0-9]/g, '')) || 5000;
       item.meta = `阅读 ${baseViews + (i * 300) + (j * 100)}`;
       set.push(item);
@@ -69,13 +86,22 @@ function generatePack() {
   }
   console.log(`  ✅ 热门推荐: 7 套 × 10 条`);
 
-  // ----- 备考指南 -----
+  // ==================== 备考指南 ====================
   const webTips = readJson(path.join(WEB_DIR, 'tips.json'));
-  if (!webTips || !webTips.items || webTips.items.length < 3) {
-    console.error('❌ web/tips.json 数据不足 (< 3 条)');
-    return false;
+  let tipPool;
+  if (webTips && webTips.items && webTips.items.length >= 3) {
+    tipPool = webTips.items;
+    console.log(`  🌐 备考指南: 联网 ${tipPool.length} 条`);
+  } else {
+    console.log(`  📦 备考指南: 静态数据`);
+    tipPool = [
+      { tag: 'important', title: '国家线公布后立即对照分数，判断复试/调剂/二战', meta: '考后决策' },
+      { tag: 'hot', title: '复试材料提前准备：简历、成绩单、科研成果、推荐信', meta: '复试准备' },
+      { tag: 'new', title: '调剂系统操作要点：三个平行志愿的策略填报', meta: '调剂技巧' },
+    ];
+    if (!STATIC_MODE && !webTips) return false;
   }
-  const tipPool = webTips.items;
+
   const EXTRA = [
     { tag: 'note', title: '数学复习：基础阶段完成高数、线代、概率第一轮', meta: '数学' },
     { tag: 'note', title: '英语复习：真题阅读精做，每篇文章逐句分析长难句', meta: '英语' },
@@ -85,32 +111,30 @@ function generatePack() {
   ];
   const tipsSets = [];
   for (let i = 0; i < 7; i++) {
-    const rotated = rotate(tipPool, i);
-    tipsSets.push([...rotated, ...EXTRA]);
+    tipsSets.push([...rotate(tipPool, i), ...EXTRA]);
   }
   console.log(`  ✅ 备考指南: 7 套`);
 
-  // ----- 调剂信息 -----
+  // ==================== 调剂信息 ====================
   const webAdjust = readJson(path.join(WEB_DIR, 'adjust.json'));
   const adjustPool = (webAdjust && webAdjust.items) ? webAdjust.items : [
-    { tag: 'tag-hot', title: '调剂系统操作要点：三个平行志愿的策略填报', meta: '调剂技巧' },
-    { tag: 'tag-note', title: '调剂信息获取渠道：研招网/院校官网/考研社群', meta: '信息渠道' },
-    { tag: 'tag-important', title: '调剂待录取确认：24小时内必须做决定', meta: '重要提醒' },
+    { tag: 'tag-hot', category: '综合', title: '调剂系统操作要点：三个平行志愿的策略填报', meta: '调剂技巧' },
+    { tag: 'tag-note', category: '综合', title: '调剂信息获取渠道：研招网/院校官网/考研社群', meta: '信息渠道' },
+    { tag: 'tag-important', category: '综合', title: '调剂待录取确认：24小时内必须做决定', meta: '重要提醒' },
   ];
   const adjustSets = [];
   for (let i = 0; i < 7; i++) {
-    adjustSets.push(adjustPool.length >= 3
-      ? rotate(adjustPool, i * 2).slice(0, 3)
-      : rotate([...adjustPool, ...adjustPool, ...adjustPool], i).slice(0, 3));
+    const src = adjustPool.length >= 3 ? adjustPool : [...adjustPool, ...adjustPool, ...adjustPool];
+    adjustSets.push(rotate(src, i).slice(0, 3));
   }
   console.log(`  ✅ 调剂信息: 7 套`);
 
-  // ----- 每日提示 (7 天各一条) -----
+  // ==================== 每日提示 ====================
   const webDaily = readJson(path.join(WEB_DIR, 'daily-tip.json'));
-  const dailyTipBase = (webDaily && webDaily.tip) ? webDaily.tip : '每天留30分钟回顾当天所学，比连续学习更高效';
+  const dailyTipBase = (webDaily && webDaily.tip)
+    ? webDaily.tip
+    : '每天留30分钟回顾当天所学，比连续学习更高效';
 
-  // 从每日提示衍生 7 条不同的变体
-  const phases = ['复试准备期', '复试调剂期', '录取与规划期', '暑假黄金备考期', '报名与冲刺期', '冲刺与考试期', '备考规划期'];
   const dailyTips = [
     `${dailyTipBase} 【周一规划】制定本周复习计划，明确每天的任务`,
     `【复盘日】回顾上周学习进度，调整薄弱环节的复习策略 — ${dailyTipBase}`,
@@ -122,7 +146,7 @@ function generatePack() {
   ];
   console.log(`  ✅ 每日提示: 7 条`);
 
-  // ----- 国家线 （7 套微调偏移） -----
+  // ==================== 国家线 ====================
   const webScores = readJson(path.join(WEB_DIR, 'scores.json'));
   const academicBase = (webScores && webScores.academic) ? webScores.academic : [
     { name: '哲学', a: 323, b: 313, change: '↑15' },
@@ -151,51 +175,45 @@ function generatePack() {
     { name: '会计/审计', a: 201, b: 191, change: '↑5' },
   ];
   const offsets = [0, -2, +1, -1, +2, -3, +3];
-  const CHANGES_POOL = ['↑15', '↑10', '↑12', '↑5', '↑8', '↑10', '↑8', '↑5', '→', '↑8', '→', '↑12', '↑8'];
-  const PCHANGES_POOL = ['↑10', '↑8', '↑5', '↑8', '↑5', '↑8', '↑3', '↑3', '↑5'];
+  const CHANGES = ['↑15','↑10','↑12','↑5','↑8','↑10','↑8','↑5','→','↑8','→','↑12','↑8'];
+  const PCHANGES = ['↑10','↑8','↑5','↑8','↑5','↑8','↑3','↑3','↑5'];
   const scoreSets = [];
   for (let i = 0; i < 7; i++) {
     const off = offsets[i];
     scoreSets.push({
       academic: academicBase.map((d, _) => ({
         ...d, a: d.a + off, b: d.b + off,
-        change: CHANGES_POOL[(i + _) % CHANGES_POOL.length],
+        change: CHANGES[(i + _) % CHANGES.length],
       })),
       professional: profBase.map((d, _) => ({
         ...d, a: d.a + Math.floor(off / 2), b: d.b + Math.floor(off / 2),
-        change: PCHANGES_POOL[(i + _) % PCHANGES_POOL.length],
+        change: PCHANGES[(i + _) % PCHANGES.length],
       })),
     });
   }
   console.log(`  ✅ 国家线: 7 套`);
 
-  // ----- 存入周包 -----
+  // ==================== 写入 ====================
   const pack = {
     weekStart: weekStart.toISOString().substring(0, 10),
-    weekNumber: Math.floor(now.getTime() / (7 * 86400000)), // 周序号
+    weekNumber: Math.floor(now.getTime() / (7 * 86400000)),
     updatedAt: now.toISOString(),
     hot: hotSets,
     tips: tipsSets,
     adjust: adjustSets,
-    dailyTips: dailyTips,
-    phases: phases,
+    dailyTips,
     scores: scoreSets,
   };
 
   saveJson(PACK_FILE, pack);
   console.log(`\n📦 周包已保存: data/weekly-pack.json`);
   console.log(`   📅 起始: ${pack.weekStart}`);
-  console.log(`   🔢 套数: 7`);
   return true;
 }
 
-function saveJson(fp, data) {
-  fs.writeFileSync(fp, JSON.stringify(data, null, 2), 'utf8');
-}
-
-// ============ 主入口 ============
+// ==================== 主入口 ====================
 const startTime = Date.now();
-console.log('📦 考研通 - 周包生成脚本');
+console.log('📦 考研通 - 周包生成脚本 (v2)');
 console.log(`📅 ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}\n`);
 
 if (generatePack()) {
