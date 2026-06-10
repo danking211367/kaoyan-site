@@ -1357,7 +1357,7 @@
     </div>
   
     <div style="background: rgba(255,255,255,0.15); padding: 12px 16px; border-radius: 8px; margin-top: 16px; font-size: 14px;">
-        <span style="font-weight: 600;">💡 每日提示：</span>录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 【周一规划】制定本周复习计划，明确每天的任务 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-10 13:01:48</span>
+        <span style="font-weight: 600;">💡 每日提示：</span>录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 【周一规划】制定本周复习计划，明确每天的任务 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-10 13:05:26</span>
     </div></div>
 
   <!-- ========== MAIN GRID ========== -->
@@ -3700,8 +3700,9 @@ function renderResources() {
     { name: '🎯 研招网调剂系统', url: 'https://yz.chsi.com.cn/yztj/', desc: '官方调剂信息平台' },
   ];
 
-  list.innerHTML = resources.map(r => {
-    return '<li class="article-item" style="cursor:pointer;" onclick="window.open(' + r.url + ', '_blank')">' +
+  // 使用 data-url 属性绑定链接，用事件委托处理
+  list.innerHTML = resources.map((r, i) => {
+    return '<li class="article-item" style="cursor:pointer;" data-url="' + r.url + '" data-index="' + i + '">' +
       '<div class="article-content">' +
         '<div class="article-title" style="font-size:14px;">' + r.name + '</div>' +
         '<div class="article-meta" style="margin-top:2px;font-size:12px;color:#888;">' + r.desc + '</div>' +
@@ -3709,6 +3710,10 @@ function renderResources() {
       '<span style="color:#3498db;font-size:12px;">→</span>' +
     '</li>';
   }).join('');
+  // 点击跳转
+  list.querySelectorAll('.article-item').forEach(function(el) {
+    el.onclick = function() { window.open(el.getAttribute('data-url'), '_blank'); };
+  });
 }
 门文章
 function renderHotArticles() {
