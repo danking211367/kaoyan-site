@@ -1357,7 +1357,7 @@
     </div>
   
     <div style="background: rgba(255,255,255,0.15); padding: 12px 16px; border-radius: 8px; margin-top: 16px; font-size: 14px;">
-        <span style="font-weight: 600;">💡 每日提示：</span>录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 【周一规划】制定本周复习计划，明确每天的任务 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-10 13:22:44</span>
+        <span style="font-weight: 600;">💡 每日提示：</span>【复盘日】回顾上周学习进度，调整薄弱环节的复习策略 — 录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-11 02:09:55</span>
     </div></div>
 
   <!-- ========== MAIN GRID ========== -->
@@ -2135,182 +2135,182 @@ let uniFilteredData = [];
 const lineData = [
   {
     "cat": "哲学",
-    "aTotal": 323,
-    "bTotal": 313,
+    "aTotal": 321,
+    "bTotal": 311,
     "subA": 42,
-    "subB": 41,
-    "trend": 15
+    "subB": 40,
+    "trend": 10
   },
   {
     "cat": "经济学",
+    "aTotal": 346,
+    "bTotal": 336,
+    "subA": 45,
+    "subB": 44,
+    "trend": 12
+  },
+  {
+    "cat": "法学",
+    "aTotal": 339,
+    "bTotal": 329,
+    "subA": 44,
+    "subB": 43,
+    "trend": 5
+  },
+  {
+    "cat": "教育学",
     "aTotal": 348,
     "bTotal": 338,
     "subA": 45,
     "subB": 44,
-    "trend": 10
-  },
-  {
-    "cat": "法学",
-    "aTotal": 341,
-    "bTotal": 331,
-    "subA": 44,
-    "subB": 43,
-    "trend": 12
-  },
-  {
-    "cat": "教育学",
-    "aTotal": 350,
-    "bTotal": 340,
-    "subA": 46,
-    "subB": 44,
-    "trend": 5
+    "trend": 8
   },
   {
     "cat": "文学",
-    "aTotal": 365,
-    "bTotal": 355,
+    "aTotal": 363,
+    "bTotal": 353,
     "subA": 47,
     "subB": 46,
-    "trend": 8
-  },
-  {
-    "cat": "历史学",
-    "aTotal": 336,
-    "bTotal": 326,
-    "subA": 44,
-    "subB": 42,
     "trend": 10
   },
   {
-    "cat": "理学",
-    "aTotal": 290,
-    "bTotal": 280,
-    "subA": 38,
-    "subB": 36,
+    "cat": "历史学",
+    "aTotal": 334,
+    "bTotal": 324,
+    "subA": 43,
+    "subB": 42,
     "trend": 8
   },
   {
-    "cat": "工学",
-    "aTotal": 273,
-    "bTotal": 263,
-    "subA": 35,
-    "subB": 34,
+    "cat": "理学",
+    "aTotal": 288,
+    "bTotal": 278,
+    "subA": 37,
+    "subB": 36,
     "trend": 5
   },
   {
+    "cat": "工学",
+    "aTotal": 271,
+    "bTotal": 261,
+    "subA": 35,
+    "subB": 34,
+    "trend": 0
+  },
+  {
     "cat": "农学",
-    "aTotal": 252,
-    "bTotal": 242,
+    "aTotal": 250,
+    "bTotal": 240,
     "subA": 33,
     "subB": 31,
-    "trend": 0
+    "trend": 8
   },
   {
     "cat": "医学",
-    "aTotal": 304,
-    "bTotal": 294,
-    "subA": 40,
+    "aTotal": 302,
+    "bTotal": 292,
+    "subA": 39,
     "subB": 38,
-    "trend": 8
-  },
-  {
-    "cat": "军事学",
-    "aTotal": 260,
-    "bTotal": 250,
-    "subA": 34,
-    "subB": 33,
     "trend": 0
   },
   {
-    "cat": "管理学",
-    "aTotal": 350,
-    "bTotal": 340,
-    "subA": 46,
-    "subB": 44,
+    "cat": "军事学",
+    "aTotal": 258,
+    "bTotal": 248,
+    "subA": 34,
+    "subB": 32,
     "trend": 12
   },
   {
+    "cat": "管理学",
+    "aTotal": 348,
+    "bTotal": 338,
+    "subA": 45,
+    "subB": 44,
+    "trend": 8
+  },
+  {
     "cat": "艺术学",
-    "aTotal": 362,
-    "bTotal": 352,
+    "aTotal": 360,
+    "bTotal": 350,
     "subA": 47,
     "subB": 46,
-    "trend": 8
+    "trend": 15
   }
 ];
 
 const degreeData = [
   {
     "cat": "金融/应用统计/税务",
-    "aTotal": 348,
-    "bTotal": 338,
+    "aTotal": 347,
+    "bTotal": 337,
     "subA": 45,
     "subB": 44,
-    "trend": 10
+    "trend": 8
   },
   {
     "cat": "法律(非法学/法学)",
-    "aTotal": 331,
-    "bTotal": 321,
+    "aTotal": 330,
+    "bTotal": 320,
     "subA": 43,
     "subB": 42,
-    "trend": 8
+    "trend": 5
   },
   {
     "cat": "教育/汉语国际教育",
-    "aTotal": 350,
-    "bTotal": 340,
-    "subA": 46,
+    "aTotal": 349,
+    "bTotal": 339,
+    "subA": 45,
     "subB": 44,
-    "trend": 5
+    "trend": 8
   },
   {
     "cat": "翻译/新闻与传播",
-    "aTotal": 365,
-    "bTotal": 355,
+    "aTotal": 364,
+    "bTotal": 354,
     "subA": 47,
     "subB": 46,
-    "trend": 8
-  },
-  {
-    "cat": "电子信息/机械/材料",
-    "aTotal": 273,
-    "bTotal": 263,
-    "subA": 35,
-    "subB": 34,
     "trend": 5
   },
   {
-    "cat": "临床医学/口腔医学",
-    "aTotal": 304,
-    "bTotal": 294,
-    "subA": 40,
-    "subB": 38,
+    "cat": "电子信息/机械/材料",
+    "aTotal": 272,
+    "bTotal": 262,
+    "subA": 35,
+    "subB": 34,
     "trend": 8
   },
   {
+    "cat": "临床医学/口腔医学",
+    "aTotal": 303,
+    "bTotal": 293,
+    "subA": 39,
+    "subB": 38,
+    "trend": 3
+  },
+  {
     "cat": "工商管理/MBA",
-    "aTotal": 167,
-    "bTotal": 157,
+    "aTotal": 166,
+    "bTotal": 156,
     "subA": 22,
     "subB": 20,
     "trend": 3
   },
   {
     "cat": "公共管理/MPA",
-    "aTotal": 175,
-    "bTotal": 165,
+    "aTotal": 174,
+    "bTotal": 164,
     "subA": 23,
     "subB": 21,
-    "trend": 3
+    "trend": 5
   },
   {
     "cat": "会计/审计",
-    "aTotal": 201,
-    "bTotal": 191,
+    "aTotal": 200,
+    "bTotal": 190,
     "subA": 26,
     "subB": 25,
-    "trend": 5
+    "trend": 10
   }
 ];
 
@@ -2382,33 +2382,33 @@ const timelineData = [
 const tipsData = [
   {
     "icon": "💡",
-    "title": "基础夯实期（3月-6月）：确定目标院校，数学一轮复习，英语词汇攻坚",
-    "content": "备考阶段",
-    "tag": "hot"
-  },
-  {
-    "icon": "📌",
     "title": "考研大纲发布后及时对比变化，调整复习重点",
     "content": "备考策略",
     "tag": "hot"
   },
   {
-    "icon": "⭐",
+    "icon": "📌",
     "title": "2026年研招政策保持稳定，按既定计划持续推进即可",
     "content": "政策解读",
     "tag": "new"
   },
   {
-    "icon": "🎯",
+    "icon": "⭐",
     "title": "复试准备从现在开始，关注目标院校的复试细则和导师研究方向",
     "content": "长期准备",
     "tag": "note"
   },
   {
-    "icon": "📚",
+    "icon": "🎯",
     "title": "信息收集：研招网、院校官网、考研社群多渠道获取一手信息",
     "content": "信息渠道",
     "tag": "note"
+  },
+  {
+    "icon": "📚",
+    "title": "基础夯实期（3月-6月）：确定目标院校，数学一轮复习，英语词汇攻坚",
+    "content": "备考阶段",
+    "tag": "hot"
   },
   {
     "icon": "✍️",
@@ -2906,32 +2906,9 @@ function getSchoolRecommendations(majorName) {
 // 热门文章 - 每个都附带研招网对应链接
 const hotArticles = [
   {
-    "title": "2026年研考分数查询及国家线公布，近五年分数线趋势分析",
-    "tag": "hot",
-    "meta": "阅读 5000",
-    "summary": "2027年考研国家线全面分析：哲学323分(↑15)、经济学348分(↑10)、工学273分(↑5)、医学304分(↑8)。多数学科分数线小幅上涨，竞争压力持续加大。",
-    "points": [
-      "📌 哲学类分数线涨幅最大(↑15分)",
-      "📌 工学类分数相对较低(A区273分)",
-      "📌 经济学/管理学竞争依旧激烈",
-      "💡 建议参考目标院校近3年分数线"
-    ]
-  },
-  {
-    "title": "清华大学医疗管理硕士（MHA）新设专业获国务院学位委员会批准",
-    "tag": "new",
-    "meta": "阅读 202705",
-    "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
-    "points": [
-      "📌 获取最新考研资讯",
-      "📌 及时关注官方通知",
-      "💡 建议收藏保存，方便查阅"
-    ]
-  },
-  {
     "title": "从零开始备战考研！超详细全流程拆解+避坑指南",
     "tag": "hot",
-    "meta": "阅读 202703",
+    "meta": "阅读 202803",
     "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
     "points": [
       "📌 获取最新考研资讯",
@@ -2942,7 +2919,7 @@ const hotArticles = [
   {
     "title": "2026年全国普通高校招生考试安全工作视频会议召开",
     "tag": "new",
-    "meta": "阅读 202904",
+    "meta": "阅读 203004",
     "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
     "points": [
       "📌 获取最新考研资讯",
@@ -2953,7 +2930,7 @@ const hotArticles = [
   {
     "title": "2026考研政治大纲权威解读：保持稳定，个别微调",
     "tag": "note",
-    "meta": "阅读 5400",
+    "meta": "阅读 5500",
     "summary": "考研各科考试大纲内容与变化解读：政治新增时政热点板块，英语阅读题型优化，数学知识点微调。建议及时下载最新大纲对比复习。",
     "points": [
       "📌 获取最新考研资讯",
@@ -2964,7 +2941,7 @@ const hotArticles = [
   {
     "title": "超详细的考研全流程，27考研人必看！初试到复试关键要点",
     "tag": "note",
-    "meta": "阅读 203010",
+    "meta": "阅读 203110",
     "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
     "points": [
       "📌 获取最新考研资讯",
@@ -2975,7 +2952,7 @@ const hotArticles = [
   {
     "title": "掌上考研900余所高校研招信息聚合平台上线",
     "tag": "new",
-    "meta": "阅读 5600",
+    "meta": "阅读 5700",
     "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
     "points": [
       "📌 获取最新考研资讯",
@@ -2986,7 +2963,7 @@ const hotArticles = [
   {
     "title": "26考研7月详尽规划及英语备考攻略",
     "tag": "hot",
-    "meta": "阅读 5700",
+    "meta": "阅读 5800",
     "summary": "2027年考研英语大纲变化解读：阅读理解和写作部分有所调整，新增时事热点类材料。建议加强长难句分析和写作模板积累。",
     "points": [
       "📌 词汇量要求5500+",
@@ -2998,7 +2975,7 @@ const hotArticles = [
   {
     "title": "考研专业学位研究生培养单位和科技小院名单发布",
     "tag": "note",
-    "meta": "阅读 5800",
+    "meta": "阅读 5900",
     "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
     "points": [
       "📌 获取最新考研资讯",
@@ -3009,7 +2986,30 @@ const hotArticles = [
   {
     "title": "考研备考：系统规划与科学方法结合才能脱颖而出",
     "tag": "note",
-    "meta": "阅读 5900",
+    "meta": "阅读 6000",
+    "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
+    "points": [
+      "📌 获取最新考研资讯",
+      "📌 及时关注官方通知",
+      "💡 建议收藏保存，方便查阅"
+    ]
+  },
+  {
+    "title": "2026年研考分数查询及国家线公布，近五年分数线趋势分析",
+    "tag": "hot",
+    "meta": "阅读 6100",
+    "summary": "2027年考研国家线全面分析：哲学323分(↑15)、经济学348分(↑10)、工学273分(↑5)、医学304分(↑8)。多数学科分数线小幅上涨，竞争压力持续加大。",
+    "points": [
+      "📌 哲学类分数线涨幅最大(↑15分)",
+      "📌 工学类分数相对较低(A区273分)",
+      "📌 经济学/管理学竞争依旧激烈",
+      "💡 建议参考目标院校近3年分数线"
+    ]
+  },
+  {
+    "title": "清华大学医疗管理硕士（MHA）新设专业获国务院学位委员会批准",
+    "tag": "new",
+    "meta": "阅读 203805",
     "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
     "points": [
       "📌 获取最新考研资讯",
@@ -4487,13 +4487,6 @@ function filterExam(cat, btn) {
 var adjustData = [
   {
     "cat": "cs",
-    "title": "2026年调剂系统已关闭，建议2027考生提前了解调剂规则",
-    "content": "调剂科普",
-    "time": "调剂科普",
-    "tag": "hot"
-  },
-  {
-    "cat": "cs",
     "title": "2028考研全年备考时间轴发布，建议收藏",
     "content": "备考规划",
     "time": "备考规划",
@@ -4505,6 +4498,13 @@ var adjustData = [
     "content": "调剂科普",
     "time": "调剂科普",
     "tag": "hot"
+  },
+  {
+    "cat": "cs",
+    "title": "2028考研全年备考时间轴发布，建议收藏",
+    "content": "备考规划",
+    "time": "备考规划",
+    "tag": "new"
   }
 ];
 
