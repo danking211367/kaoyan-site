@@ -1,28 +1,25 @@
-{
-  "academic": [
-    { "name": "哲学", "a": 323, "b": 313, "change": "↑15" },
-    { "name": "经济学", "a": 348, "b": 338, "change": "↑10" },
-    { "name": "法学", "a": 341, "b": 331, "change": "↑12" },
-    { "name": "教育学", "a": 350, "b": 340, "change": "↑5" },
-    { "name": "文学", "a": 365, "b": 355, "change": "↑8" },
-    { "name": "历史学", "a": 336, "b": 326, "change": "↑10" },
-    { "name": "理学", "a": 290, "b": 280, "change": "↑8" },
-    { "name": "工学", "a": 273, "b": 263, "change": "↑5" },
-    { "name": "农学", "a": 252, "b": 242, "change": "→" },
-    { "name": "医学", "a": 304, "b": 294, "change": "↑8" },
-    { "name": "军事学", "a": 260, "b": 250, "change": "→" },
-    { "name": "管理学", "a": 350, "b": 340, "change": "↑12" },
-    { "name": "艺术学", "a": 362, "b": 352, "change": "↑8" }
+﻿{
+  "year": 2026,
+  "published": "2026-02-28",
+  "summary": "2026年考研国家线于2月28日公布，整体小幅波动、趋于平稳。",
+  "highlight": {
+    "philosophy_A": 326,
+    "philosophy_B": 316,
+    "note": "哲学A类总分326，单科41/62；B类总分316，单科38/57"
+  },
+  "lines": [
+    {"subject": "哲学", "A_total": 326, "A_single_100": 41, "A_single_150": 62, "B_total": 316, "B_single_100": 38, "B_single_150": 57},
+    {"subject": "经济学", "A_total": 338, "A_single_100": 45, "A_single_150": 68, "B_total": 328, "B_single_100": 42, "B_single_150": 63},
+    {"subject": "法学", "A_total": 331, "A_single_100": 44, "A_single_150": 66, "B_total": 321, "B_single_100": 41, "B_single_150": 62},
+    {"subject": "教育学", "A_total": 350, "A_single_100": 48, "A_single_150": 72, "B_total": 340, "B_single_100": 45, "B_single_150": 68},
+    {"subject": "文学", "A_total": 365, "A_single_100": 52, "A_single_150": 78, "B_total": 355, "B_single_100": 49, "B_single_150": 74},
+    {"subject": "历史学", "A_total": 336, "A_single_100": 45, "A_single_150": 68, "B_total": 326, "B_single_100": 42, "B_single_150": 63},
+    {"subject": "理学", "A_total": 290, "A_single_100": 40, "A_single_150": 60, "B_total": 280, "B_single_100": 37, "B_single_150": 56},
+    {"subject": "工学", "A_total": 273, "A_single_100": 38, "A_single_150": 57, "B_total": 263, "B_single_100": 35, "B_single_150": 53},
+    {"subject": "农学", "A_total": 252, "A_single_100": 33, "A_single_150": 50, "B_total": 242, "B_single_100": 30, "B_single_150": 45},
+    {"subject": "医学", "A_total": 304, "A_single_100": 42, "A_single_150": 63, "B_total": 294, "B_single_100": 39, "B_single_150": 59},
+    {"subject": "管理学", "A_total": 340, "A_single_100": 46, "A_single_150": 69, "B_total": 330, "B_single_100": 43, "B_single_150": 65},
+    {"subject": "艺术学", "A_total": 362, "A_single_100": 40, "A_single_150": 60, "B_total": 352, "B_single_100": 37, "B_single_150": 56}
   ],
-  "professional": [
-    { "name": "金融/应用统计/税务", "a": 348, "b": 338, "change": "↑10" },
-    { "name": "法律(非法学/法学)", "a": 331, "b": 321, "change": "↑8" },
-    { "name": "教育/汉语国际教育", "a": 350, "b": 340, "change": "↑5" },
-    { "name": "翻译/新闻与传播", "a": 365, "b": 355, "change": "↑8" },
-    { "name": "电子信息/机械/材料", "a": 273, "b": 263, "change": "↑5" },
-    { "name": "临床医学/口腔医学", "a": 304, "b": 294, "change": "↑8" },
-    { "name": "工商管理/MBA", "a": 167, "b": 157, "change": "↑3" },
-    { "name": "公共管理/MPA", "a": 175, "b": 165, "change": "↑3" },
-    { "name": "会计/审计", "a": 201, "b": 191, "change": "↑5" }
-  ]
+  "source": "中国考研网、教育部"
 }

@@ -1,370 +1,580 @@
 {
   "weekStart": "2026-06-08",
-  "weekNumber": 2944,
-  "updatedAt": "2026-06-10T05:11:53.776Z",
+  "weekNumber": 2945,
+  "updatedAt": "2026-06-11T08:58:37.073Z",
   "hot": [
     [
       {
-        "title": "2026年研考分数查询及国家线公布，近五年分数线趋势分析",
-        "tag": "hot",
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
         "meta": "阅读 5000"
       },
       {
-        "title": "清华大学医疗管理硕士（MHA）新设专业获国务院学位委员会批准",
-        "tag": "new",
-        "meta": "阅读 202705"
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
+        "meta": "阅读 5100"
       },
       {
-        "title": "从零开始备战考研！超详细全流程拆解+避坑指南",
-        "tag": "hot",
-        "meta": "阅读 202703"
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
+        "meta": "阅读 5200"
       },
       {
-        "title": "2026年全国普通高校招生考试安全工作视频会议召开",
-        "tag": "new",
-        "meta": "阅读 202904"
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
+        "meta": "阅读 5300"
       },
       {
-        "title": "2026考研政治大纲权威解读：保持稳定，个别微调",
-        "tag": "note",
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
         "meta": "阅读 5400"
       },
       {
-        "title": "超详细的考研全流程，27考研人必看！初试到复试关键要点",
-        "tag": "note",
-        "meta": "阅读 203010"
-      },
-      {
-        "title": "掌上考研900余所高校研招信息聚合平台上线",
-        "tag": "new",
-        "meta": "阅读 5600"
-      },
-      {
-        "title": "26考研7月详尽规划及英语备考攻略",
-        "tag": "hot",
-        "meta": "阅读 5700"
-      },
-      {
-        "title": "考研专业学位研究生培养单位和科技小院名单发布",
-        "tag": "note",
-        "meta": "阅读 5800"
-      },
-      {
-        "title": "考研备考：系统规划与科学方法结合才能脱颖而出",
-        "tag": "note",
-        "meta": "阅读 5900"
-      }
-    ],
-    [
-      {
-        "title": "从零开始备战考研！超详细全流程拆解+避坑指南",
-        "tag": "hot",
-        "meta": "阅读 202803"
-      },
-      {
-        "title": "2026年全国普通高校招生考试安全工作视频会议召开",
-        "tag": "new",
-        "meta": "阅读 203004"
-      },
-      {
-        "title": "2026考研政治大纲权威解读：保持稳定，个别微调",
-        "tag": "note",
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
         "meta": "阅读 5500"
       },
       {
-        "title": "超详细的考研全流程，27考研人必看！初试到复试关键要点",
-        "tag": "note",
-        "meta": "阅读 203110"
-      },
-      {
-        "title": "掌上考研900余所高校研招信息聚合平台上线",
-        "tag": "new",
-        "meta": "阅读 5700"
-      },
-      {
-        "title": "26考研7月详尽规划及英语备考攻略",
-        "tag": "hot",
-        "meta": "阅读 5800"
-      },
-      {
-        "title": "考研专业学位研究生培养单位和科技小院名单发布",
-        "tag": "note",
-        "meta": "阅读 5900"
-      },
-      {
-        "title": "考研备考：系统规划与科学方法结合才能脱颖而出",
-        "tag": "note",
-        "meta": "阅读 6000"
-      },
-      {
-        "title": "2026年研考分数查询及国家线公布，近五年分数线趋势分析",
-        "tag": "hot",
-        "meta": "阅读 6100"
-      },
-      {
-        "title": "清华大学医疗管理硕士（MHA）新设专业获国务院学位委员会批准",
-        "tag": "new",
-        "meta": "阅读 203805"
-      }
-    ],
-    [
-      {
-        "title": "2026考研政治大纲权威解读：保持稳定，个别微调",
-        "tag": "note",
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
         "meta": "阅读 5600"
       },
       {
-        "title": "超详细的考研全流程，27考研人必看！初试到复试关键要点",
-        "tag": "note",
-        "meta": "阅读 203210"
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
+        "meta": "阅读 5700"
       },
       {
-        "title": "掌上考研900余所高校研招信息聚合平台上线",
-        "tag": "new",
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
         "meta": "阅读 5800"
       },
       {
-        "title": "26考研7月详尽规划及英语备考攻略",
-        "tag": "hot",
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
         "meta": "阅读 5900"
-      },
-      {
-        "title": "考研专业学位研究生培养单位和科技小院名单发布",
-        "tag": "note",
-        "meta": "阅读 6000"
-      },
-      {
-        "title": "考研备考：系统规划与科学方法结合才能脱颖而出",
-        "tag": "note",
-        "meta": "阅读 6100"
-      },
-      {
-        "title": "2026年研考分数查询及国家线公布，近五年分数线趋势分析",
-        "tag": "hot",
-        "meta": "阅读 6200"
-      },
-      {
-        "title": "清华大学医疗管理硕士（MHA）新设专业获国务院学位委员会批准",
-        "tag": "new",
-        "meta": "阅读 203905"
-      },
-      {
-        "title": "从零开始备战考研！超详细全流程拆解+避坑指南",
-        "tag": "hot",
-        "meta": "阅读 203903"
-      },
-      {
-        "title": "2026年全国普通高校招生考试安全工作视频会议召开",
-        "tag": "new",
-        "meta": "阅读 204104"
       }
     ],
     [
       {
-        "title": "掌上考研900余所高校研招信息聚合平台上线",
-        "tag": "new",
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
+        "meta": "阅读 5300"
+      },
+      {
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
+        "meta": "阅读 5400"
+      },
+      {
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 5500"
+      },
+      {
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 5600"
+      },
+      {
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
+        "meta": "阅读 5700"
+      },
+      {
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
+        "meta": "阅读 5800"
+      },
+      {
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
         "meta": "阅读 5900"
       },
       {
-        "title": "26考研7月详尽规划及英语备考攻略",
-        "tag": "hot",
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
         "meta": "阅读 6000"
       },
       {
-        "title": "考研专业学位研究生培养单位和科技小院名单发布",
-        "tag": "note",
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
         "meta": "阅读 6100"
       },
       {
-        "title": "考研备考：系统规划与科学方法结合才能脱颖而出",
-        "tag": "note",
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
         "meta": "阅读 6200"
-      },
-      {
-        "title": "2026年研考分数查询及国家线公布，近五年分数线趋势分析",
-        "tag": "hot",
-        "meta": "阅读 6300"
-      },
-      {
-        "title": "清华大学医疗管理硕士（MHA）新设专业获国务院学位委员会批准",
-        "tag": "new",
-        "meta": "阅读 204005"
-      },
-      {
-        "title": "从零开始备战考研！超详细全流程拆解+避坑指南",
-        "tag": "hot",
-        "meta": "阅读 204003"
-      },
-      {
-        "title": "2026年全国普通高校招生考试安全工作视频会议召开",
-        "tag": "new",
-        "meta": "阅读 204204"
-      },
-      {
-        "title": "2026考研政治大纲权威解读：保持稳定，个别微调",
-        "tag": "note",
-        "meta": "阅读 6700"
-      },
-      {
-        "title": "超详细的考研全流程，27考研人必看！初试到复试关键要点",
-        "tag": "note",
-        "meta": "阅读 204310"
       }
     ],
     [
       {
-        "title": "考研专业学位研究生培养单位和科技小院名单发布",
-        "tag": "note",
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 5600"
+      },
+      {
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 5700"
+      },
+      {
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
+        "meta": "阅读 5800"
+      },
+      {
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
+        "meta": "阅读 5900"
+      },
+      {
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
+        "meta": "阅读 6000"
+      },
+      {
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 6100"
+      },
+      {
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
         "meta": "阅读 6200"
       },
       {
-        "title": "考研备考：系统规划与科学方法结合才能脱颖而出",
-        "tag": "note",
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
         "meta": "阅读 6300"
       },
       {
-        "title": "2026年研考分数查询及国家线公布，近五年分数线趋势分析",
-        "tag": "hot",
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
         "meta": "阅读 6400"
       },
       {
-        "title": "清华大学医疗管理硕士（MHA）新设专业获国务院学位委员会批准",
-        "tag": "new",
-        "meta": "阅读 204105"
-      },
-      {
-        "title": "从零开始备战考研！超详细全流程拆解+避坑指南",
-        "tag": "hot",
-        "meta": "阅读 204103"
-      },
-      {
-        "title": "2026年全国普通高校招生考试安全工作视频会议召开",
-        "tag": "new",
-        "meta": "阅读 204304"
-      },
-      {
-        "title": "2026考研政治大纲权威解读：保持稳定，个别微调",
-        "tag": "note",
-        "meta": "阅读 6800"
-      },
-      {
-        "title": "超详细的考研全流程，27考研人必看！初试到复试关键要点",
-        "tag": "note",
-        "meta": "阅读 204410"
-      },
-      {
-        "title": "掌上考研900余所高校研招信息聚合平台上线",
-        "tag": "new",
-        "meta": "阅读 7000"
-      },
-      {
-        "title": "26考研7月详尽规划及英语备考攻略",
-        "tag": "hot",
-        "meta": "阅读 7100"
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
+        "meta": "阅读 6500"
       }
     ],
     [
       {
-        "title": "2026年研考分数查询及国家线公布，近五年分数线趋势分析",
-        "tag": "hot",
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
+        "meta": "阅读 5900"
+      },
+      {
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
+        "meta": "阅读 6000"
+      },
+      {
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
+        "meta": "阅读 6100"
+      },
+      {
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 6200"
+      },
+      {
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 6300"
+      },
+      {
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
+        "meta": "阅读 6400"
+      },
+      {
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
         "meta": "阅读 6500"
       },
       {
-        "title": "清华大学医疗管理硕士（MHA）新设专业获国务院学位委员会批准",
-        "tag": "new",
-        "meta": "阅读 204205"
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
+        "meta": "阅读 6600"
       },
       {
-        "title": "从零开始备战考研！超详细全流程拆解+避坑指南",
-        "tag": "hot",
-        "meta": "阅读 204203"
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 6700"
       },
       {
-        "title": "2026年全国普通高校招生考试安全工作视频会议召开",
-        "tag": "new",
-        "meta": "阅读 204404"
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 6800"
+      }
+    ],
+    [
+      {
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
+        "meta": "阅读 6200"
       },
       {
-        "title": "2026考研政治大纲权威解读：保持稳定，个别微调",
-        "tag": "note",
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 6300"
+      },
+      {
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 6400"
+      },
+      {
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
+        "meta": "阅读 6500"
+      },
+      {
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
+        "meta": "阅读 6600"
+      },
+      {
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
+        "meta": "阅读 6700"
+      },
+      {
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 6800"
+      },
+      {
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
         "meta": "阅读 6900"
       },
       {
-        "title": "超详细的考研全流程，27考研人必看！初试到复试关键要点",
-        "tag": "note",
-        "meta": "阅读 204510"
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
+        "meta": "阅读 7000"
       },
       {
-        "title": "掌上考研900余所高校研招信息聚合平台上线",
-        "tag": "new",
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
+        "meta": "阅读 7100"
+      }
+    ],
+    [
+      {
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 6500"
+      },
+      {
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
+        "meta": "阅读 6600"
+      },
+      {
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
+        "meta": "阅读 6700"
+      },
+      {
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
+        "meta": "阅读 6800"
+      },
+      {
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 6900"
+      },
+      {
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 7000"
+      },
+      {
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
         "meta": "阅读 7100"
       },
       {
-        "title": "26考研7月详尽规划及英语备考攻略",
-        "tag": "hot",
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
         "meta": "阅读 7200"
       },
       {
-        "title": "考研专业学位研究生培养单位和科技小院名单发布",
-        "tag": "note",
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
         "meta": "阅读 7300"
       },
       {
-        "title": "考研备考：系统规划与科学方法结合才能脱颖而出",
-        "tag": "note",
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
         "meta": "阅读 7400"
       }
     ],
     [
       {
-        "title": "从零开始备战考研！超详细全流程拆解+避坑指南",
-        "tag": "hot",
-        "meta": "阅读 204303"
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
+        "meta": "阅读 6800"
       },
       {
-        "title": "2026年全国普通高校招生考试安全工作视频会议召开",
-        "tag": "new",
-        "meta": "阅读 204504"
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
+        "meta": "阅读 6900"
       },
       {
-        "title": "2026考研政治大纲权威解读：保持稳定，个别微调",
-        "tag": "note",
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
         "meta": "阅读 7000"
       },
       {
-        "title": "超详细的考研全流程，27考研人必看！初试到复试关键要点",
-        "tag": "note",
-        "meta": "阅读 204610"
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
+        "meta": "阅读 7100"
       },
       {
-        "title": "掌上考研900余所高校研招信息聚合平台上线",
-        "tag": "new",
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
         "meta": "阅读 7200"
       },
       {
-        "title": "26考研7月详尽规划及英语备考攻略",
-        "tag": "hot",
+        "title": "全国硕士研究生招生考试网上报名平台",
+        "url": "https://yz.chsi.com.cn/yzwb/?from_zsk=",
+        "snippet": "2026年初试已结束，研招网报名平台开放中。",
+        "source": "研招网",
+        "date": "2026-06-11",
         "meta": "阅读 7300"
       },
       {
-        "title": "考研专业学位研究生培养单位和科技小院名单发布",
-        "tag": "note",
+        "title": "点击查收好运！2026考研查分通道汇总",
+        "url": "https://www.ludengkaoyan.com/wenti/366.html",
+        "snippet": "2026年考研初试成绩公布，343万学子关注查分通道。",
+        "source": "路灯考研",
+        "date": "2026-06-11",
         "meta": "阅读 7400"
       },
       {
-        "title": "考研备考：系统规划与科学方法结合才能脱颖而出",
-        "tag": "note",
+        "title": "研究生报考指南_2026考研报考条件",
+        "url": "https://www.chinakaoyan.com/info/list/ClassID/12/pagenum/6.shtml",
+        "snippet": "2026年考研报考条件及各地网报公告汇总。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
         "meta": "阅读 7500"
       },
       {
-        "title": "2026年研考分数查询及国家线公布，近五年分数线趋势分析",
-        "tag": "hot",
+        "title": "2026研考动向：考研科目调整与新专业布局",
+        "url": "https://www.chinakaoyan.com/info/article/id/615581.shtml",
+        "snippet": "多所高校调整初试科目，自命题改统考，新增人工智能、交叉学科等专业。",
+        "source": "中国考研网",
+        "date": "2026-06-11",
         "meta": "阅读 7600"
       },
       {
-        "title": "清华大学医疗管理硕士（MHA）新设专业获国务院学位委员会批准",
-        "tag": "new",
-        "meta": "阅读 205305"
+        "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+        "url": "https://news.qq.com/rain/a/20250924A07HGV00",
+        "snippet": "2026年考研预报名10月10日开始，初试设置四个单元考试科目。",
+        "source": "腾讯新闻",
+        "date": "2026-06-11",
+        "meta": "阅读 7700"
       }
     ]
   ],
@@ -372,28 +582,33 @@
     [
       {
         "tag": "important",
-        "title": "基础夯实期（3月-6月）：确定目标院校，数学一轮复习，英语词汇攻坚",
-        "meta": "备考阶段"
+        "title": "2026考研超详细全年复习规划：从现在到明年2月预热阶段",
+        "meta": "备考规划",
+        "url": "https://www.zhihu.com/tardis/zm/art/448353853"
       },
       {
         "tag": "hot",
-        "title": "考研大纲发布后及时对比变化，调整复习重点",
-        "meta": "备考策略"
+        "title": "26考研全攻略：三阶九步备考法+择校策略",
+        "meta": "备考攻略",
+        "url": "https://kaoyan.wendu.com/icontent/tlCdBQIh.html"
       },
       {
         "tag": "new",
-        "title": "2026年研招政策保持稳定，按既定计划持续推进即可",
-        "meta": "政策解读"
+        "title": "备考周期拉长至18-24个月，超72%考生选择3月前启动",
+        "meta": "备考趋势",
+        "url": "https://kaoyan.wendu.com/icontent/iUEzJ7pU.html"
       },
       {
         "tag": "note",
-        "title": "复试准备从现在开始，关注目标院校的复试细则和导师研究方向",
-        "meta": "长期准备"
+        "title": "26考研全年阶段规划：预热-基础-强化-冲刺",
+        "meta": "阶段规划",
+        "url": "https://m.jiaoyubao.cn/news/n195246.html"
       },
       {
         "tag": "note",
-        "title": "信息收集：研招网、院校官网、考研社群多渠道获取一手信息",
-        "meta": "信息渠道"
+        "title": "2026考研上岸必备：3大系统+52个关键动作",
+        "meta": "上岸清单",
+        "url": "https://kaoyan.wendu.com/icontent/DoJWQFuh.html"
       },
       {
         "tag": "note",
@@ -424,28 +639,33 @@
     [
       {
         "tag": "hot",
-        "title": "考研大纲发布后及时对比变化，调整复习重点",
-        "meta": "备考策略"
+        "title": "26考研全攻略：三阶九步备考法+择校策略",
+        "meta": "备考攻略",
+        "url": "https://kaoyan.wendu.com/icontent/tlCdBQIh.html"
       },
       {
         "tag": "new",
-        "title": "2026年研招政策保持稳定，按既定计划持续推进即可",
-        "meta": "政策解读"
+        "title": "备考周期拉长至18-24个月，超72%考生选择3月前启动",
+        "meta": "备考趋势",
+        "url": "https://kaoyan.wendu.com/icontent/iUEzJ7pU.html"
       },
       {
         "tag": "note",
-        "title": "复试准备从现在开始，关注目标院校的复试细则和导师研究方向",
-        "meta": "长期准备"
+        "title": "26考研全年阶段规划：预热-基础-强化-冲刺",
+        "meta": "阶段规划",
+        "url": "https://m.jiaoyubao.cn/news/n195246.html"
       },
       {
         "tag": "note",
-        "title": "信息收集：研招网、院校官网、考研社群多渠道获取一手信息",
-        "meta": "信息渠道"
+        "title": "2026考研上岸必备：3大系统+52个关键动作",
+        "meta": "上岸清单",
+        "url": "https://kaoyan.wendu.com/icontent/DoJWQFuh.html"
       },
       {
         "tag": "important",
-        "title": "基础夯实期（3月-6月）：确定目标院校，数学一轮复习，英语词汇攻坚",
-        "meta": "备考阶段"
+        "title": "2026考研超详细全年复习规划：从现在到明年2月预热阶段",
+        "meta": "备考规划",
+        "url": "https://www.zhihu.com/tardis/zm/art/448353853"
       },
       {
         "tag": "note",
@@ -476,28 +696,33 @@
     [
       {
         "tag": "new",
-        "title": "2026年研招政策保持稳定，按既定计划持续推进即可",
-        "meta": "政策解读"
+        "title": "备考周期拉长至18-24个月，超72%考生选择3月前启动",
+        "meta": "备考趋势",
+        "url": "https://kaoyan.wendu.com/icontent/iUEzJ7pU.html"
       },
       {
         "tag": "note",
-        "title": "复试准备从现在开始，关注目标院校的复试细则和导师研究方向",
-        "meta": "长期准备"
+        "title": "26考研全年阶段规划：预热-基础-强化-冲刺",
+        "meta": "阶段规划",
+        "url": "https://m.jiaoyubao.cn/news/n195246.html"
       },
       {
         "tag": "note",
-        "title": "信息收集：研招网、院校官网、考研社群多渠道获取一手信息",
-        "meta": "信息渠道"
+        "title": "2026考研上岸必备：3大系统+52个关键动作",
+        "meta": "上岸清单",
+        "url": "https://kaoyan.wendu.com/icontent/DoJWQFuh.html"
       },
       {
         "tag": "important",
-        "title": "基础夯实期（3月-6月）：确定目标院校，数学一轮复习，英语词汇攻坚",
-        "meta": "备考阶段"
+        "title": "2026考研超详细全年复习规划：从现在到明年2月预热阶段",
+        "meta": "备考规划",
+        "url": "https://www.zhihu.com/tardis/zm/art/448353853"
       },
       {
         "tag": "hot",
-        "title": "考研大纲发布后及时对比变化，调整复习重点",
-        "meta": "备考策略"
+        "title": "26考研全攻略：三阶九步备考法+择校策略",
+        "meta": "备考攻略",
+        "url": "https://kaoyan.wendu.com/icontent/tlCdBQIh.html"
       },
       {
         "tag": "note",
@@ -528,28 +753,33 @@
     [
       {
         "tag": "note",
-        "title": "复试准备从现在开始，关注目标院校的复试细则和导师研究方向",
-        "meta": "长期准备"
+        "title": "26考研全年阶段规划：预热-基础-强化-冲刺",
+        "meta": "阶段规划",
+        "url": "https://m.jiaoyubao.cn/news/n195246.html"
       },
       {
         "tag": "note",
-        "title": "信息收集：研招网、院校官网、考研社群多渠道获取一手信息",
-        "meta": "信息渠道"
+        "title": "2026考研上岸必备：3大系统+52个关键动作",
+        "meta": "上岸清单",
+        "url": "https://kaoyan.wendu.com/icontent/DoJWQFuh.html"
       },
       {
         "tag": "important",
-        "title": "基础夯实期（3月-6月）：确定目标院校，数学一轮复习，英语词汇攻坚",
-        "meta": "备考阶段"
+        "title": "2026考研超详细全年复习规划：从现在到明年2月预热阶段",
+        "meta": "备考规划",
+        "url": "https://www.zhihu.com/tardis/zm/art/448353853"
       },
       {
         "tag": "hot",
-        "title": "考研大纲发布后及时对比变化，调整复习重点",
-        "meta": "备考策略"
+        "title": "26考研全攻略：三阶九步备考法+择校策略",
+        "meta": "备考攻略",
+        "url": "https://kaoyan.wendu.com/icontent/tlCdBQIh.html"
       },
       {
         "tag": "new",
-        "title": "2026年研招政策保持稳定，按既定计划持续推进即可",
-        "meta": "政策解读"
+        "title": "备考周期拉长至18-24个月，超72%考生选择3月前启动",
+        "meta": "备考趋势",
+        "url": "https://kaoyan.wendu.com/icontent/iUEzJ7pU.html"
       },
       {
         "tag": "note",
@@ -580,28 +810,33 @@
     [
       {
         "tag": "note",
-        "title": "信息收集：研招网、院校官网、考研社群多渠道获取一手信息",
-        "meta": "信息渠道"
+        "title": "2026考研上岸必备：3大系统+52个关键动作",
+        "meta": "上岸清单",
+        "url": "https://kaoyan.wendu.com/icontent/DoJWQFuh.html"
       },
       {
         "tag": "important",
-        "title": "基础夯实期（3月-6月）：确定目标院校，数学一轮复习，英语词汇攻坚",
-        "meta": "备考阶段"
+        "title": "2026考研超详细全年复习规划：从现在到明年2月预热阶段",
+        "meta": "备考规划",
+        "url": "https://www.zhihu.com/tardis/zm/art/448353853"
       },
       {
         "tag": "hot",
-        "title": "考研大纲发布后及时对比变化，调整复习重点",
-        "meta": "备考策略"
+        "title": "26考研全攻略：三阶九步备考法+择校策略",
+        "meta": "备考攻略",
+        "url": "https://kaoyan.wendu.com/icontent/tlCdBQIh.html"
       },
       {
         "tag": "new",
-        "title": "2026年研招政策保持稳定，按既定计划持续推进即可",
-        "meta": "政策解读"
+        "title": "备考周期拉长至18-24个月，超72%考生选择3月前启动",
+        "meta": "备考趋势",
+        "url": "https://kaoyan.wendu.com/icontent/iUEzJ7pU.html"
       },
       {
         "tag": "note",
-        "title": "复试准备从现在开始，关注目标院校的复试细则和导师研究方向",
-        "meta": "长期准备"
+        "title": "26考研全年阶段规划：预热-基础-强化-冲刺",
+        "meta": "阶段规划",
+        "url": "https://m.jiaoyubao.cn/news/n195246.html"
       },
       {
         "tag": "note",
@@ -632,28 +867,33 @@
     [
       {
         "tag": "important",
-        "title": "基础夯实期（3月-6月）：确定目标院校，数学一轮复习，英语词汇攻坚",
-        "meta": "备考阶段"
+        "title": "2026考研超详细全年复习规划：从现在到明年2月预热阶段",
+        "meta": "备考规划",
+        "url": "https://www.zhihu.com/tardis/zm/art/448353853"
       },
       {
         "tag": "hot",
-        "title": "考研大纲发布后及时对比变化，调整复习重点",
-        "meta": "备考策略"
+        "title": "26考研全攻略：三阶九步备考法+择校策略",
+        "meta": "备考攻略",
+        "url": "https://kaoyan.wendu.com/icontent/tlCdBQIh.html"
       },
       {
         "tag": "new",
-        "title": "2026年研招政策保持稳定，按既定计划持续推进即可",
-        "meta": "政策解读"
+        "title": "备考周期拉长至18-24个月，超72%考生选择3月前启动",
+        "meta": "备考趋势",
+        "url": "https://kaoyan.wendu.com/icontent/iUEzJ7pU.html"
       },
       {
         "tag": "note",
-        "title": "复试准备从现在开始，关注目标院校的复试细则和导师研究方向",
-        "meta": "长期准备"
+        "title": "26考研全年阶段规划：预热-基础-强化-冲刺",
+        "meta": "阶段规划",
+        "url": "https://m.jiaoyubao.cn/news/n195246.html"
       },
       {
         "tag": "note",
-        "title": "信息收集：研招网、院校官网、考研社群多渠道获取一手信息",
-        "meta": "信息渠道"
+        "title": "2026考研上岸必备：3大系统+52个关键动作",
+        "meta": "上岸清单",
+        "url": "https://kaoyan.wendu.com/icontent/DoJWQFuh.html"
       },
       {
         "tag": "note",
@@ -684,28 +924,33 @@
     [
       {
         "tag": "hot",
-        "title": "考研大纲发布后及时对比变化，调整复习重点",
-        "meta": "备考策略"
+        "title": "26考研全攻略：三阶九步备考法+择校策略",
+        "meta": "备考攻略",
+        "url": "https://kaoyan.wendu.com/icontent/tlCdBQIh.html"
       },
       {
         "tag": "new",
-        "title": "2026年研招政策保持稳定，按既定计划持续推进即可",
-        "meta": "政策解读"
+        "title": "备考周期拉长至18-24个月，超72%考生选择3月前启动",
+        "meta": "备考趋势",
+        "url": "https://kaoyan.wendu.com/icontent/iUEzJ7pU.html"
       },
       {
         "tag": "note",
-        "title": "复试准备从现在开始，关注目标院校的复试细则和导师研究方向",
-        "meta": "长期准备"
+        "title": "26考研全年阶段规划：预热-基础-强化-冲刺",
+        "meta": "阶段规划",
+        "url": "https://m.jiaoyubao.cn/news/n195246.html"
       },
       {
         "tag": "note",
-        "title": "信息收集：研招网、院校官网、考研社群多渠道获取一手信息",
-        "meta": "信息渠道"
+        "title": "2026考研上岸必备：3大系统+52个关键动作",
+        "meta": "上岸清单",
+        "url": "https://kaoyan.wendu.com/icontent/DoJWQFuh.html"
       },
       {
         "tag": "important",
-        "title": "基础夯实期（3月-6月）：确定目标院校，数学一轮复习，英语词汇攻坚",
-        "meta": "备考阶段"
+        "title": "2026考研超详细全年复习规划：从现在到明年2月预热阶段",
+        "meta": "备考规划",
+        "url": "https://www.zhihu.com/tardis/zm/art/448353853"
       },
       {
         "tag": "note",
@@ -739,151 +984,151 @@
       {
         "tag": "tag-hot",
         "category": "综合",
-        "title": "2026年调剂系统已关闭，建议2027考生提前了解调剂规则",
-        "meta": "调剂科普"
+        "title": "调剂系统操作要点：三个平行志愿的策略填报",
+        "meta": "调剂技巧"
       },
       {
-        "tag": "tag-new",
-        "category": "备考",
-        "title": "2028考研全年备考时间轴发布，建议收藏",
-        "meta": "备考规划"
-      },
-      {
-        "tag": "tag-hot",
+        "tag": "tag-note",
         "category": "综合",
-        "title": "2026年调剂系统已关闭，建议2027考生提前了解调剂规则",
-        "meta": "调剂科普"
+        "title": "调剂信息获取渠道：研招网/院校官网/考研社群",
+        "meta": "信息渠道"
+      },
+      {
+        "tag": "tag-important",
+        "category": "综合",
+        "title": "调剂待录取确认：24小时内必须做决定",
+        "meta": "重要提醒"
       }
     ],
     [
       {
-        "tag": "tag-new",
-        "category": "备考",
-        "title": "2028考研全年备考时间轴发布，建议收藏",
-        "meta": "备考规划"
+        "tag": "tag-note",
+        "category": "综合",
+        "title": "调剂信息获取渠道：研招网/院校官网/考研社群",
+        "meta": "信息渠道"
+      },
+      {
+        "tag": "tag-important",
+        "category": "综合",
+        "title": "调剂待录取确认：24小时内必须做决定",
+        "meta": "重要提醒"
       },
       {
         "tag": "tag-hot",
         "category": "综合",
-        "title": "2026年调剂系统已关闭，建议2027考生提前了解调剂规则",
-        "meta": "调剂科普"
-      },
-      {
-        "tag": "tag-new",
-        "category": "备考",
-        "title": "2028考研全年备考时间轴发布，建议收藏",
-        "meta": "备考规划"
+        "title": "调剂系统操作要点：三个平行志愿的策略填报",
+        "meta": "调剂技巧"
       }
     ],
     [
       {
-        "tag": "tag-hot",
+        "tag": "tag-important",
         "category": "综合",
-        "title": "2026年调剂系统已关闭，建议2027考生提前了解调剂规则",
-        "meta": "调剂科普"
-      },
-      {
-        "tag": "tag-new",
-        "category": "备考",
-        "title": "2028考研全年备考时间轴发布，建议收藏",
-        "meta": "备考规划"
+        "title": "调剂待录取确认：24小时内必须做决定",
+        "meta": "重要提醒"
       },
       {
         "tag": "tag-hot",
         "category": "综合",
-        "title": "2026年调剂系统已关闭，建议2027考生提前了解调剂规则",
-        "meta": "调剂科普"
-      }
-    ],
-    [
-      {
-        "tag": "tag-new",
-        "category": "备考",
-        "title": "2028考研全年备考时间轴发布，建议收藏",
-        "meta": "备考规划"
+        "title": "调剂系统操作要点：三个平行志愿的策略填报",
+        "meta": "调剂技巧"
       },
       {
-        "tag": "tag-hot",
+        "tag": "tag-note",
         "category": "综合",
-        "title": "2026年调剂系统已关闭，建议2027考生提前了解调剂规则",
-        "meta": "调剂科普"
-      },
-      {
-        "tag": "tag-new",
-        "category": "备考",
-        "title": "2028考研全年备考时间轴发布，建议收藏",
-        "meta": "备考规划"
+        "title": "调剂信息获取渠道：研招网/院校官网/考研社群",
+        "meta": "信息渠道"
       }
     ],
     [
       {
         "tag": "tag-hot",
         "category": "综合",
-        "title": "2026年调剂系统已关闭，建议2027考生提前了解调剂规则",
-        "meta": "调剂科普"
+        "title": "调剂系统操作要点：三个平行志愿的策略填报",
+        "meta": "调剂技巧"
       },
       {
-        "tag": "tag-new",
-        "category": "备考",
-        "title": "2028考研全年备考时间轴发布，建议收藏",
-        "meta": "备考规划"
-      },
-      {
-        "tag": "tag-hot",
+        "tag": "tag-note",
         "category": "综合",
-        "title": "2026年调剂系统已关闭，建议2027考生提前了解调剂规则",
-        "meta": "调剂科普"
+        "title": "调剂信息获取渠道：研招网/院校官网/考研社群",
+        "meta": "信息渠道"
+      },
+      {
+        "tag": "tag-important",
+        "category": "综合",
+        "title": "调剂待录取确认：24小时内必须做决定",
+        "meta": "重要提醒"
       }
     ],
     [
       {
-        "tag": "tag-new",
-        "category": "备考",
-        "title": "2028考研全年备考时间轴发布，建议收藏",
-        "meta": "备考规划"
+        "tag": "tag-note",
+        "category": "综合",
+        "title": "调剂信息获取渠道：研招网/院校官网/考研社群",
+        "meta": "信息渠道"
+      },
+      {
+        "tag": "tag-important",
+        "category": "综合",
+        "title": "调剂待录取确认：24小时内必须做决定",
+        "meta": "重要提醒"
       },
       {
         "tag": "tag-hot",
         "category": "综合",
-        "title": "2026年调剂系统已关闭，建议2027考生提前了解调剂规则",
-        "meta": "调剂科普"
+        "title": "调剂系统操作要点：三个平行志愿的策略填报",
+        "meta": "调剂技巧"
+      }
+    ],
+    [
+      {
+        "tag": "tag-important",
+        "category": "综合",
+        "title": "调剂待录取确认：24小时内必须做决定",
+        "meta": "重要提醒"
       },
       {
-        "tag": "tag-new",
-        "category": "备考",
-        "title": "2028考研全年备考时间轴发布，建议收藏",
-        "meta": "备考规划"
+        "tag": "tag-hot",
+        "category": "综合",
+        "title": "调剂系统操作要点：三个平行志愿的策略填报",
+        "meta": "调剂技巧"
+      },
+      {
+        "tag": "tag-note",
+        "category": "综合",
+        "title": "调剂信息获取渠道：研招网/院校官网/考研社群",
+        "meta": "信息渠道"
       }
     ],
     [
       {
         "tag": "tag-hot",
         "category": "综合",
-        "title": "2026年调剂系统已关闭，建议2027考生提前了解调剂规则",
-        "meta": "调剂科普"
+        "title": "调剂系统操作要点：三个平行志愿的策略填报",
+        "meta": "调剂技巧"
       },
       {
-        "tag": "tag-new",
-        "category": "备考",
-        "title": "2028考研全年备考时间轴发布，建议收藏",
-        "meta": "备考规划"
-      },
-      {
-        "tag": "tag-hot",
+        "tag": "tag-note",
         "category": "综合",
-        "title": "2026年调剂系统已关闭，建议2027考生提前了解调剂规则",
-        "meta": "调剂科普"
+        "title": "调剂信息获取渠道：研招网/院校官网/考研社群",
+        "meta": "信息渠道"
+      },
+      {
+        "tag": "tag-important",
+        "category": "综合",
+        "title": "调剂待录取确认：24小时内必须做决定",
+        "meta": "重要提醒"
       }
     ]
   ],
   "dailyTips": [
-    "录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 【周一规划】制定本周复习计划，明确每天的任务",
-    "【复盘日】回顾上周学习进度，调整薄弱环节的复习策略 — 录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。",
-    "【坚持】录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 每周三做一套真题自测，检验阶段成果",
-    "录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 每周四与研友交流学习心得，互相监督",
-    "【周末预热】录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 周五整理一周错题，周末集中攻克",
-    "【冲刺周末】适当延长学习时间，录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。",
-    "【新的一周】录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 调整好状态，迎接新的学习周"
+    "每天留30分钟回顾当天所学，比连续学习更高效 【周一规划】制定本周复习计划，明确每天的任务",
+    "【复盘日】回顾上周学习进度，调整薄弱环节的复习策略 — 每天留30分钟回顾当天所学，比连续学习更高效",
+    "【坚持】每天留30分钟回顾当天所学，比连续学习更高效 每周三做一套真题自测，检验阶段成果",
+    "每天留30分钟回顾当天所学，比连续学习更高效 每周四与研友交流学习心得，互相监督",
+    "【周末预热】每天留30分钟回顾当天所学，比连续学习更高效 周五整理一周错题，周末集中攻克",
+    "【冲刺周末】适当延长学习时间，每天留30分钟回顾当天所学，比连续学习更高效",
+    "【新的一周】每天留30分钟回顾当天所学，比连续学习更高效 调整好状态，迎接新的学习周"
   ],
   "scores": [
     {
