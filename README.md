@@ -83,49 +83,18 @@ kaoyan/
     └── last-update.json
 ```
 
-## 🔄 每日数据更新
+## 🔄 本地更新
 
-数据可以自动更新，支持两种方式：
-
-### 方式一：GitHub Actions（推荐）
-
-项目已自带 `.github/workflows/update-data.yml`，推送仓库后 GitHub 会自动在每天 8:00 和 20:00 运行更新脚本并重新生成静态 HTML：
-
-```yaml
-name: 📊 每日数据自动更新 + 静态站点生成
-on:
-  schedule:
-    - cron: '0 0,12 * * *'
-  workflow_dispatch:
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: node scripts/update-data-v2.js    # 更新数据
-      - run: node scripts/build-static.js       # 生成静态 HTML
-      - run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ public/index.html
-          git diff --staged --quiet || git commit -m "📊 每日更新"
-          git push
-```
-
-### 方式二：本地手动更新
-
-一键更新数据并生成静态站：
+更新数据并生成静态站：
 
 ```bash
 node scripts/update-data-v2.js && node scripts/build-static.js
 ```
 
-现在 `public/index.html` 已经包含了最新数据，直接用浏览器打开就能看到新内容。
+生成的 `index.html` 已内嵌最新数据，直接用浏览器打开就能看。
+
+需要部署到 GitHub Pages 时，手动上传构建后的 HTML 文件即可。
+
 
 ## 🛠 技术栈
 
