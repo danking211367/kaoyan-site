@@ -1343,7 +1343,7 @@
         <div class="banner-stat-label">报名人数</div>
       </div>
       <div class="banner-stat">
-        <div class="banner-stat-num">120+所</div>
+        <div class="banner-stat-num">30所</div>
         <div class="banner-stat-label">重点高校</div>
       </div>
       <div class="banner-stat">
@@ -1357,7 +1357,7 @@
     </div>
   
     <div style="background: rgba(255,255,255,0.15); padding: 12px 16px; border-radius: 8px; margin-top: 16px; font-size: 14px;">
-        <span style="font-weight: 600;">💡 每日提示：</span>【复盘日】回顾上周学习进度，调整薄弱环节的复习策略 — 录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-11 02:09:55</span>
+        <span style="font-weight: 600;">💡 每日提示：</span>【复盘日】回顾上周学习进度，调整薄弱环节的复习策略 — 录取通知书发放季，已上岸的同学提前联系导师、规划研究方向；备考2028的同学，现在正是确定目标院校和专业的最佳时机。 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-11 11:55:56</span>
     </div></div>
 
   <!-- ========== MAIN GRID ========== -->
@@ -1655,22 +1655,6 @@
 
       <!-- ========== PREPARE TAB ========== -->
       <div id="tab-prepare" class="tab-content">
-        <!-- 考研倒计时 -->
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">📅 考研倒计时</div>
-            <span class="card-more" id="preparePhase"></span>
-          </div>
-          <div class="card-body">
-            <div id="countdownDisplay" style="text-align:center;padding:16px 0;">
-              <div id="countdownDays" style="font-size:48px;font-weight:bold;color:#e74c3c;">--</div>
-              <div id="countdownLabel" style="font-size:14px;color:#666;margin-top:4px;">距离 2027考研初试</div>
-              <div id="countdownPhase" style="font-size:13px;color:#3498db;margin-top:8px;"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 备考指南 -->
         <div class="card">
           <div class="card-header">
             <div class="card-title">✍️ 备考指南</div>
@@ -1679,41 +1663,9 @@
             <ul class="article-list" id="tipsList"></ul>
           </div>
         </div>
-
-        <!-- 各科复习规划 -->
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">📋 各科复习规划</div>
-          </div>
-          <div class="card-body">
-            <div id="studyPlanList"></div>
-          </div>
-        </div>
-
-        <!-- 每日作息推荐 -->
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">⏰ 高效作息参考</div>
-            <span class="card-more">根据当前阶段自动适配</span>
-          </div>
-          <div class="card-body">
-            <div id="scheduleDisplay"></div>
-          </div>
-        </div>
-
-        <!-- 备考资料推荐 -->
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">📚 推荐资源</div>
-            <span class="card-more">研招网 · 考研帮</span>
-          </div>
-          <div class="card-body">
-            <ul class="article-list" id="resourceList"></ul>
-          </div>
-        </div>
       </div>
 
-      <!-- ==========ADJUST TAB ========== -->
+      <!-- ========== ADJUST TAB ========== -->
       <div id="tab-adjust" class="tab-content">
         <!-- 调剂信息 -->
         <div class="card">
@@ -2026,15 +1978,6 @@ const universities = [
   { name: '宁波大学', city: '浙江宁波', region: '浙江', type: ['双一流'], rank: 85, color: '#0891B2', enrollment: '~3500', ratio: '~11.0%', hotMajors: ['力学','水产','通信工程'], subjects: ['力学','水产','信息与通信工程'], requirements: {'力学': {score: 280, lang: '英一', math: '数一', note: '理论力学', extra: '双一流，力学特色'}}, desc: '双一流高校，力学学科特色鲜明，地处宁波区位好。' },
   { name: '云南大学', city: '云南昆明', region: '云南', type: ['211','双一流'], rank: 80, color: '#059669', enrollment: '~3800', ratio: '~11.0%', hotMajors: ['生态学','民族学','政治学'], subjects: ['生态学','民族学','政治学','生物学'], requirements: {'生态学': {score: 280, lang: '英一', math: '数二/无', note: '生态学基础', extra: 'A学科，B区211'}}, desc: '西部211高校，生态学A学科，民族学特色鲜明。' },
   { name: '广西大学', city: '广西南宁', region: '广西', type: ['211','双一流'], rank: 100, color: '#059669', enrollment: '~4000', ratio: '~12.0%', hotMajors: ['土木工程','电气工程','应用经济学'], subjects: ['土木工程','电气工程','应用经济学'], requirements: {'土木工程': {score: 275, lang: '英一', math: '数一', note: '结构力学', extra: 'B区211，分数线低'}}, desc: '广西唯一211高校，土木工程、电气工程等学科实力突出。' },
-  { name: '首都医科大学', city: '北京', region: '北京', type: ['重点'], rank: 70, color: '#C53030', enrollment: '~3000', ratio: '~10%', hotMajors: ['临床医学','基础医学','口腔医学','药学'], subjects: ['临床医学','基础医学','口腔医学','生物学','药学'], requirements: {'临床医学': {score: 320, lang: '英一', math: '无', note: '西医综合', extra: '非211但医学实力全国前十'}}, desc: '非211重点医科院校，临床医学、基础医学学科实力突出，附属医院资源丰富。' },
-  { name: '南方科技大学', city: '广东深圳', region: '广东', type: ['双一流'], rank: 75, color: '#0891B2', enrollment: '~1800', ratio: '~8%', hotMajors: ['材料科学','计算机','生物科学','物理学'], subjects: ['材料科学与工程','计算机科学与技术','生物科学','物理学'], requirements: {'材料科学与工程': {score: 310, lang: '英一', math: '数一/数二', note: '材料科学基础', extra: '新兴研究型大学，科研经费充足'}}, desc: '新型研究型大学，材料科学、计算机等学科发展迅猛，师资力量雄厚。' },
-  { name: '北京外国语大学', city: '北京', region: '北京', type: ['211','双一流'], rank: 70, color: '#7C3AED', enrollment: '~1500', ratio: '~8%', hotMajors: ['英语','翻译','国际关系','外交学'], subjects: ['外国语言文学','翻译学','国际关系','外交学'], requirements: {'外国语言文学': {score: 355, lang: '英一', math: '无', note: '外语基础/翻译', extra: '全国外语类顶尖高校，A+学科'}}, desc: '外语类顶尖211高校。外国语言文学A+学科，翻译、外交学全国领先。' },
-  { name: '上海科技大学', city: '上海', region: '上海', type: ['双一流'], rank: 78, color: '#0891B2', enrollment: '~1500', ratio: '~8%', hotMajors: ['材料科学','计算机','生物科学'], subjects: ['材料科学与工程','计算机科学与技术','物理学'], requirements: {'计算机科学与技术': {score: 320, lang: '英一', math: '数一', note: '计算机基础', extra: '中科院共建，国际化培养'}}, desc: '中科院与上海共建的新型研究型大学，科研实力突出，国际化程度高。' },
-  { name: '南京医科大学', city: '江苏南京', region: '江苏', type: ['双一流'], rank: 72, color: '#C53030', enrollment: '~2500', ratio: '~10%', hotMajors: ['临床医学','公共卫生','口腔医学','护理学'], subjects: ['临床医学','公共卫生与预防医学','口腔医学'], requirements: {'临床医学': {score: 315, lang: '英一', math: '无', note: '西医综合', extra: '双一流医学，江苏最强医学院'}}, desc: '双一流医科院校，公共卫生与预防医学A+学科，临床医学实力强劲。' },
-  { name: '中国社会科学院大学', city: '北京', region: '北京', type: ['重点'], rank: 65, color: '#7C3AED', enrollment: '~1200', ratio: '~10%', hotMajors: ['经济学','法学','社会学','历史学'], subjects: ['经济学','法学','社会学','历史学'], requirements: {'经济学': {score: 350, lang: '英一', math: '数三', note: '经济学综合', extra: '社科院师资，科研导向'}}, desc: '社科院直属高校，经济学、法学、社会学等文科专业科研实力极强。' },
-  { name: '外交学院', city: '北京', region: '北京', type: ['双一流'], rank: 90, color: '#7C3AED', enrollment: '~800', ratio: '~12%', hotMajors: ['外交学','国际关系','英语'], subjects: ['外交学','国际关系','英语'], requirements: {'外交学': {score: 340, lang: '英一', math: '无', note: '外交学综合', extra: '外交部直属，就业优势明显'}}, desc: '外交部直属高校，外交学、国际关系学科特色鲜明，被誉为中国外交官摇篮。' },
-  { name: '香港中文大学(深圳)', city: '广东深圳', region: '广东', type: ['重点'], rank: 82, color: '#0891B2', enrollment: '~1800', ratio: '~9%', hotMajors: ['金融','计算机','数据科学','经济学'], subjects: ['金融','计算机科学与技术','数据科学','应用经济学'], requirements: {'计算机科学与技术': {score: 330, lang: '英一', math: '数一', note: '计算机基础', extra: '国际化教学，全英文授课'}}, desc: '中外合作办学典范，国际化教育模式，金融和计算机专业就业竞争力强。' },
-  { name: '上海纽约大学', city: '上海', region: '上海', type: ['重点'], rank: 88, color: '#0891B2', enrollment: '~500', ratio: '~8%', hotMajors: ['金融','数据科学','交互媒体'], subjects: ['金融','数据科学','交互媒体'], requirements: {'金融': {score: 340, lang: '英一', math: '数三', note: '经济学基础', extra: '中美双学位，国际化教学'}}, desc: '中美合办研究型大学，全英文教学，培养国际化高端人才。' },
 ];
 
 // 院校研究生招生官网链接
@@ -2765,41 +2708,6 @@ const majorData = [
     employment: '就业方向包括食品企业、检测机构、监管部门等。起薪8-14K/月，有经验后可达15-22K/月。',
     development: '未来方向：功能性食品、食品安全检测、食品智能制造、营养健康等。建议关注食品安全和健康管理需求。'
   },
-  {
-    icon: '🌐',
-    name: '数据科学',
-    intro: '研究数据采集、存储、分析和应用的交叉学科，涵盖机器学习、大数据技术、数据可视化等领域。是数字化时代的核心专业之一。',
-    employment: '就业前景极好，各行各业都需要数据分析师和数据科学家。互联网企业、金融行业、科技公司均有大量需求。起薪15-25K/月，资深专家年薪可达50万+。',
-    development: '未来方向：AI大模型、数据治理、商业智能、推荐系统等。建议扎实掌握统计学和编程基础，多参与实际项目。'
-  },
-  {
-    icon: '🏥',
-    name: '临床医学',
-    intro: '研究人类疾病诊断、治疗和预防的学科，涵盖内科学、外科学、儿科学、妇产科学等各个临床分支。是医学领域的核心专业。',
-    employment: '就业前景稳定，三甲医院要求博士学历，社区医院硕士可入职。起薪同地区差异大，8-15K/月，主治医师后可达20-40K/月。',
-    development: '未来方向：精准医疗、微创手术、远程医疗、AI辅助诊断等。建议持续学习，规培期间积累临床经验。'
-  },
-  {
-    icon: '📈',
-    name: '金融学',
-    intro: '研究资金融通、投资决策和金融市场的学科，涵盖公司金融、投资学、金融工程等领域。是经济管理类最热门的专业之一。',
-    employment: '就业方向广泛，包括银行、券商、基金、保险、金融科技等。起薪12-25K/月，PE/VC和量化岗可达30K+。',
-    development: '未来方向：金融科技、量化投资、ESG投资、跨境金融等。建议考取CFA/FRM证书，积累实习经验。'
-  },
-  {
-    icon: '🎓',
-    name: '教育学',
-    intro: '研究教育现象和教育规律的学科，涵盖教育学原理、课程与教学论、教育史等领域。是培养教育工作者和教育管理人才的核心专业。',
-    employment: '就业方向包括学校教师、教育机构、教育行政部门等。起薪7-12K/月，一线城市重点学校可达15K+。',
-    development: '未来方向：在线教育、教育科技、特殊教育、职业教育等。建议考取教师资格证，关注教育改革政策。'
-  },
-  {
-    icon: '🎨',
-    name: '设计学',
-    intro: '研究视觉传达、产品设计和环境设计的学科，涵盖平面设计、工业设计、交互设计等领域。是创意产业的核心专业。',
-    employment: '就业方向包括互联网公司UI/UX设计、产品设计、品牌设计等。起薪10-18K/月，资深设计师年薪可达30-50万。',
-    development: '未来方向：AI辅助设计、用户体验研究、服务设计、可持续设计等。建议掌握设计工具和用户研究方法。'
-  },
 ];
 
 // 专业→院校推荐关键字映射
@@ -3483,239 +3391,14 @@ function renderTips() {
         <span class="article-tag tag-${t.tag}">${t.icon}</span>
         <div class="article-content">
           <div class="article-title">${t.title}</div>
-          <div class="article-meta" style="margin-top: 4px;">${t.content}</div>
+          <div class="article-meta">${t.content}</div>
         </div>
       </li>
     `).join('');
   }
 }
 
-// 渲染热
-// 渲染考研倒计时
-function renderCountdown() {
-  const now = new Date();
-  // 2027考研初试时间（一般12月第三个周末）
-  const exam = new Date(2026, 11, 19);
-  const diff = exam - now;
-  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-  const daysEl = document.getElementById('countdownDays');
-  const labelEl = document.getElementById('countdownLabel');
-  const phaseEl = document.getElementById('countdownPhase');
-  const phaseTag = document.getElementById('preparePhase');
-
-  if (!daysEl) return;
-
-  if (days > 0) {
-    daysEl.textContent = days;
-    daysEl.style.color = days <= 30 ? '#e74c3c' : days <= 90 ? '#e67e22' : '#2ecc71';
-    labelEl.textContent = '距离 2027考研初试';
-  } else if (days > -180) {
-    daysEl.textContent = '📋';
-    daysEl.style.fontSize = '36px';
-    labelEl.textContent = '初试已结束，准备复试中';
-  } else {
-    daysEl.textContent = '🎓';
-    daysEl.style.fontSize = '36px';
-    labelEl.textContent = '新一届考研准备期';
-  }
-
-  // 当前阶段
-  const m = now.getMonth() + 1;
-  let phase = '', phaseTagText = '';
-  if (days > 180) { phase = '基础夯实期：确定目标，打牢英语和数学基础'; phaseTagText = '📖 基础阶段'; }
-  else if (days > 90) { phase = '强化提升期：刷真题，攻克薄弱环节'; phaseTagText = '🔥 强化阶段'; }
-  else if (days > 30) { phase = '冲刺突破期：模拟训练，查漏补缺'; phaseTagText = '⚡ 冲刺阶段'; }
-  else if (days > 0) { phase = '考前冲刺：调整作息，稳住心态'; phaseTagText = '🎯 临考阶段'; }
-  else if (m >= 1 && m <= 4) { phase = '复试与调剂阶段：准备复试材料，关注调剂信息'; phaseTagText = '📋 复试阶段'; }
-  else { phase = '新一届备考规划期：确定目标，制定全年计划'; phaseTagText = '🌱 规划期'; }
-
-  if (phaseEl) phaseEl.textContent = '当前：' + phase;
-  if (phaseTag) phaseTag.textContent = phaseTagText;
-}
-
-// 渲染各科复习规划
-function renderStudyPlan() {
-  const now = new Date();
-  const exam = new Date(2026, 11, 19);
-  const diff = exam - now;
-  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-  const container = document.getElementById('studyPlanList');
-  if (!container) return;
-
-  // 各科规划数据
-  const plans = [
-    {
-      subject: '📖 英语', icon: '🇬🇧',
-      items: days > 180
-        ? ['单词：每天 50-80 个，坚持艾宾浩斯曲线','语法：长难句分析，每天 3-5 句','阅读：每天精读 1 篇真题阅读']
-        : days > 90
-        ? ['阅读：真题二刷，逐题分析题型','作文：整理模板，每周写 2 篇','翻译+完形：真题专项训练']
-        : days > 0
-        ? ['作文：背诵模板+素材，限时写作','阅读：保持手感，每天 1 篇','模考：整套真题 3 小时模拟']
-        : ['复试英语：准备英文自我介绍','专业英语：阅读相关英文文献','日常口语：每天练习 15 分钟']
-    },
-    {
-      subject: '🧮 数学', icon: '📐',
-      items: days > 180
-        ? ['高数：教材+基础习题一轮','线代、概率：同步推进','错题本：建立错题记录制度']
-        : days > 90
-        ? ['强化训练：高频题型专项突破','真题：近 10 年真题精做','模拟卷：每周 2 套限时训练']
-        : days > 0
-        ? ['回归基础：重做错题本上错题','模拟：每两天一套保持手感','公式：考前默写所有核心公式']
-        : ['无需额外准备，按个人规划进行']
-    },
-    {
-      subject: '📕 政治', icon: '🏛️',
-      items: days > 180
-        ? ['暂时不必投入大量时间','零散刷选择题即可','关注时政热点大事记']
-        : days > 90
-        ? ['选择题：大量刷题，建立错题库','分析题：学习答题框架和模板','时政：每周跟进时事热点']
-        : days > 0
-        ? ['分析题：背诵核心考点','时政：重点看全年大事记','模拟：整套选择题限时训练']
-        : ['无需额外准备，按个人规划进行']
-    },
-    {
-      subject: '🔬 专业课', icon: '📚',
-      items: days > 180
-        ? ['参考书：通读指定教材第一遍','框架：建立学科知识思维导图','真题：浏览近 3 年真题风格']
-        : days > 90
-        ? ['精读：二轮精读重点章节','背诵：核心知识点系统记忆','真题：按章节分类做真题']
-        : days > 0
-        ? ['背诵：重点知识反复记忆','真题：整套限时模拟','预测：根据命题趋势押重点']
-        : ['复试专业准备：深入研究导师方向','阅读专业前沿论文']
-    }
-  ];
-
-  container.innerHTML = plans.map(p => {
-    // 进度条
-    let progress = 0;
-    if (days > 180) progress = 15;
-    else if (days > 90) progress = 40;
-    else if (days > 30) progress = 70;
-    else if (days > 0) progress = 90;
-    else progress = 100;
-
-    return '<div style="margin-bottom:16px;padding:12px;background:#f8f9fa;border-radius:10px;">' +
-      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">' +
-        '<div style="font-weight:bold;font-size:15px;">' + p.subject + '</div>' +
-        '<span style="font-size:12px;color:#666;">' + p.icon + '</span>' +
-      '</div>' +
-      '<div style="height:6px;background:#e9ecef;border-radius:3px;margin-bottom:10px;overflow:hidden;">' +
-        '<div style="height:100%;width:' + progress + '%;background:linear-gradient(90deg,#3498db,#2ecc71);border-radius:3px;transition:width 0.5s;"></div>' +
-      '</div>' +
-      p.items.map(item => '<div style="font-size:13px;color:#444;padding:3px 0;display:flex;align-items:center;gap:6px;"><span style="color:#3498db;">▸</span>' + item + '</div>').join('') +
-    '</div>';
-  }).join('');
-}
-
-// 渲染每日作息推荐
-function renderSchedule() {
-  const container = document.getElementById('scheduleDisplay');
-  if (!container) return;
-
-  const now = new Date();
-  const exam = new Date(2026, 11, 19);
-  const diff = exam - now;
-  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-  let schedule;
-  if (days > 180) {
-    schedule = [
-      ['07:00-07:30', '起床洗漱，喝一杯温水', '🌅'],
-      ['07:30-08:00', '晨读：英语单词/政治', '📖'],
-      ['08:00-11:30', '数学/专业课（高强度脑力）', '🧠'],
-      ['11:30-13:30', '午餐 + 午休 30分钟', '🍚'],
-      ['13:30-16:00', '英语阅读/专业课', '📝'],
-      ['16:00-17:30', '政治/专业课背诵', '📕'],
-      ['17:30-19:00', '晚餐 + 散步运动', '🚶'],
-      ['19:00-21:00', '当日复盘 + 错题整理', '🔄'],
-      ['21:00-22:30', '自由安排/薄弱科目补充', '✨'],
-      ['22:30-23:00', '洗漱准备睡觉', '🛌'],
-    ];
-  } else if (days > 90) {
-    schedule = [
-      ['06:30-07:00', '起床，快速清醒', '🌅'],
-      ['07:00-07:30', '英语作文/政治背诵', '📖'],
-      ['07:30-11:30', '真题模拟（按考试时间）', '📝'],
-      ['11:30-13:30', '午餐 + 午休 20分钟', '🍚'],
-      ['13:30-16:00', '英语/专业课强化', '🧠'],
-      ['16:00-17:30', '政治刷题+分析题训练', '📕'],
-      ['17:30-18:30', '晚餐 + 短暂放松', '🍚'],
-      ['18:30-21:00', '当日错题复盘 + 薄弱攻克', '🔄'],
-      ['21:00-22:00', '明日计划 + 时政阅读', '📋'],
-      ['22:00-22:30', '洗漱休息', '🛌'],
-    ];
-  } else if (days > 0) {
-    schedule = [
-      ['06:00-06:30', '起床，适量运动唤醒身体', '🌅'],
-      ['06:30-07:00', '政治/专业课快速回顾', '📖'],
-      ['07:00-11:30', '全真模拟（严格按考试时间）', '📝'],
-      ['11:30-13:00', '午餐 + 午休 15分钟', '🍚'],
-      ['13:00-17:00', '英语/专业课查漏补缺', '🧠'],
-      ['17:00-18:00', '晚餐 + 散步', '🍚'],
-      ['18:00-20:00', '当日错题复盘', '🔄'],
-      ['20:00-21:00', '背诵记忆类科目', '📕'],
-      ['21:00-22:00', '放松 + 早睡', '🛌'],
-    ];
-  } else {
-    schedule = [
-      ['07:00-08:00', '起床，早餐，关注研招信息', '🌅'],
-      ['08:00-10:00', '准备复试材料/联系导师', '📋'],
-      ['10:00-12:00', '专业知识深研 & 前沿论文', '📚'],
-      ['12:00-14:00', '午餐 + 午休', '🍚'],
-      ['14:00-16:00', '英语口语/听力练习', '🎤'],
-      ['16:00-18:00', '阅读专业文献/整理笔记', '📝'],
-      ['18:00-19:00', '晚餐 + 放松', '🍚'],
-      ['19:00-21:00', '模拟面试/自我介绍练习', '🎯'],
-      ['21:00-22:00', '今日总结 + 明日计划', '📋'],
-    ];
-  }
-
-  let rows = '';
-  schedule.forEach((s, i) => {
-    const isCurrent = i === Math.floor(new Date().getHours() / 3);
-    rows += '<div style="display:flex;align-items:center;padding:8px 12px;' +
-      (isCurrent ? 'background:#e8f4fd;border-radius:8px;' : '') +
-      'border-bottom:1px solid #f0f0f0;">' +
-      '<div style="font-size:18px;margin-right:10px;">' + s[2] + '</div>' +
-      '<div style="flex:0 0 100px;font-size:13px;color:#666;font-family:monospace;">' + s[0] + '</div>' +
-      '<div style="flex:1;font-size:13px;color:#333;">' + s[1] + '</div>' +
-    '</div>';
-  });
-  container.innerHTML = rows;
-}
-
-// 渲染推荐资源
-function renderResources() {
-  const list = document.getElementById('resourceList');
-  if (!list) return;
-
-  const resources = [
-    { name: '📖 中国研究生招生信息网', url: 'https://yz.chsi.com.cn', desc: '报名、查分、调剂官方平台' },
-    { name: '📚 考研帮 - 备考社区', url: 'https://www.kaoyan.com', desc: '经验贴、资料分享、备考工具' },
-    { name: '🏫 中国教育在线考研频道', url: 'https://kaoyan.eol.cn', desc: '院校信息、分数线、报录比' },
-    { name: '📝 51考研网', url: 'https://www.51kywang.com', desc: '专业课资料、院校信息库' },
-    { name: '📊 软科排名', url: 'https://www.shanghairanking.cn', desc: '学科排名、院校排名参考' },
-    { name: '🎯 研招网调剂系统', url: 'https://yz.chsi.com.cn/yztj/', desc: '官方调剂信息平台' },
-  ];
-
-  // 使用 data-url 属性绑定链接，用事件委托处理
-  list.innerHTML = resources.map((r, i) => {
-    return '<li class="article-item" style="cursor:pointer;" data-url="' + r.url + '" data-index="' + i + '">' +
-      '<div class="article-content">' +
-        '<div class="article-title" style="font-size:14px;">' + r.name + '</div>' +
-        '<div class="article-meta" style="margin-top:2px;font-size:12px;color:#888;">' + r.desc + '</div>' +
-      '</div>' +
-      '<span style="color:#3498db;font-size:12px;">→</span>' +
-    '</li>';
-  }).join('');
-  // 点击跳转
-  list.querySelectorAll('.article-item').forEach(function(el) {
-    el.onclick = function() { window.open(el.getAttribute('data-url'), '_blank'); };
-  });
-}
-门文章
+// 渲染热门文章
 function renderHotArticles() {
   const list = document.getElementById('hotArticlesList');
   if (list) {
@@ -3724,7 +3407,6 @@ function renderHotArticles() {
         <span class="article-tag tag-${a.tag}">${a.tag === 'hot' ? '热' : a.tag === 'new' ? '新' : a.tag === 'important' ? '重' : '推'}</span>
         <div class="article-content">
           <div class="article-title" style="cursor:pointer;">${a.title}</div>
-          <div class="article-summary" style="font-size: 12px; color: #666; margin: 4px 0; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${(a.summary || '').substring(0, 80)}${(a.summary || '').length > 80 ? '...' : ''}</div>
           <div class="article-meta">${a.meta}</div>
         </div>
       </li>
@@ -4519,15 +4201,14 @@ var adjustTimelineData = [
 function renderAdjustList(data) {
   var list = document.getElementById('adjustList');
   if (!list) return;
-  list.innerHTML = data.map(function(d, idx) {
-    return '<li class="article-item" onclick="showAdjustDetail(' + idx + ')" style="cursor:pointer;">'
+  list.innerHTML = data.map(function(d) {
+    return '<li class="article-item">'
       + '<span class="article-tag tag-' + d.tag + '">' + (d.tag === 'hot' ? '热' : d.tag === 'new' ? '新' : '荐') + '</span>'
       + '<div class="article-content">'
       + '<div class="article-title">' + d.title + '</div>'
       + '<div class="article-meta">' + d.content + ' · ' + d.time + '</div>'
       + '</div></li>';
   }).join('');
-  window._adjustData = data;
 }
 
 function filterAdjust(cat, btn) {
@@ -4535,35 +4216,6 @@ function filterAdjust(cat, btn) {
   btn.classList.add('active');
   var data = cat === 'all' ? adjustData : adjustData.filter(function(d) { return d.cat === cat; });
   renderAdjustList(data);
-}
-
-function showAdjustDetail(idx) {
-  var d = window._adjustData ? window._adjustData[idx] : null;
-  if (!d) return;
-  const modal = document.getElementById('modalOverlay');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalBody = document.getElementById('modalBody');
-  var tags = d.tag === 'hot' ? '🔥 热门' : d.tag === 'new' ? '✨ 最新' : '📌 推荐';
-  var catLabel = d.cat === 'cs' ? '工学' : d.cat === 'econ' ? '经管' : d.cat === 'law' ? '法学' : d.cat === 'edu' ? '教育' : d.cat === 'med' ? '医学' : '综合';
-  modalTitle.textContent = '调剂信息详情';
-  modalBody.innerHTML = '<div style="padding:20px;">'
-    + '<div style="background:linear-gradient(135deg,var(--accent)0%,var(--accent-light)100%);color:white;padding:16px;border-radius:8px;margin-bottom:16px;">'
-    + '<div style="font-size:14px;opacity:0.9;">' + tags + ' · ' + catLabel + '</div>'
-    + '<div style="font-size:18px;font-weight:600;margin-top:8px;">' + d.title + '</div></div>'
-    + '<div style="background:#f8f9fa;padding:16px;border-radius:8px;margin-bottom:16px;">'
-    + '<div style="font-size:14px;color:#666;line-height:1.8;">'
-    + (d.content && d.content !== d.time ? '<p><strong>📋 说明：</strong>' + d.content + '</p>' : '')
-    + '<p style="margin-top:8px;"><strong>📅 类别：</strong>' + catLabel + '</p>'
-    + '</div></div>'
-    + '<div style="background:#fff3e0;padding:16px;border-radius:8px;margin-bottom:16px;border-left:4px solid var(--accent);">'
-    + '<div style="font-size:14px;color:#333;line-height:1.8;"><strong>💡 调剂提醒：</strong><br>'
-    + '• 调剂系统开放时间有限，建议提前准备<br>'
-    + '• 一次可填报3个平行志愿，注意院校锁定时间<br>'
-    + '• 收到复试通知后需及时确认，逾期作废<br>'
-    + '• 保持电话畅通，关注研招网系统通知</div></div>'
-    + '<div style="margin-top:20px;padding-top:16px;border-top:1px solid #eee;">'
-    + '<a href="https://yz.chsi.com.cn/yztj/" target="_blank" style="display:inline-block;background:var(--accent);color:white;padding:10px 20px;border-radius:6px;text-decoration:none;font-size:14px;">📋 进入研招网调剂系统</a></div></div>';
-  modal.classList.add('show');
 }
 
 function renderAdjustTimeline() {
@@ -4918,10 +4570,6 @@ function init() {
   renderScoreTable(lineData);
   renderMajors();
   renderTips();
-  renderCountdown();
-  renderStudyPlan();
-  renderSchedule();
-  renderResources();
   renderHotArticles();
   renderLinks();
   renderExamTable(examData);
