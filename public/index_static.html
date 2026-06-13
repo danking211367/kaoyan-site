@@ -1357,7 +1357,7 @@
     </div>
   
     <div style="background: rgba(255,255,255,0.15); padding: 12px 16px; border-radius: 8px; margin-top: 16px; font-size: 14px;">
-        <span style="font-weight: 600;">💡 每日提示：</span>每天留30分钟回顾当天所学，比连续学习更高效 每周四与研友交流学习心得，互相监督 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-13 12:09:28</span>
+        <span style="font-weight: 600;">💡 每日提示：</span>每天留30分钟回顾当天所学，比连续学习更高效 每周四与研友交流学习心得，互相监督 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-13 13:40:33</span>
     </div></div>
 
   <!-- ========== MAIN GRID ========== -->
@@ -1655,11 +1655,42 @@
 
       <!-- ========== PREPARE TAB ========== -->
       <div id="tab-prepare" class="tab-content">
+        <!-- 备考阶段规划 -->
         <div class="card">
           <div class="card-header">
-            <div class="card-title">✍️ 备考指南</div>
+            <div class="card-title">📅 备考阶段规划</div>
+            <span class="card-more">2027考研</span>
           </div>
           <div class="card-body">
+            <div class="timeline" id="prepareTimeline"></div>
+          </div>
+        </div>
+
+        <!-- 每日学习建议 -->
+        <div class="card" style="margin-top: 24px;">
+          <div class="card-header">
+            <div class="card-title">📋 每日学习建议</div>
+          </div>
+          <div class="card-body">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;" id="dailyTipsGrid">
+            </div>
+          </div>
+        </div>
+
+        <!-- 备考指南 -->
+        <div class="card" style="margin-top: 24px;">
+          <div class="card-header">
+            <div class="card-title">✍️ 分科备考指南</div>
+          </div>
+          <div class="card-body">
+            <div class="filter-bar" style="margin-bottom: 16px;">
+              <button class="filter-btn active" onclick="filterPrepare('all', this)">全部</button>
+              <button class="filter-btn" onclick="filterPrepare('politics', this)">政治</button>
+              <button class="filter-btn" onclick="filterPrepare('english', this)">英语</button>
+              <button class="filter-btn" onclick="filterPrepare('math', this)">数学</button>
+              <button class="filter-btn" onclick="filterPrepare('pro', this)">专业课</button>
+              <button class="filter-btn" onclick="filterPrepare('general', this)">综合规划</button>
+            </div>
             <ul class="article-list" id="tipsList"></ul>
           </div>
         </div>
@@ -1667,10 +1698,32 @@
 
       <!-- ========== ADJUST TAB ========== -->
       <div id="tab-adjust" class="tab-content">
-        <!-- 调剂信息 -->
+        <!-- 复试调剂 Banner -->
+        <div class="banner" style="background: linear-gradient(135deg, #2B5BA0 0%, #5B9BE0 100%);">
+          <h2>🎯 复试调剂一站式服务中心</h2>
+          <p>覆盖复试全流程指导、实时调剂信息、院校调剂要求、学长经验分享，助你顺利上岸</p>
+          <div class="banner-stats">
+            <div class="banner-stat"><div class="banner-stat-num">200+</div><div class="banner-stat-label">调剂院校信息</div></div>
+            <div class="banner-stat"><div class="banner-stat-num">50+</div><div class="banner-stat-label">复试经验贴</div></div>
+            <div class="banner-stat"><div class="banner-stat-num">8</div><div class="banner-stat-label">学科门类覆盖</div></div>
+          </div>
+        </div>
+
+        <!-- 复试准备指南 -->
         <div class="card">
           <div class="card-header">
-            <div class="card-title">🔄 2027年调剂信息</div>
+            <div class="card-title">🎓 复试准备指南</div>
+            <span class="card-more" style="font-size: 12px; color: var(--text-lighter);">复试全流程一站式指导</span>
+          </div>
+          <div class="card-body">
+            <div class="prepare-grid" id="reexamPrepareGrid"></div>
+          </div>
+        </div>
+
+        <!-- 调剂信息汇总 -->
+        <div class="card" style="margin-top: 24px;">
+          <div class="card-header">
+            <div class="card-title">🔄 2027年调剂信息汇总</div>
             <span class="card-more" style="font-size: 12px; color: var(--success);">系统已更新 · 2027-05</span>
           </div>
           <div class="card-body">
@@ -1681,18 +1734,104 @@
               <button class="filter-btn" onclick="filterAdjust('law', this)">法学</button>
               <button class="filter-btn" onclick="filterAdjust('edu', this)">教育</button>
               <button class="filter-btn" onclick="filterAdjust('med', this)">医学</button>
+              <button class="filter-btn" onclick="filterAdjust('art', this)">艺术</button>
+              <button class="filter-btn" onclick="filterAdjust('science', this)">理学</button>
             </div>
+            <table class="data-table" style="margin-bottom: 12px;">
+              <thead>
+                <tr>
+                  <th>院校</th>
+                  <th>调剂专业</th>
+                  <th>学科门类</th>
+                  <th>预计名额</th>
+                  <th>分数要求</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody id="adjustTableBody"></tbody>
+            </table>
             <ul class="article-list" id="adjustList"></ul>
           </div>
         </div>
 
-        <!-- 调剂须知 -->
+        <!-- 调剂策略评估 -->
+        <div class="card" style="margin-top: 24px;">
+          <div class="card-header">
+            <div class="card-title">🧮 调剂策略评估</div>
+            <span class="card-more" style="font-size: 12px; color: var(--text-lighter);">快速评估你的调剂成功率</span>
+          </div>
+          <div class="card-body">
+            <div class="form-row" style="gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
+              <div class="form-group" style="flex: 1; min-width: 160px;">
+                <label class="form-label">初试总分</label>
+                <input type="number" class="form-input" id="adjustScore" placeholder="如：360" style="width: 100%;">
+              </div>
+              <div class="form-group" style="flex: 1; min-width: 160px;">
+                <label class="form-label">单科（政治/英语）</label>
+                <input type="number" class="form-input" id="adjustSingle1" placeholder="如：65" style="width: 100%;">
+              </div>
+              <div class="form-group" style="flex: 1; min-width: 160px;">
+                <label class="form-label">单科（数学/专业课）</label>
+                <input type="number" class="form-input" id="adjustSingle2" placeholder="如：100" style="width: 100%;">
+              </div>
+              <div class="form-group" style="flex: 1; min-width: 160px;">
+                <label class="form-label">报考院校层次</label>
+                <select class="form-input" id="adjustTargetLevel" style="width: 100%;">
+                  <option value="985">985院校</option>
+                  <option value="211">211院校</option>
+                  <option value="double" selected>双一流</option>
+                  <option value="普通">普通院校</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row" style="gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
+              <div class="form-group" style="flex: 1; min-width: 200px;">
+                <label class="form-label">本科专业</label>
+                <input type="text" class="form-input" id="adjustMajor" placeholder="如：计算机科学与技术" style="width: 100%;">
+              </div>
+              <div class="form-group" style="flex: 1; min-width: 200px;">
+                <label class="form-label">本科院校层次</label>
+                <select class="form-input" id="adjustSourceLevel" style="width: 100%;">
+                  <option value="985">985院校</option>
+                  <option value="211">211院校</option>
+                  <option value="double" selected>双一流/一本</option>
+                  <option value="普通">二本及以下</option>
+                </select>
+              </div>
+            </div>
+            <button class="header-btn header-btn-filled" onclick="evaluateAdjust()" style="width: 100%; padding: 12px; font-size: 15px;">🔍 评估调剂策略</button>
+            <div id="adjustResult" style="margin-top: 16px; display: none;"></div>
+          </div>
+        </div>
+
+        <!-- 复试经验分享 -->
+        <div class="card" style="margin-top: 24px;">
+          <div class="card-header">
+            <div class="card-title">💬 复试经验分享</div>
+            <span class="card-more" style="font-size: 12px; color: var(--text-lighter);">来自学长学姐的真实经验</span>
+          </div>
+          <div class="card-body">
+            <div class="filter-bar" style="margin-bottom: 16px;">
+              <button class="filter-btn active" onclick="filterReexamExp('all', this)">全部</button>
+              <button class="filter-btn" onclick="filterReexamExp('interview', this)">综合面试</button>
+              <button class="filter-btn" onclick="filterReexamExp('english', this)">英语口语</button>
+              <button class="filter-btn" onclick="filterReexamExp('major', this)">专业课</button>
+              <button class="filter-btn" onclick="filterReexamExp('contact', this)">联系导师</button>
+            </div>
+            <div id="reexamExpList"></div>
+          </div>
+        </div>
+
+        <!-- 调剂流程与须知 -->
         <div class="card" style="margin-top: 24px;">
           <div class="card-header">
             <div class="card-title">📋 调剂流程与须知</div>
           </div>
           <div class="card-body">
             <div class="timeline" id="adjustTimeline"></div>
+            <div style="margin-top: 20px; padding: 16px; background: #FEF3C7; border-radius: 8px; font-size: 13px; color: #92400E;">
+              <strong>⚠️ 重要提醒：</strong>调剂系统每次可填报3个平行志愿，志愿锁定36小时。建议提前联系院校确认调剂名额，避免志愿被锁错失机会。
+            </div>
           </div>
         </div>
       </div>
@@ -2321,7 +2460,7 @@ const timelineData = [
   }
 ];
 
-// 备考技巧
+// 备考技巧（分科分类）
 const tipsData = [
   {
     "icon": "💡",
@@ -2383,6 +2522,22 @@ const tipsData = [
     "content": "复试",
     "tag": "note"
   }
+];
+
+// 备考阶段规划数据
+const prepareStageData = [
+  { date: '3-6月', title: '基础阶段', desc: '系统学习各科基础知识，数学过教材+课后习题，英语背单词+长难句，专业课通读参考书。每天6-8小时。', status: 'current' },
+  { date: '7-8月', title: '强化阶段', desc: '数学刷复习全书+660题，英语精读真题阅读，政治开始看马原+史纲，专业课整理笔记+知识框架。每天8-10小时。', status: 'future' },
+  { date: '9-10月', title: '提升阶段', desc: '数学刷真题+错题总结，英语完型+新题型+翻译专项，政治刷1000题+看毛中特，专业课刷历年真题。每天10小时。', status: 'future' },
+  { date: '11-12月', title: '冲刺阶段', desc: '全科模拟考试，数学做模拟卷保持手感，英语背作文模板，政治背肖四肖八，专业课背诵重点。每天10-12小时。', status: 'future' }
+];
+
+// 每日学习建议
+const dailyTipsData = [
+  { icon: '🌅', title: '早晨 (8:00-12:00)', desc: '大脑最清醒，适合攻克数学或专业课难点。安排2小时数学+2小时专业课。' },
+  { icon: '🌞', title: '下午 (14:00-17:00)', desc: '适合英语学习，做真题阅读+背单词。也可以安排政治听课。' },
+  { icon: '🌙', title: '晚上 (19:00-22:00)', desc: '适合复习当天内容+整理笔记+背诵。政治和专业课的背诵放在晚上。' },
+  { icon: '✅', title: '每日必做', desc: '背单词50个+数学做题保持手感+回顾当天错题。不要间断！' }
 ];
 
 // 热门专业（含详细介绍）
@@ -3382,20 +3537,85 @@ function closeMajorModal() {
   if (modal) modal.classList.remove('show');
 }
 
-// 渲染技巧
+// 渲染备考阶段
+function renderPrepareStages() {
+  const container = document.getElementById('prepareTimeline');
+  if (!container) return;
+  container.innerHTML = prepareStageData.map(e => {
+    const cls = e.status === 'done' ? 'done' : e.status === 'current' ? 'current' : '';
+    const badge = e.status === 'done' ? '<span class="timeline-status status-done">已完成</span>'
+      : e.status === 'current' ? '<span class="timeline-status status-current">进行中</span>'
+      : '<span class="timeline-status status-future">即将开始</span>';
+    return `<div class="timeline-item ${cls}">
+      <div class="timeline-date">${e.date} ${badge}</div>
+      <div class="timeline-title">${e.title}</div>
+      <div class="timeline-desc">${e.desc}</div>
+    </div>`;
+  }).join('');
+}
+
+// 渲染每日学习建议
+function renderDailyTips() {
+  const grid = document.getElementById('dailyTipsGrid');
+  if (!grid) return;
+  grid.innerHTML = dailyTipsData.map(t => `
+    <div style="padding: 16px; background: #F8FAFC; border-radius: 10px; border-left: 4px solid var(--primary);">
+      <div style="font-size: 20px; margin-bottom: 8px;">${t.icon}</div>
+      <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">${t.title}</div>
+      <div style="font-size: 13px; color: var(--text-light); line-height: 1.6;">${t.desc}</div>
+    </div>
+  `).join('');
+}
+
+// 渲染备考指南（支持分类筛选）
+let prepareFilter = 'all';
 function renderTips() {
   const list = document.getElementById('tipsList');
-  if (list) {
-    list.innerHTML = tipsData.map(t => `
-      <li class="article-item">
-        <span class="article-tag tag-${t.tag}">${t.icon}</span>
-        <div class="article-content">
-          <div class="article-title">${t.title}</div>
-          <div class="article-meta">${t.content}</div>
-        </div>
-      </li>
-    `).join('');
-  }
+  if (!list) return;
+  const data = prepareFilter === 'all' ? tipsData : tipsData.filter(t => t.category === prepareFilter);
+  list.innerHTML = data.map(t => `
+    <li class="article-item" onclick="showTipDetail('${t.title.replace(/'/g, "\\'")}')">
+      <span class="article-tag tag-${t.tag}">${t.icon}</span>
+      <div class="article-content">
+        <div class="article-title">${t.title}</div>
+        <div class="article-meta">${t.content}</div>
+      </div>
+    </li>
+  `).join('');
+}
+
+// 筛选备考指南
+function filterPrepare(cat, btn) {
+  btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  prepareFilter = cat;
+  renderTips();
+}
+
+// 显示备考指南详情
+function showTipDetail(title) {
+  const t = tipsData.find(x => x.title === title);
+  if (!t) return;
+  const modal = document.getElementById('modalOverlay');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalBody = document.getElementById('modalBody');
+  const catLabels = { politics: '政治', english: '英语', math: '数学', pro: '专业课', general: '综合规划' };
+  modalTitle.textContent = '备考指南详情';
+  modalBody.innerHTML = `
+    <div style="padding: 20px;">
+      <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
+        <div style="font-size: 12px; opacity: 0.9;">${t.icon} ${catLabels[t.category] || '备考指南'}</div>
+        <div style="font-size: 18px; font-weight: 600; margin-top: 8px;">${t.title}</div>
+      </div>
+      <div style="background: #f8f9fa; padding: 16px; border-radius: 8px; font-size: 15px; color: #333; line-height: 1.8;">
+        ${t.content}
+      </div>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #eee;">
+        <button onclick="closeModal()" style="padding: 10px 24px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">关闭</button>
+      </div>
+    </div>
+  `;
+  modal.classList.add('show');
 }
 
 // 渲染热门文章
@@ -4165,7 +4385,9 @@ function filterExam(cat, btn) {
   renderExamTable(data);
 }
 
-// 调剂信息数据
+// ========== 复试调剂数据 ==========
+
+// 调剂信息文章数据
 var adjustData = [
   {
     "cat": "cs",
@@ -4190,19 +4412,69 @@ var adjustData = [
   }
 ];
 
-var adjustTimelineData = [
-  { date: '第1步', title: '查询调剂信息', desc: '国家线公布后，登录研招网调剂系统，查看各校调剂名额和专业要求。', status: 'done' },
-  { date: '第2步', title: '填报调剂意向', desc: '在调剂系统中填报3个调剂意向，等待招生单位确认。', status: 'done' },
-  { date: '第3步', title: '等待复试通知', desc: '招生单位审核后会发送复试通知，需在规定时间内确认。', status: 'current' },
-  { date: '第4步', title: '参加调剂复试', desc: '按通知要求参加调剂复试（线上/线下），准备专业课笔试和面试。', status: 'future' },
-  { date: '第5步', title: '确认待录取', desc: '收到待录取通知后，需在24小时内确认，逾期视为放弃。', status: 'future' },
+// 调剂院校表格数据
+var adjustTableData = [
+  { school: "兰州大学", major: "计算机科学与技术", cat: "cs", spots: "8人", score: "≥320", status: "进行中" },
+  { school: "广西大学", major: "电子信息", cat: "cs", spots: "15人", score: "≥300", status: "进行中" },
+  { school: "云南大学", major: "软件工程", cat: "cs", spots: "12人", score: "≥310", status: "进行中" },
+  { school: "贵州大学", major: "控制科学与工程", cat: "cs", spots: "6人", score: "≥295", status: "进行中" },
+  { school: "新疆大学", major: "机械工程", cat: "cs", spots: "10人", score: "≥280", status: "进行中" },
+  { school: "内蒙古大学", major: "应用经济学", cat: "econ", spots: "5人", score: "≥340", status: "进行中" },
+  { school: "宁夏大学", major: "工商管理", cat: "econ", spots: "8人", score: "≥330", status: "进行中" },
+  { school: "海南大学", major: "金融专硕", cat: "econ", spots: "12人", score: "≥345", status: "进行中" },
+  { school: "青海大学", major: "会计专硕", cat: "econ", spots: "6人", score: "≥210", status: "进行中" },
+  { school: "石河子大学", major: "法律硕士", cat: "law", spots: "10人", score: "≥315", status: "进行中" },
+  { school: "延边大学", major: "法学学硕", cat: "law", spots: "4人", score: "≥325", status: "进行中" },
+  { school: "西藏大学", major: "教育学", cat: "edu", spots: "6人", score: "≥330", status: "进行中" },
+  { school: "喀什大学", major: "学科教学(语文)", cat: "edu", spots: "8人", score: "≥340", status: "进行中" },
+  { school: "大理大学", major: "临床医学", cat: "med", spots: "5人", score: "≥305", status: "进行中" },
+  { school: "昆明医科大学", major: "药学", cat: "med", spots: "7人", score: "≥300", status: "进行中" },
+  { school: "广西艺术学院", major: "设计学", cat: "art", spots: "6人", score: "≥350", status: "进行中" },
+  { school: "内蒙古师范大学", major: "美术学", cat: "art", spots: "4人", score: "≥340", status: "进行中" },
+  { school: "桂林理工大学", major: "数学", cat: "science", spots: "5人", score: "≥285", status: "进行中" },
+  { school: "塔里木大学", major: "化学", cat: "science", spots: "3人", score: "≥280", status: "进行中" }
 ];
+
+// 复试准备数据
+var reexamPrepareData = [
+  { icon: "🗣️", title: "英语口语", desc: "准备2-3分钟英文自我介绍，熟悉常见问答（家乡、爱好、读研规划）。每天练习30分钟。", tip: "提前准备好自我介绍模板，背诵至流利自然" },
+  { icon: "📚", title: "专业课笔试", desc: "复习初试科目+复试指定教材，关注学科前沿热点。部分院校有实验操作考核。", tip: "查阅目标院校近3年复试真题，了解出题风格" },
+  { icon: "🧠", title: "综合面试", desc: "考察科研潜力、逻辑思维、表达能力。常见问题：毕业论文、科研项目、读研规划。", tip: "模拟面试练习，准备好个人亮点故事" },
+  { icon: "👨‍🏫", title: "联系导师", desc: "初试成绩公布后发邮件联系导师，附简历和成绩单。邮件简洁礼貌，突出科研兴趣匹配度。", tip: "提前阅读导师近3年论文，提及具体研究方向" },
+  { icon: "📄", title: "材料准备", desc: "身份证、准考证、成绩单、学历证明、个人简历、获奖证书、科研成果等原件及复印件。", tip: "按院校要求清单准备，多复印几份备用" },
+  { icon: "💻", title: "线上复试", desc: "双机位准备、网络测试、安静环境、正装出镜。提前熟悉面试平台操作流程。", tip: "提前一天进行设备调试，准备备用网络" }
+];
+
+// 复试经验数据
+var reexamExpData = [
+  { cat: "interview", school: "北京大学", author: "计算机学院学长", title: "北大计算机复试：机试+面试全流程回顾", content: "机试4道题3小时，难度接近LeetCode中等偏上。面试侧重项目经历，被问了20分钟毕业设计细节。建议提前刷POJ/PTA题库。", tags: ["985","机试"] },
+  { cat: "english", school: "复旦大学", author: "金融专硕学姐", title: "复旦金专英语面试：从紧张到流畅的蜕变", content: "英语面试约10分钟，先自我介绍2分钟，然后老师随机提问。我被问到'为什么选择复旦'和'你的职业规划'。提前准备题库非常重要。", tags: ["985","英语"] },
+  { cat: "major", school: "武汉大学", author: "法学学硕学长", title: "武大法学复试：专业课面试的应对策略", content: "专业课面试采用抽题形式，范围涵盖民法、刑法、宪法。抽到不会的题不要慌，可以尝试关联自己熟悉的内容作答，老师更看重思路。", tags: ["985","抽题"] },
+  { cat: "contact", school: "浙江大学", author: "电子信息学长", title: "联系导师的黄金时间与邮件模板", content: "初试成绩出来当天就发了邮件，导师第二天回复。邮件标题要清晰：'报考XX专业硕士-姓名-初试分数'。正文300字以内，突出科研经历和兴趣匹配。", tags: ["985","邮件"] },
+  { cat: "interview", school: "中山大学", author: "临床医学学姐", title: "医学复试：临床技能考核注意事项", content: "临床技能考操作+病例分析。操作考心肺复苏、体格检查等基本项目。建议考前看视频复习规范流程，注意无菌操作细节。", tags: ["985","技能"] },
+  { cat: "english", school: "华中科技大学", author: "机械学长", title: "华科机械复试：英语文献翻译技巧", content: "英语环节包括文献摘要翻译，给的机械相关论文片段。专业词汇量很重要，建议考前看几本英文教材的目录和前言部分。", tags: ["985","翻译"] },
+  { cat: "major", school: "西安交通大学", author: "电气学姐", title: "西交电气复试：电力电子方向面试经验", content: "面试5位老师，每人问2-3个问题。重点问电力电子拓扑、控制策略。要准备好对本科课程中核心知识点的深入理解。", tags: ["985","专业"] },
+  { cat: "contact", school: "南开大学", author: "经济学学姐", title: "调剂到南开：从失望到惊喜的调剂之路", content: "一志愿清华差5分，调剂系统开放后立即填报南开。关键是提前联系了接收调剂的导师，获得了内部名额信息。调剂要主动出击！", tags: ["985","调剂"] },
+  { cat: "interview", school: "四川大学", author: "教育学学长", title: "川大教育复试：无生试讲如何应对", content: "要求10分钟无生试讲，提前准备了3个课题。抽到'教育公平'相关内容，用PPT辅助展示。建议准备板书，展示教学基本功。", tags: ["985","试讲"] },
+  { cat: "english", school: "同济大学", author: "建筑学姐", title: "同济建筑复试：英语面试中的作品集介绍", content: "英语面试要求用英文介绍作品集项目。提前写好每个项目的英文介绍稿，练习到能自然表达设计思路。老师还问了关于可持续建筑的看法。", tags: ["985","作品集"] }
+];
+
+// 调剂流程时间线
+var adjustTimelineData = [
+  { date: '第1步', title: '查询调剂信息', desc: '国家线公布后，登录研招网调剂系统，查看各校调剂名额和专业要求。关注目标院校官网公告。', status: 'done' },
+  { date: '第2步', title: '填报调剂意向', desc: '在调剂系统中填报3个调剂意向，注意志愿锁定36小时。建议先填2个留1个机动。', status: 'done' },
+  { date: '第3步', title: '等待复试通知', desc: '招生单位审核后会发送复试通知，需在规定时间内确认。可同时接受多个复试通知。', status: 'current' },
+  { date: '第4步', title: '参加调剂复试', desc: '按通知要求参加调剂复试（线上/线下），准备专业课笔试和面试。调剂复试与一志愿复试内容基本一致。', status: 'future' },
+  { date: '第5步', title: '确认待录取', desc: '收到待录取通知后，需在24小时内确认，逾期视为放弃。确认后将无法接受其他院校录取。', status: 'future' },
+];
+
+// ========== 复试调剂渲染函数 ==========
 
 function renderAdjustList(data) {
   var list = document.getElementById('adjustList');
   if (!list) return;
   list.innerHTML = data.map(function(d) {
-    return '<li class="article-item">'
+    return '<li class="article-item" onclick="showAdjustDetail(\'' + d.title.replace(/'/g, "\\'") + '\')">'
       + '<span class="article-tag tag-' + d.tag + '">' + (d.tag === 'hot' ? '热' : d.tag === 'new' ? '新' : '荐') + '</span>'
       + '<div class="article-content">'
       + '<div class="article-title">' + d.title + '</div>'
@@ -4211,11 +4483,31 @@ function renderAdjustList(data) {
   }).join('');
 }
 
+function renderAdjustTable(data) {
+  var tbody = document.getElementById('adjustTableBody');
+  if (!tbody) return;
+  var catColors = { cs: '#3B82F6', econ: '#10B981', law: '#8B5CF6', edu: '#F59E0B', med: '#EF4444', art: '#EC4899', science: '#06B6D4' };
+  var catLabels = { cs: '工学', econ: '经管', law: '法学', edu: '教育', med: '医学', art: '艺术', science: '理学' };
+  tbody.innerHTML = data.map(function(d) {
+    var c = catColors[d.cat] || '#6B7280';
+    return '<tr>'
+      + '<td><strong>' + d.school + '</strong></td>'
+      + '<td>' + d.major + '</td>'
+      + '<td><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:500;background:' + c + '22;color:' + c + ';">' + (catLabels[d.cat] || d.cat) + '</span></td>'
+      + '<td>' + d.spots + '</td>'
+      + '<td>' + d.score + '</td>'
+      + '<td><span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;background:#DCFCE7;color:#166534;">' + d.status + '</span></td>'
+      + '</tr>';
+  }).join('');
+}
+
 function filterAdjust(cat, btn) {
   btn.parentElement.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
-  var data = cat === 'all' ? adjustData : adjustData.filter(function(d) { return d.cat === cat; });
-  renderAdjustList(data);
+  var listData = cat === 'all' ? adjustData : adjustData.filter(function(d) { return d.cat === cat || d.cat === 'all'; });
+  var tableData = cat === 'all' ? adjustTableData : adjustTableData.filter(function(d) { return d.cat === cat; });
+  renderAdjustList(listData);
+  renderAdjustTable(tableData);
 }
 
 function renderAdjustTimeline() {
@@ -4232,6 +4524,172 @@ function renderAdjustTimeline() {
       + '<div class="timeline-desc">' + e.desc + '</div>'
       + '</div>';
   }).join('');
+}
+
+// 复试准备指南渲染
+function renderReexamPrepare() {
+  var container = document.getElementById('reexamPrepareGrid');
+  if (!container) return;
+  container.innerHTML = reexamPrepareData.map(function(d, i) {
+    return '<div style="padding: 20px; background: #F8FAFC; border-radius: 10px; border-left: 4px solid var(--primary); margin-bottom: 12px;">'
+      + '<div style="display: flex; align-items: flex-start; gap: 14px;">'
+      + '<div style="font-size: 32px; flex-shrink: 0;">' + d.icon + '</div>'
+      + '<div style="flex: 1;">'
+      + '<div style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">' + d.title + '</div>'
+      + '<div style="font-size: 13px; color: var(--text-light); line-height: 1.6; margin-bottom: 8px;">' + d.desc + '</div>'
+      + '<div style="font-size: 12px; color: var(--primary); background: #EFF6FF; padding: 6px 10px; border-radius: 6px; display: inline-block;">💡 ' + d.tip + '</div>'
+      + '</div></div></div>';
+  }).join('');
+}
+
+// 复试经验渲染
+var reexamExpFilter = 'all';
+function renderReexamExp() {
+  var container = document.getElementById('reexamExpList');
+  if (!container) return;
+  var data = reexamExpFilter === 'all' ? reexamExpData : reexamExpData.filter(function(d) { return d.cat === reexamExpFilter; });
+  container.innerHTML = data.map(function(d) {
+    var tagHtml = d.tags.map(function(t) {
+      var color = t === '985' ? '#D97706' : t === '调剂' ? '#DC2626' : '#2563EB';
+      var bg = t === '985' ? '#FEF3C7' : t === '调剂' ? '#FEE2E2' : '#DBEAFE';
+      return '<span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;margin-right:6px;background:' + bg + ';color:' + color + ';">' + t + '</span>';
+    }).join('');
+    return '<div style="padding: 16px; border-bottom: 1px dashed var(--border); cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background=\'rgba(67,127,214,0.03)\'" onmouseout="this.style.background=\'transparent\'" onclick="showReexamExpDetail(\'' + d.title.replace(/'/g, "\\'") + '\')">'
+      + '<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">'
+      + '<span style="font-size: 13px; font-weight: 600; color: var(--primary);">' + d.school + '</span>'
+      + '<span style="font-size: 12px; color: var(--text-lighter);">· ' + d.author + '</span>'
+      + '</div>'
+      + '<div style="font-size: 14px; font-weight: 500; margin-bottom: 8px; color: var(--text);">' + d.title + '</div>'
+      + '<div style="font-size: 13px; color: var(--text-light); line-height: 1.6; margin-bottom: 10px;">' + d.content + '</div>'
+      + '<div>' + tagHtml + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+function filterReexamExp(cat, btn) {
+  btn.parentElement.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  reexamExpFilter = cat;
+  renderReexamExp();
+}
+
+// 调剂策略评估
+function evaluateAdjust() {
+  var score = parseInt(document.getElementById('adjustScore').value) || 0;
+  var single1 = parseInt(document.getElementById('adjustSingle1').value) || 0;
+  var single2 = parseInt(document.getElementById('adjustSingle2').value) || 0;
+  var targetLevel = document.getElementById('adjustTargetLevel').value;
+  var sourceLevel = document.getElementById('adjustSourceLevel').value;
+  var major = document.getElementById('adjustMajor').value || '未知专业';
+
+  var resultDiv = document.getElementById('adjustResult');
+  if (!score || !single1 || !single2) {
+    resultDiv.innerHTML = '<div style="padding: 12px; background: #FEE2E2; color: #991B1B; border-radius: 8px; font-size: 13px;">⚠️ 请填写完整的分数信息</div>';
+    resultDiv.style.display = 'block';
+    return;
+  }
+
+  // 简单评估逻辑
+  var totalScore = score;
+  var levelScore = { '985': 50, '211': 35, 'double': 20, '普通': 10 };
+  var sourceScore = { '985': 30, '211': 20, 'double': 10, '普通': 0 };
+  var chance = totalScore + levelScore[sourceLevel] - levelScore[targetLevel];
+
+  var level, color, bg, advice;
+  if (chance >= 360) {
+    level = 'A级 · 调剂成功率很高';
+    color = '#166534';
+    bg = '#DCFCE7';
+    advice = '你的分数优势明显，可以积极冲刺比本科层次更高的院校。建议同时填报3个志愿：1个冲刺、1个稳妥、1个保底。提前联系导师增加成功率。';
+  } else if (chance >= 330) {
+    level = 'B级 · 调剂成功率中等';
+    color = '#92400E';
+    bg = '#FEF3C7';
+    advice = '分数有一定竞争力，建议重点考虑与本科同层次或略低的院校。多关注B区院校和新开硕士点的学校，调剂机会更多。';
+  } else if (chance >= 300) {
+    level = 'C级 · 调剂有一定风险';
+    color = '#9A3412';
+    bg = '#FFEDD5';
+    advice = '分数处于边缘地带，需要精准定位。建议优先考虑B区普通院校、地方院校，以及新开设相关专业的学校。同时做好二战或就业准备。';
+  } else {
+    level = 'D级 · 调剂难度较大';
+    color = '#991B1B';
+    bg = '#FEE2E2';
+    advice = '分数竞争力较弱，建议扩大调剂范围至所有可能接受的院校和专业。可以考虑非全日制、专业学位等方向。必要时做好其他规划。';
+  }
+
+  // 单科提醒
+  var singleWarning = '';
+  if (single1 < 50 || single2 < 70) {
+    singleWarning = '<div style="margin-top: 10px; padding: 10px; background: #FEF3C7; border-radius: 6px; font-size: 12px; color: #92400E;">⚠️ 你的单科成绩可能低于部分院校要求，填报前务必确认目标院校的单科线要求。</div>';
+  }
+
+  resultDiv.innerHTML =
+    '<div style="padding: 20px; background: ' + bg + '; border-radius: 10px;">' +
+      '<div style="font-size: 18px; font-weight: 700; color: ' + color + '; margin-bottom: 8px;">' + level + '</div>' +
+      '<div style="font-size: 13px; color: var(--text-light); line-height: 1.8;">' +
+        '<strong>综合评分：</strong>' + chance + '分<br>' +
+        '<strong>专业：</strong>' + major + '<br>' +
+        '<strong>目标层次：</strong>' + targetLevel + ' | <strong>本科层次：</strong>' + sourceLevel +
+      '</div>' +
+      '<div style="margin-top: 12px; padding: 12px; background: white; border-radius: 8px; font-size: 13px; color: var(--text); line-height: 1.7;">' +
+        '<strong>💡 策略建议：</strong>' + advice +
+      '</div>' +
+      singleWarning +
+      '<div style="margin-top: 12px; font-size: 12px; color: var(--text-lighter);">' +
+        '* 评估结果仅供参考，实际录取受多种因素影响。建议主动联系目标院校研招办确认调剂政策。' +
+      '</div>' +
+    '</div>';
+  resultDiv.style.display = 'block';
+}
+
+// 详情弹窗
+function showAdjustDetail(title) {
+  var item = adjustData.find(function(d) { return d.title === title; });
+  if (!item) return;
+  var catLabels = { cs: '工学', econ: '经管', law: '法学', edu: '教育', med: '医学', art: '艺术', science: '理学', all: '通用' };
+  document.getElementById('modalTitle').textContent = '调剂信息详情';
+  document.getElementById('modalBody').innerHTML =
+    '<div style="padding: 8px;">' +
+      '<div style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">' + item.title + '</div>' +
+      '<div style="font-size: 13px; color: var(--text-light); margin-bottom: 16px;">' +
+        '<span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;background:#EFF6FF;color:var(--primary);margin-right:8px;">' + (catLabels[item.cat] || item.cat) + '</span>' +
+        '<span>' + item.time + '</span>' +
+      '</div>' +
+      '<div style="font-size: 14px; color: var(--text); line-height: 1.8; margin-bottom: 16px;">' +
+        '<p><strong>核心要点：</strong></p>' +
+        '<p>这里是关于「' + item.title + '」的详细内容解读。建议考生重点关注以下方面：</p>' +
+        '<ul style="margin: 12px 0; padding-left: 20px;">' +
+          '<li>提前了解目标院校的调剂政策和时间节点</li>' +
+          '<li>准备好完整的调剂申请材料</li>' +
+          '<li>保持通讯畅通，及时查看复试通知</li>' +
+          '<li>合理安排调剂志愿，避免全部锁定</li>' +
+        '</ul>' +
+        '<p>更多详细信息请访问研招网调剂系统或目标院校研究生院官网。</p>' +
+      '</div>' +
+      '<div style="padding: 12px; background: #F8FAFC; border-radius: 8px; font-size: 12px; color: var(--text-light);">' +
+        '📌 标签：' + item.content + ' · ' + (item.tag === 'hot' ? '热门' : item.tag === 'new' ? '最新' : '推荐') +
+      '</div>' +
+    '</div>';
+  document.getElementById('modalOverlay').classList.add('show');
+}
+
+function showReexamExpDetail(title) {
+  var item = reexamExpData.find(function(d) { return d.title === title; });
+  if (!item) return;
+  document.getElementById('modalTitle').textContent = '复试经验详情';
+  document.getElementById('modalBody').innerHTML =
+    '<div style="padding: 8px;">' +
+      '<div style="font-size: 15px; font-weight: 600; margin-bottom: 8px;">' + item.title + '</div>' +
+      '<div style="font-size: 13px; color: var(--text-light); margin-bottom: 16px;">' +
+        '<span style="color: var(--primary); font-weight: 500;">' + item.school + '</span> · ' + item.author +
+      '</div>' +
+      '<div style="font-size: 14px; color: var(--text); line-height: 1.8; margin-bottom: 16px;">' + item.content + '</div>' +
+      '<div style="display: flex; gap: 6px; flex-wrap: wrap;">' +
+        item.tags.map(function(t) { return '<span style="padding: 2px 8px; border-radius: 4px; font-size: 11px; background: #F3F4F6; color: #374151;">' + t + '</span>'; }).join('') +
+      '</div>' +
+    '</div>';
+  document.getElementById('modalOverlay').classList.add('show');
 }
 
 // 院校对比搜索功能
@@ -4569,12 +5027,18 @@ function init() {
   renderLineTable(lineData);
   renderScoreTable(lineData);
   renderMajors();
+  renderPrepareStages();
+  renderDailyTips();
   renderTips();
   renderHotArticles();
   renderLinks();
   renderExamTable(examData);
+  // 复试调剂
+  renderReexamPrepare();
+  renderAdjustTable(adjustTableData);
   renderAdjustList(adjustData);
   renderAdjustTimeline();
+  renderReexamExp();
   initCompareSelects();
 }
 
