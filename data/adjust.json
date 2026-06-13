@@ -1,12 +1,6 @@
 {
-  "updatedAt": "2026-06-12T08:19:55.755Z",
+  "updatedAt": "2026-06-13T04:00:09.296Z",
   "items": [
-    {
-      "tag": "tag-important",
-      "category": "综合",
-      "title": "调剂待录取确认：24小时内必须做决定",
-      "meta": "重要提醒"
-    },
     {
       "tag": "tag-hot",
       "category": "综合",
@@ -18,6 +12,12 @@
       "category": "综合",
       "title": "调剂信息获取渠道：研招网/院校官网/考研社群",
       "meta": "信息渠道"
+    },
+    {
+      "tag": "tag-important",
+      "category": "综合",
+      "title": "调剂待录取确认：24小时内必须做决定",
+      "meta": "重要提醒"
     }
   ]
 }
