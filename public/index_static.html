@@ -1292,6 +1292,370 @@
     border-radius: 8px;
     background: var(--bg);
   }
+
+  /* ========== AI智能择校优化 ========== */
+  .ai-wizard {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .ai-step-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    padding: 0 20px;
+  }
+  .ai-step-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #E2E8F0;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all .3s;
+    flex-shrink: 0;
+  }
+  .ai-step-dot.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 0 0 4px rgba(37,99,235,0.15);
+  }
+  .ai-step-dot.done {
+    background: #10B981;
+    color: white;
+  }
+  .ai-step-line {
+    flex: 1;
+    max-width: 60px;
+    height: 2px;
+    background: #E2E8F0;
+    transition: background .3s;
+  }
+  .ai-step-line.done {
+    background: #10B981;
+  }
+  .ai-step-label {
+    font-size: 11px;
+    color: var(--text-lighter);
+    text-align: center;
+    margin-top: 6px;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    white-space: nowrap;
+  }
+  .ai-step-wrap { position: relative; display: flex; flex-direction: column; align-items: center; }
+
+  .ai-step-content {
+    display: none;
+    animation: fadeInUp 0.4s ease-out;
+  }
+  .ai-step-content.active { display: block; }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .ai-step-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .ai-step-subtitle {
+    font-size: 13px;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .ai-form-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 28px;
+    gap: 12px;
+  }
+  .ai-nav-btn {
+    padding: 10px 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--text);
+  }
+  .ai-nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+  .ai-nav-btn.primary {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+  .ai-nav-btn.primary:hover {
+    background: #1D4E89;
+    border-color: #1D4E89;
+  }
+  .ai-nav-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+  /* 竞争力评估 */
+  .competency-panel {
+    background: linear-gradient(135deg, #F0F4FF, #E0E7FF);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .competency-score {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .competency-ring {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(var(--primary) var(--score-deg), #E2E8F0 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .competency-ring::after {
+    content: '';
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+  }
+  .competency-ring-inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .competency-ring-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+  }
+  .competency-ring-label {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+  .competency-bars {
+    flex: 1;
+    min-width: 200px;
+  }
+  .competency-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .competency-bar-label {
+    font-size: 12px;
+    color: var(--text);
+    width: 80px;
+    flex-shrink: 0;
+  }
+  .competency-bar-track {
+    flex: 1;
+    height: 8px;
+    background: #E2E8F0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .competency-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width .8s ease;
+  }
+  .competency-bar-value {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    width: 32px;
+    text-align: right;
+  }
+
+  /* 三档推荐 */
+  .tier-section { margin-bottom: 28px; }
+  .tier-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .tier-badge {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .tier-badge.charge { background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; }
+  .tier-badge.stable { background: #F0FDF4; color: #059669; border: 1px solid #A7F3D0; }
+  .tier-badge.safe { background: #FFFBEB; color: #D97706; border: 1px solid #FDE68A; }
+  .tier-count { font-size: 13px; color: var(--text-light); }
+
+  /* 院校对比勾选 */
+  .compare-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--text-light);
+    transition: all .2s;
+    margin-top: 8px;
+  }
+  .compare-check:hover { border-color: var(--primary); color: var(--primary); }
+  .compare-check.checked {
+    background: #EFF6FF;
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  /* 就业前景标签 */
+  .career-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 11px;
+    margin-left: 8px;
+  }
+  .career-star { color: #F59E0B; }
+
+  /* 历史记录 */
+  .history-panel {
+    margin-bottom: 24px;
+    padding: 16px;
+    background: #F8FAFC;
+    border-radius: 12px;
+  }
+  .history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .history-title { font-size: 14px; font-weight: 600; color: var(--text); }
+  .history-clear {
+    font-size: 12px;
+    color: var(--text-lighter);
+    cursor: pointer;
+  }
+  .history-clear:hover { color: var(--danger); }
+  .history-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .history-chip {
+    padding: 6px 14px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .history-chip:hover { border-color: var(--primary); color: var(--primary); }
+  .history-chip .del { opacity: .4; font-size: 13px; }
+  .history-chip .del:hover { opacity: 1; color: var(--danger); }
+
+  /* 分析建议卡片 */
+  .suggest-card {
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 3px solid var(--primary);
+    background: #F8FAFC;
+  }
+  .suggest-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .suggest-card-body {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* 院校详情增强弹窗 */
+  .detail-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .detail-meta-item {
+    text-align: center;
+    padding: 12px;
+    background: #F8FAFC;
+    border-radius: 8px;
+  }
+  .detail-meta-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .detail-meta-label {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+
+  /* 学科评估标签 */
+  .eval-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 6px;
+  }
+  .eval-a-plus { background: #FEF2F2; color: #DC2626; }
+  .eval-a { background: #FFF7ED; color: #EA580C; }
+  .eval-a-minus { background: #FFFBEB; color: #D97706; }
+  .eval-b-plus { background: #ECFCCB; color: #65A30D; }
+  .eval-b { background: #D1FAE5; color: #059669; }
+  .eval-other { background: #F1F5F9; color: #64748B; }
+
+  /* 调剂备选提示 */
+  .backup-tip {
+    padding: 10px 14px;
+    background: #FEF3C7;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #92400E;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
 </style>
 </head>
 <body>
@@ -1357,7 +1721,7 @@
     </div>
   
     <div style="background: rgba(255,255,255,0.15); padding: 12px 16px; border-radius: 8px; margin-top: 16px; font-size: 14px;">
-        <span style="font-weight: 600;">💡 每日提示：</span>每天留30分钟回顾当天所学，比连续学习更高效 每周四与研友交流学习心得，互相监督 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-13 13:43:56</span>
+        <span style="font-weight: 600;">💡 每日提示：</span>【周末预热】每天留30分钟回顾当天所学，比连续学习更高效 周五整理一周错题，周末集中攻克 【录取与规划期】<span style="float: right; font-size: 12px; opacity: 0.7;">更新：2026-06-14 12:00:19</span>
     </div></div>
 
   <!-- ========== MAIN GRID ========== -->
@@ -1462,161 +1826,266 @@
       <div id="tab-ai" class="tab-content">
         <div class="card">
           <div class="card-header">
-            <div class="card-title">🎯 AI智能择校</div>
+            <div class="card-title">🎯 AI智能择校 3.0</div>
+            <span class="card-more" style="font-size:12px;color:var(--text-lighter);">多维度画像 · 竞争力评估 · 智能推荐</span>
           </div>
           <div class="card-body">
+            <!-- 查询历史 -->
+            <div class="history-panel" id="aiHistoryPanel" style="display:none;">
+              <div class="history-header">
+                <span class="history-title">🕘 近期查询</span>
+                <span class="history-clear" onclick="clearAIHistory()">清空</span>
+              </div>
+              <div class="history-list" id="aiHistoryList"></div>
+            </div>
+
             <div class="ai-form">
-              <p style="color: var(--text-light); margin-bottom: 20px; font-size: 14px;">
-                根据您的成绩偏好、专业方向和地域意愿，智能推荐适合您的院校方案。
+              <p style="color: var(--text-light); margin-bottom: 20px; font-size: 14px; text-align: center;">
+                🧠 基于您的多维度考研画像，AI 智能分析竞争力并精准推荐冲刺/稳妥/保底院校
               </p>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">预估总分</label>
-                  <input type="number" class="form-input" id="aiScore" placeholder="如：350" min="200" max="450">
-                  <div class="form-error" id="errScore">请输入有效的预估总分（200-450分）</div>
+
+              <!-- 分步向导 -->
+              <div class="ai-wizard" id="aiWizard">
+                <div class="ai-step-indicator">
+                  <div class="ai-step-wrap">
+                    <div class="ai-step-dot active" id="stepDot1">1</div>
+                    <span class="ai-step-label">基础画像</span>
+                  </div>
+                  <div class="ai-step-line" id="stepLine1"></div>
+                  <div class="ai-step-wrap">
+                    <div class="ai-step-dot" id="stepDot2">2</div>
+                    <span class="ai-step-label">成绩意向</span>
+                  </div>
+                  <div class="ai-step-line" id="stepLine2"></div>
+                  <div class="ai-step-wrap">
+                    <div class="ai-step-dot" id="stepDot3">3</div>
+                    <span class="ai-step-label">备考状态</span>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label class="form-label">学位类型</label>
-                  <select class="form-select" id="aiDegree">
-                    <option value="">请选择学位类型</option>
-                    <option value="academic">学术型硕士（学硕）</option>
-                    <option value="professional">专业型硕士（专硕）</option>
-                    <option value="any">都可以</option>
-                  </select>
-                  <div class="form-error" id="errDegree">请选择学位类型</div>
+
+                <!-- 第1步：基础画像 -->
+                <div class="ai-step-content active" id="aiStep1">
+                  <div class="ai-step-title">📋 填写您的基本信息</div>
+                  <div class="ai-step-subtitle">让我们先了解您的学术背景</div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label">本科院校层次 <span style="color:var(--danger)">*</span></label>
+                      <select class="form-select" id="aiUndergrad">
+                        <option value="">请选择</option>
+                        <option value="top985">985院校</option>
+                        <option value="mid211">211院校</option>
+                        <option value="double_top">双一流院校</option>
+                        <option value="normal">普通本科</option>
+                        <option value="other_school">其他</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">本科专业方向 <span style="color:var(--danger)">*</span></label>
+                      <select class="form-select" id="aiMajor">
+                        <option value="">请选择</option>
+                        <optgroup label="🧮 理学类">
+                          <option value="math">数学</option>
+                          <option value="physics">物理学</option>
+                          <option value="chemistry">化学</option>
+                          <option value="biology">生物学/生命科学</option>
+                          <option value="statistics">统计学</option>
+                          <option value="geography">地理学/地质学</option>
+                        </optgroup>
+                        <optgroup label="🔧 工学类">
+                          <option value="cs">计算机科学与技术</option>
+                          <option value="software">软件工程</option>
+                          <option value="ai">人工智能/智能科学</option>
+                          <option value="cyberspace">网络空间安全</option>
+                          <option value="eletron">电子/通信工程</option>
+                          <option value="control">控制/自动化</option>
+                          <option value="electrical">电气工程</option>
+                          <option value="mechanical">机械工程</option>
+                          <option value="materials">材料科学与工程</option>
+                          <option value="civil">土木/水利工程</option>
+                          <option value="chemical">化工/能源动力</option>
+                          <option value="aero">航空航天/交通运输</option>
+                          <option value="envir">环境科学与工程</option>
+                        </optgroup>
+                        <optgroup label="💰 经管类">
+                          <option value="finance">金融学/金融工程</option>
+                          <option value="econ">经济学/应用经济学</option>
+                          <option value="applied_stat">应用统计</option>
+                          <option value="accounting">会计/审计</option>
+                          <option value="business">工商管理/MBA</option>
+                          <option value="pub_admin">公共管理/MPA</option>
+                        </optgroup>
+                        <optgroup label="⚖️ 法学类">
+                          <option value="law">法学/法律硕士</option>
+                          <option value="marx">马克思主义理论</option>
+                          <option value="sociology">社会学</option>
+                        </optgroup>
+                        <optgroup label="📰 文学新闻类">
+                          <option value="journalism">新闻与传播</option>
+                          <option value="chinese">中国语言文学</option>
+                          <option value="foreign">外国语言文学/翻译</option>
+                        </optgroup>
+                        <optgroup label="📚 教育心理类">
+                          <option value="edu">教育学</option>
+                          <option value="psychology">心理学</option>
+                          <option value="pe">体育学</option>
+                        </optgroup>
+                        <optgroup label="🏥 医学类">
+                          <option value="clinical">临床医学</option>
+                          <option value="stomatology">口腔医学</option>
+                          <option value="pharmacy">药学</option>
+                          <option value="basic_med">基础医学</option>
+                        </optgroup>
+                        <optgroup label="🌾 农学类">
+                          <option value="agri">农学/园艺</option>
+                          <option value="vet">畜牧/兽医</option>
+                        </optgroup>
+                        <optgroup label="📜 文史哲类">
+                          <option value="history">历史学</option>
+                          <option value="philosophy">哲学</option>
+                        </optgroup>
+                        <optgroup label="🎨 艺术类">
+                          <option value="art">艺术学/美术学</option>
+                          <option value="design">设计学</option>
+                        </optgroup>
+                        <optgroup label="其他">
+                          <option value="other">其他专业</option>
+                        </optgroup>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label">是否跨专业考研</label>
+                      <select class="form-select" id="aiCrossMajor">
+                        <option value="no">本专业考研</option>
+                        <option value="related">相近专业跨考</option>
+                        <option value="cross">完全跨专业</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">英语等级水平</label>
+                      <select class="form-select" id="aiEnglish">
+                        <option value="none">未过四级</option>
+                        <option value="cet4">英语四级</option>
+                        <option value="cet6">英语六级</option>
+                        <option value="high">六级500+ / 雅思托福</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="ai-form-nav">
+                    <span></span>
+                    <button class="ai-nav-btn primary" onclick="nextAIStep(2)">下一步 →</button>
+                  </div>
+                </div>
+
+                <!-- 第2步：成绩意向 -->
+                <div class="ai-step-content" id="aiStep2">
+                  <div class="ai-step-title">🎯 填写成绩与意向</div>
+                  <div class="ai-step-subtitle">预估分数和目标偏好</div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label">预估总分 <span style="color:var(--danger)">*</span></label>
+                      <input type="number" class="form-input" id="aiScore" placeholder="如：350" min="200" max="450">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">学位类型 <span style="color:var(--danger)">*</span></label>
+                      <select class="form-select" id="aiDegree">
+                        <option value="">请选择</option>
+                        <option value="academic">学术型硕士（学硕）</option>
+                        <option value="professional">专业型硕士（专硕）</option>
+                        <option value="any">都可以</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label">意向地区</label>
+                      <select class="form-select" id="aiRegion">
+                        <option value="">请选择意向地区</option>
+                        <option value="北京">北京</option>
+                        <option value="上海">上海</option>
+                        <option value="广东">广东</option>
+                        <option value="江苏">江苏</option>
+                        <option value="浙江">浙江</option>
+                        <option value="湖北">湖北</option>
+                        <option value="四川">四川</option>
+                        <option value="天津">天津</option>
+                        <option value="陕西">陕西</option>
+                        <option value="中部">中部（湘皖豫赣）</option>
+                        <option value="东北">东北</option>
+                        <option value="全国">全国不限</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">目标层次</label>
+                      <select class="form-select" id="aiLevel">
+                        <option value="">请选择目标层次</option>
+                        <option value="top">顶尖985（冲刺）</option>
+                        <option value="mid">普通985/强211（稳妥）</option>
+                        <option value="safe">211/重点本科（保底）</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">是否考数学</label>
+                    <select class="form-select" id="aiMath">
+                      <option value="">请选择</option>
+                      <option value="yes">考数学（数一/数二/数三）</option>
+                      <option value="no">不考数学</option>
+                      <option value="any">都可以</option>
+                    </select>
+                  </div>
+                  <div class="ai-form-nav">
+                    <button class="ai-nav-btn" onclick="prevAIStep(1)">← 上一步</button>
+                    <button class="ai-nav-btn primary" onclick="nextAIStep(3)">下一步 →</button>
+                  </div>
+                </div>
+
+                <!-- 第3步：备考状态 -->
+                <div class="ai-step-content" id="aiStep3">
+                  <div class="ai-step-title">📅 填写备考状态</div>
+                  <div class="ai-step-subtitle">帮助我们更精准地评估您的竞争力</div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label">当前备考阶段</label>
+                      <select class="form-select" id="aiStage">
+                        <option value="start">刚开始准备（3个月内）</option>
+                        <option value="foundation">基础阶段（3-6个月）</option>
+                        <option value="strengthen">强化阶段（6-9个月）</option>
+                        <option value="sprint">冲刺阶段（9个月+）</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">每日学习时长</label>
+                      <select class="form-select" id="aiDailyHours">
+                        <option value="lt4">少于4小时</option>
+                        <option value="4to6">4-6小时</option>
+                        <option value="6to8">6-8小时</option>
+                        <option value="gt8">8小时以上</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">科研/竞赛/项目经历</label>
+                    <select class="form-select" id="aiResearch">
+                      <option value="none">无相关经历</option>
+                      <option value="project">有课程设计/大创项目</option>
+                      <option value="paper">有论文/专利/竞赛获奖</option>
+                      <option value="rich">有丰富的科研竞赛经历</option>
+                    </select>
+                  </div>
+                  <div class="ai-form-nav">
+                    <button class="ai-nav-btn" onclick="prevAIStep(2)">← 上一步</button>
+                    <button class="ai-nav-btn primary" onclick="runAIMatch()" id="aiMatchBtn">🔮 开始智能匹配</button>
+                  </div>
                 </div>
               </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">本科院校层次</label>
-                  <select class="form-select" id="aiUndergrad">
-                    <option value="">请选择本科院校层次</option>
-                    <option value="top985">985院校</option>
-                    <option value="mid211">211院校</option>
-                    <option value="double_top">双一流院校</option>
-                    <option value="normal">普通本科</option>
-                    <option value="other_school">其他</option>
-                  </select>
-                  <div class="form-error" id="errUndergrad">请选择本科院校层次</div>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">本科专业方向</label>
-                  <select class="form-select" id="aiMajor">
-                    <option value="">请选择专业方向</option>
-                    <optgroup label="🧮 理学类">
-                      <option value="math">数学</option>
-                      <option value="physics">物理学</option>
-                      <option value="chemistry">化学</option>
-                      <option value="biology">生物学/生命科学</option>
-                      <option value="statistics">统计学</option>
-                      <option value="geography">地理学/地质学</option>
-                    </optgroup>
-                    <optgroup label="🔧 工学类">
-                      <option value="cs">计算机科学与技术</option>
-                      <option value="software">软件工程</option>
-                      <option value="ai">人工智能/智能科学</option>
-                      <option value="cyberspace">网络空间安全</option>
-                      <option value="eletron">电子/通信工程</option>
-                      <option value="control">控制/自动化</option>
-                      <option value="electrical">电气工程</option>
-                      <option value="mechanical">机械工程</option>
-                      <option value="materials">材料科学与工程</option>
-                      <option value="civil">土木/水利工程</option>
-                      <option value="chemical">化工/能源动力</option>
-                      <option value="aero">航空航天/交通运输</option>
-                      <option value="envir">环境科学与工程</option>
-                    </optgroup>
-                    <optgroup label="💰 经管类">
-                      <option value="finance">金融学/金融工程</option>
-                      <option value="econ">经济学/应用经济学</option>
-                      <option value="applied_stat">应用统计</option>
-                      <option value="accounting">会计/审计</option>
-                      <option value="business">工商管理/MBA</option>
-                      <option value="pub_admin">公共管理/MPA</option>
-                    </optgroup>
-                    <optgroup label="⚖️ 法学类">
-                      <option value="law">法学/法律硕士</option>
-                      <option value="marx">马克思主义理论</option>
-                      <option value="sociology">社会学</option>
-                    </optgroup>
-                    <optgroup label="📰 文学新闻类">
-                      <option value="journalism">新闻与传播</option>
-                      <option value="chinese">中国语言文学</option>
-                      <option value="foreign">外国语言文学/翻译</option>
-                    </optgroup>
-                    <optgroup label="📚 教育心理类">
-                      <option value="edu">教育学</option>
-                      <option value="psychology">心理学</option>
-                      <option value="pe">体育学</option>
-                    </optgroup>
-                    <optgroup label="🏥 医学类">
-                      <option value="clinical">临床医学</option>
-                      <option value="stomatology">口腔医学</option>
-                      <option value="pharmacy">药学</option>
-                      <option value="basic_med">基础医学</option>
-                    </optgroup>
-                    <optgroup label="🌾 农学类">
-                      <option value="agri">农学/园艺</option>
-                      <option value="vet">畜牧/兽医</option>
-                    </optgroup>
-                    <optgroup label="📜 文史哲类">
-                      <option value="history">历史学</option>
-                      <option value="philosophy">哲学</option>
-                    </optgroup>
-                    <optgroup label="🎨 艺术类">
-                      <option value="art">艺术学/美术学</option>
-                      <option value="design">设计学</option>
-                    </optgroup>
-                    <optgroup label="其他">
-                      <option value="other">其他专业</option>
-                    </optgroup>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">意向地区</label>
-                  <select class="form-select" id="aiRegion">
-                    <option value="">请选择意向地区</option>
-                    <option value="北京">北京</option>
-                    <option value="上海">上海</option>
-                    <option value="广东">广东</option>
-                    <option value="江苏">江苏</option>
-                    <option value="浙江">浙江</option>
-                    <option value="湖北">湖北</option>
-                    <option value="四川">四川</option>
-                    <option value="天津">天津</option>
-                    <option value="陕西">陕西</option>
-                    <option value="中部">中部（湘皖豫赣）</option>
-                    <option value="东北">东北</option>
-                    <option value="全国">全国不限</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">目标层次</label>
-                  <select class="form-select" id="aiLevel">
-                    <option value="">请选择目标层次</option>
-                    <option value="top">顶尖985（冲刺）</option>
-                    <option value="mid">普通985/强211（稳妥）</option>
-                    <option value="safe">211/重点本科（保底）</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label">是否考数学</label>
-                <select class="form-select" id="aiMath">
-                  <option value="">请选择</option>
-                  <option value="yes">考数学（数一/数二/数三）</option>
-                  <option value="no">不考数学</option>
-                  <option value="any">都可以</option>
-                </select>
-              </div>
+
               <div class="ai-loading" id="aiLoading">
                 <div class="ai-spinner"></div>
-                <div class="ai-loading-text">🧠 AI正在分析院校数据...</div>
+                <div class="ai-loading-text">🧠 AI正在深度分析您的考研画像并匹配院校数据...</div>
               </div>
-              <button class="form-btn" onclick="runAIMatch()" id="aiMatchBtn">🔮 开始智能匹配</button>
-              
+
               <div class="ai-result" id="aiResult">
                 <div class="ai-result-title">📋 智能匹配结果</div>
                 <div id="aiResultContent"></div>
@@ -1751,56 +2220,6 @@
               <tbody id="adjustTableBody"></tbody>
             </table>
             <ul class="article-list" id="adjustList"></ul>
-          </div>
-        </div>
-
-        <!-- 调剂策略评估 -->
-        <div class="card" style="margin-top: 24px;">
-          <div class="card-header">
-            <div class="card-title">🧮 调剂策略评估</div>
-            <span class="card-more" style="font-size: 12px; color: var(--text-lighter);">快速评估你的调剂成功率</span>
-          </div>
-          <div class="card-body">
-            <div class="form-row" style="gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
-              <div class="form-group" style="flex: 1; min-width: 160px;">
-                <label class="form-label">初试总分</label>
-                <input type="number" class="form-input" id="adjustScore" placeholder="如：360" style="width: 100%;">
-              </div>
-              <div class="form-group" style="flex: 1; min-width: 160px;">
-                <label class="form-label">单科（政治/英语）</label>
-                <input type="number" class="form-input" id="adjustSingle1" placeholder="如：65" style="width: 100%;">
-              </div>
-              <div class="form-group" style="flex: 1; min-width: 160px;">
-                <label class="form-label">单科（数学/专业课）</label>
-                <input type="number" class="form-input" id="adjustSingle2" placeholder="如：100" style="width: 100%;">
-              </div>
-              <div class="form-group" style="flex: 1; min-width: 160px;">
-                <label class="form-label">报考院校层次</label>
-                <select class="form-input" id="adjustTargetLevel" style="width: 100%;">
-                  <option value="985">985院校</option>
-                  <option value="211">211院校</option>
-                  <option value="double" selected>双一流</option>
-                  <option value="普通">普通院校</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row" style="gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
-              <div class="form-group" style="flex: 1; min-width: 200px;">
-                <label class="form-label">本科专业</label>
-                <input type="text" class="form-input" id="adjustMajor" placeholder="如：计算机科学与技术" style="width: 100%;">
-              </div>
-              <div class="form-group" style="flex: 1; min-width: 200px;">
-                <label class="form-label">本科院校层次</label>
-                <select class="form-input" id="adjustSourceLevel" style="width: 100%;">
-                  <option value="985">985院校</option>
-                  <option value="211">211院校</option>
-                  <option value="double" selected>双一流/一本</option>
-                  <option value="普通">二本及以下</option>
-                </select>
-              </div>
-            </div>
-            <button class="header-btn header-btn-filled" onclick="evaluateAdjust()" style="width: 100%; padding: 12px; font-size: 15px;">🔍 评估调剂策略</button>
-            <div id="adjustResult" style="margin-top: 16px; display: none;"></div>
           </div>
         </div>
 
@@ -2217,182 +2636,182 @@ let uniFilteredData = [];
 const lineData = [
   {
     "cat": "哲学",
-    "aTotal": 322,
-    "bTotal": 312,
+    "aTotal": 325,
+    "bTotal": 315,
     "subA": 42,
     "subB": 41,
-    "trend": 5
+    "trend": 8
   },
   {
     "cat": "经济学",
-    "aTotal": 347,
-    "bTotal": 337,
-    "subA": 45,
+    "aTotal": 350,
+    "bTotal": 340,
+    "subA": 46,
     "subB": 44,
-    "trend": 8
-  },
-  {
-    "cat": "法学",
-    "aTotal": 340,
-    "bTotal": 330,
-    "subA": 44,
-    "subB": 43,
     "trend": 10
   },
   {
-    "cat": "教育学",
-    "aTotal": 349,
-    "bTotal": 339,
+    "cat": "法学",
+    "aTotal": 343,
+    "bTotal": 333,
     "subA": 45,
-    "subB": 44,
+    "subB": 43,
     "trend": 8
   },
   {
+    "cat": "教育学",
+    "aTotal": 352,
+    "bTotal": 342,
+    "subA": 46,
+    "subB": 44,
+    "trend": 5
+  },
+  {
     "cat": "文学",
+    "aTotal": 367,
+    "bTotal": 357,
+    "subA": 48,
+    "subB": 46,
+    "trend": 0
+  },
+  {
+    "cat": "历史学",
+    "aTotal": 338,
+    "bTotal": 328,
+    "subA": 44,
+    "subB": 43,
+    "trend": 8
+  },
+  {
+    "cat": "理学",
+    "aTotal": 292,
+    "bTotal": 282,
+    "subA": 38,
+    "subB": 37,
+    "trend": 0
+  },
+  {
+    "cat": "工学",
+    "aTotal": 275,
+    "bTotal": 265,
+    "subA": 36,
+    "subB": 34,
+    "trend": 12
+  },
+  {
+    "cat": "农学",
+    "aTotal": 254,
+    "bTotal": 244,
+    "subA": 33,
+    "subB": 32,
+    "trend": 8
+  },
+  {
+    "cat": "医学",
+    "aTotal": 306,
+    "bTotal": 296,
+    "subA": 40,
+    "subB": 38,
+    "trend": 15
+  },
+  {
+    "cat": "军事学",
+    "aTotal": 262,
+    "bTotal": 252,
+    "subA": 34,
+    "subB": 33,
+    "trend": 10
+  },
+  {
+    "cat": "管理学",
+    "aTotal": 352,
+    "bTotal": 342,
+    "subA": 46,
+    "subB": 44,
+    "trend": 12
+  },
+  {
+    "cat": "艺术学",
     "aTotal": 364,
     "bTotal": 354,
     "subA": 47,
     "subB": 46,
     "trend": 5
-  },
-  {
-    "cat": "历史学",
-    "aTotal": 335,
-    "bTotal": 325,
-    "subA": 44,
-    "subB": 42,
-    "trend": 0
-  },
-  {
-    "cat": "理学",
-    "aTotal": 289,
-    "bTotal": 279,
-    "subA": 38,
-    "subB": 36,
-    "trend": 8
-  },
-  {
-    "cat": "工学",
-    "aTotal": 272,
-    "bTotal": 262,
-    "subA": 35,
-    "subB": 34,
-    "trend": 0
-  },
-  {
-    "cat": "农学",
-    "aTotal": 251,
-    "bTotal": 241,
-    "subA": 33,
-    "subB": 31,
-    "trend": 12
-  },
-  {
-    "cat": "医学",
-    "aTotal": 303,
-    "bTotal": 293,
-    "subA": 39,
-    "subB": 38,
-    "trend": 8
-  },
-  {
-    "cat": "军事学",
-    "aTotal": 259,
-    "bTotal": 249,
-    "subA": 34,
-    "subB": 32,
-    "trend": 15
-  },
-  {
-    "cat": "管理学",
-    "aTotal": 349,
-    "bTotal": 339,
-    "subA": 45,
-    "subB": 44,
-    "trend": 10
-  },
-  {
-    "cat": "艺术学",
-    "aTotal": 361,
-    "bTotal": 351,
-    "subA": 47,
-    "subB": 46,
-    "trend": 12
   }
 ];
 
 const degreeData = [
   {
     "cat": "金融/应用统计/税务",
-    "aTotal": 347,
-    "bTotal": 337,
-    "subA": 45,
-    "subB": 44,
-    "trend": 8
-  },
-  {
-    "cat": "法律(非法学/法学)",
-    "aTotal": 330,
-    "bTotal": 320,
-    "subA": 43,
-    "subB": 42,
-    "trend": 5
-  },
-  {
-    "cat": "教育/汉语国际教育",
     "aTotal": 349,
     "bTotal": 339,
     "subA": 45,
     "subB": 44,
+    "trend": 5
+  },
+  {
+    "cat": "法律(非法学/法学)",
+    "aTotal": 332,
+    "bTotal": 322,
+    "subA": 43,
+    "subB": 42,
     "trend": 8
   },
   {
+    "cat": "教育/汉语国际教育",
+    "aTotal": 351,
+    "bTotal": 341,
+    "subA": 46,
+    "subB": 44,
+    "trend": 3
+  },
+  {
     "cat": "翻译/新闻与传播",
-    "aTotal": 364,
-    "bTotal": 354,
-    "subA": 47,
+    "aTotal": 366,
+    "bTotal": 356,
+    "subA": 48,
     "subB": 46,
     "trend": 3
   },
   {
     "cat": "电子信息/机械/材料",
-    "aTotal": 272,
-    "bTotal": 262,
-    "subA": 35,
+    "aTotal": 274,
+    "bTotal": 264,
+    "subA": 36,
     "subB": 34,
-    "trend": 3
-  },
-  {
-    "cat": "临床医学/口腔医学",
-    "aTotal": 303,
-    "bTotal": 293,
-    "subA": 39,
-    "subB": 38,
     "trend": 5
   },
   {
-    "cat": "工商管理/MBA",
-    "aTotal": 166,
-    "bTotal": 156,
-    "subA": 22,
-    "subB": 20,
+    "cat": "临床医学/口腔医学",
+    "aTotal": 305,
+    "bTotal": 295,
+    "subA": 40,
+    "subB": 38,
     "trend": 10
   },
   {
-    "cat": "公共管理/MPA",
-    "aTotal": 174,
-    "bTotal": 164,
-    "subA": 23,
+    "cat": "工商管理/MBA",
+    "aTotal": 168,
+    "bTotal": 158,
+    "subA": 22,
     "subB": 21,
     "trend": 8
   },
   {
+    "cat": "公共管理/MPA",
+    "aTotal": 176,
+    "bTotal": 166,
+    "subA": 23,
+    "subB": 22,
+    "trend": 5
+  },
+  {
     "cat": "会计/审计",
-    "aTotal": 200,
-    "bTotal": 190,
+    "aTotal": 202,
+    "bTotal": 192,
     "subA": 26,
     "subB": 25,
-    "trend": 5
+    "trend": 8
   }
 ];
 
@@ -2464,33 +2883,33 @@ const timelineData = [
 const tipsData = [
   {
     "icon": "💡",
-    "title": "26考研全年阶段规划：预热-基础-强化-冲刺",
-    "content": "阶段规划",
-    "tag": "note"
-  },
-  {
-    "icon": "📌",
     "title": "2026考研上岸必备：3大系统+52个关键动作",
     "content": "上岸清单",
     "tag": "note"
   },
   {
-    "icon": "⭐",
+    "icon": "📌",
     "title": "2026考研超详细全年复习规划：从现在到明年2月预热阶段",
     "content": "备考规划",
     "tag": "hot"
   },
   {
-    "icon": "🎯",
+    "icon": "⭐",
     "title": "26考研全攻略：三阶九步备考法+择校策略",
     "content": "备考攻略",
     "tag": "hot"
   },
   {
-    "icon": "📚",
+    "icon": "🎯",
     "title": "备考周期拉长至18-24个月，超72%考生选择3月前启动",
     "content": "备考趋势",
     "tag": "new"
+  },
+  {
+    "icon": "📚",
+    "title": "26考研全年阶段规划：预热-基础-强化-冲刺",
+    "content": "阶段规划",
+    "tag": "note"
   },
   {
     "icon": "✍️",
@@ -2969,41 +3388,7 @@ function getSchoolRecommendations(majorName) {
 // 热门文章 - 每个都附带研招网对应链接
 const hotArticles = [
   {
-    "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
-    "tag": "note",
-    "meta": "阅读 5900",
-    "summary": "2027年考研国家线全面分析：哲学323分(↑15)、经济学348分(↑10)、工学273分(↑5)、医学304分(↑8)。多数学科分数线小幅上涨，竞争压力持续加大。",
-    "points": [
-      "📌 哲学类分数线涨幅最大(↑15分)",
-      "📌 工学类分数相对较低(A区273分)",
-      "📌 经济学/管理学竞争依旧激烈",
-      "💡 建议参考目标院校近3年分数线"
-    ]
-  },
-  {
-    "title": "全国硕士研究生招生考试网上报名平台",
-    "tag": "note",
-    "meta": "阅读 6000",
-    "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
-    "points": [
-      "📌 获取最新考研资讯",
-      "📌 及时关注官方通知",
-      "💡 建议收藏保存，方便查阅"
-    ]
-  },
-  {
     "title": "点击查收好运！2026考研查分通道汇总",
-    "tag": "note",
-    "meta": "阅读 6100",
-    "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
-    "points": [
-      "📌 获取最新考研资讯",
-      "📌 及时关注官方通知",
-      "💡 建议收藏保存，方便查阅"
-    ]
-  },
-  {
-    "title": "研究生报考指南_2026考研报考条件",
     "tag": "note",
     "meta": "阅读 6200",
     "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
@@ -3014,7 +3399,7 @@ const hotArticles = [
     ]
   },
   {
-    "title": "2026研考动向：考研科目调整与新专业布局",
+    "title": "研究生报考指南_2026考研报考条件",
     "tag": "note",
     "meta": "阅读 6300",
     "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
@@ -3025,9 +3410,20 @@ const hotArticles = [
     ]
   },
   {
-    "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+    "title": "2026研考动向：考研科目调整与新专业布局",
     "tag": "note",
     "meta": "阅读 6400",
+    "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
+    "points": [
+      "📌 获取最新考研资讯",
+      "📌 及时关注官方通知",
+      "💡 建议收藏保存，方便查阅"
+    ]
+  },
+  {
+    "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+    "tag": "note",
+    "meta": "阅读 6500",
     "summary": "2027年考研国家线全面分析：哲学323分(↑15)、经济学348分(↑10)、工学273分(↑5)、医学304分(↑8)。多数学科分数线小幅上涨，竞争压力持续加大。",
     "points": [
       "📌 哲学类分数线涨幅最大(↑15分)",
@@ -3039,7 +3435,7 @@ const hotArticles = [
   {
     "title": "全国硕士研究生招生考试网上报名平台",
     "tag": "note",
-    "meta": "阅读 6500",
+    "meta": "阅读 6600",
     "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
     "points": [
       "📌 获取最新考研资讯",
@@ -3050,7 +3446,7 @@ const hotArticles = [
   {
     "title": "点击查收好运！2026考研查分通道汇总",
     "tag": "note",
-    "meta": "阅读 6600",
+    "meta": "阅读 6700",
     "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
     "points": [
       "📌 获取最新考研资讯",
@@ -3061,7 +3457,7 @@ const hotArticles = [
   {
     "title": "研究生报考指南_2026考研报考条件",
     "tag": "note",
-    "meta": "阅读 6700",
+    "meta": "阅读 6800",
     "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
     "points": [
       "📌 获取最新考研资讯",
@@ -3072,7 +3468,30 @@ const hotArticles = [
   {
     "title": "2026研考动向：考研科目调整与新专业布局",
     "tag": "note",
-    "meta": "阅读 6800",
+    "meta": "阅读 6900",
+    "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
+    "points": [
+      "📌 获取最新考研资讯",
+      "📌 及时关注官方通知",
+      "💡 建议收藏保存，方便查阅"
+    ]
+  },
+  {
+    "title": "2026年考研报名、初试时间安排出炉！附历年考研国家线！",
+    "tag": "note",
+    "meta": "阅读 7000",
+    "summary": "2027年考研国家线全面分析：哲学323分(↑15)、经济学348分(↑10)、工学273分(↑5)、医学304分(↑8)。多数学科分数线小幅上涨，竞争压力持续加大。",
+    "points": [
+      "📌 哲学类分数线涨幅最大(↑15分)",
+      "📌 工学类分数相对较低(A区273分)",
+      "📌 经济学/管理学竞争依旧激烈",
+      "💡 建议参考目标院校近3年分数线"
+    ]
+  },
+  {
+    "title": "全国硕士研究生招生考试网上报名平台",
+    "tag": "note",
+    "meta": "阅读 7100",
     "summary": "最新考研资讯汇总，涵盖政策变化、院校动态、备考策略等。建议考生密切关注目标院校官网和研招网通知，及时获取最新信息。",
     "points": [
       "📌 获取最新考研资讯",
@@ -3608,7 +4027,7 @@ function showTipDetail(title) {
         <div style="font-size: 18px; font-weight: 600; margin-top: 8px;">${t.title}</div>
       </div>
       <div style="background: #f8f9fa; padding: 16px; border-radius: 8px; font-size: 15px; color: #333; line-height: 1.8;">
-        ${t.content}
+        ${t.detail || t.content}
       </div>
       <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #eee;">
         <button onclick="closeModal()" style="padding: 10px 24px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">关闭</button>
@@ -4069,8 +4488,428 @@ function findMatchingMajors(score, major, region, level, needMath, degreeType, u
   return results;
 }
 
+// ========== AI择校分步导航与增强功能 ==========
+
+var aiCurrentStep = 1;
+
+function updateAIStepIndicator(step) {
+  for (var i = 1; i <= 3; i++) {
+    var dot = document.getElementById('stepDot' + i);
+    var line = document.getElementById('stepLine' + i);
+    if (!dot) continue;
+    if (i < step) { dot.className = 'ai-step-dot done'; dot.textContent = '✓'; }
+    else if (i === step) { dot.className = 'ai-step-dot active'; dot.textContent = i; }
+    else { dot.className = 'ai-step-dot'; dot.textContent = i; }
+    if (line) { line.className = i < step ? 'ai-step-line done' : 'ai-step-line'; }
+  }
+}
+
+function nextAIStep(step) {
+  if (step === 2) {
+    var ug = document.getElementById('aiUndergrad').value;
+    var mj = document.getElementById('aiMajor').value;
+    if (!ug) { alert('请选择本科院校层次'); return; }
+    if (!mj) { alert('请选择本科专业方向'); return; }
+  }
+  if (step === 3) {
+    var sc = document.getElementById('aiScore').value;
+    var dg = document.getElementById('aiDegree').value;
+    if (!sc || sc < 200 || sc > 450) { alert('请输入有效的预估总分（200-450分）'); return; }
+    if (!dg) { alert('请选择学位类型'); return; }
+  }
+  document.querySelectorAll('.ai-step-content').forEach(function(el) { el.classList.remove('active'); });
+  var target = document.getElementById('aiStep' + step);
+  if (target) target.classList.add('active');
+  aiCurrentStep = step;
+  updateAIStepIndicator(step);
+}
+
+function prevAIStep(step) {
+  document.querySelectorAll('.ai-step-content').forEach(function(el) { el.classList.remove('active'); });
+  var target = document.getElementById('aiStep' + step);
+  if (target) target.classList.add('active');
+  aiCurrentStep = step;
+  updateAIStepIndicator(step);
+}
+
+function getAIFormData() {
+  return {
+    score: parseInt(document.getElementById('aiScore').value) || 0,
+    major: document.getElementById('aiMajor').value,
+    region: document.getElementById('aiRegion').value,
+    level: document.getElementById('aiLevel').value,
+    needMath: document.getElementById('aiMath').value,
+    degreeType: document.getElementById('aiDegree').value,
+    undergradLevel: document.getElementById('aiUndergrad').value,
+    crossMajor: document.getElementById('aiCrossMajor').value,
+    english: document.getElementById('aiEnglish').value,
+    stage: document.getElementById('aiStage').value,
+    dailyHours: document.getElementById('aiDailyHours').value,
+    research: document.getElementById('aiResearch').value
+  };
+}
+
+// 计算竞争力指数（0-100）
+function calcCompetency(data) {
+  var score = data.score || 0;
+  var majorInfo = majorCategoryMap[data.major] || { nationalLine: 264 };
+  var nationalLine = majorInfo.nationalLine;
+  var scoreOverLine = score - nationalLine;
+
+  // 初试实力（0-30分）
+  var initialScore = Math.min(30, Math.max(0, 10 + scoreOverLine * 0.4));
+
+  // 复试竞争力（0-25分）
+  var reexamScore = 12;
+  var ugBonus = { top985: 6, mid211: 4, double_top: 3, normal: 0, other_school: -2 };
+  reexamScore += (ugBonus[data.undergradLevel] || 0);
+  var researchBonus = { none: 0, project: 3, paper: 6, rich: 8 };
+  reexamScore += (researchBonus[data.research] || 0);
+  reexamScore = Math.min(25, Math.max(0, reexamScore));
+
+  // 备考充分度（0-20分）
+  var prepareScore = 8;
+  var stageBonus = { start: 2, foundation: 5, strengthen: 8, sprint: 10 };
+  prepareScore += (stageBonus[data.stage] || 0);
+  var hourBonus = { lt4: 2, '4to6': 5, '6to8': 8, gt8: 10 };
+  prepareScore += (hourBonus[data.dailyHours] || 0);
+  prepareScore = Math.min(20, Math.max(0, prepareScore));
+
+  // 院校匹配度（0-15分）
+  var matchScore = 10;
+  if (data.level === 'top') matchScore += (scoreOverLine > 30 ? 5 : 0);
+  else if (data.level === 'mid') matchScore += (scoreOverLine > 15 ? 5 : 2);
+  else matchScore += 5;
+  matchScore = Math.min(15, Math.max(0, matchScore));
+
+  // 专业基础（0-10分）
+  var baseScore = 5;
+  if (data.crossMajor === 'no') baseScore += 4;
+  else if (data.crossMajor === 'related') baseScore += 2;
+  var engBonus = { none: -1, cet4: 1, cet6: 3, high: 5 };
+  baseScore += (engBonus[data.english] || 0);
+  baseScore = Math.min(10, Math.max(0, baseScore));
+
+  var total = Math.round(initialScore + reexamScore + prepareScore + matchScore + baseScore);
+  return {
+    total: total,
+    initial: Math.round(initialScore),
+    reexam: Math.round(reexamScore),
+    prepare: Math.round(prepareScore),
+    match: Math.round(matchScore),
+    base: Math.round(baseScore)
+  };
+}
+
+// 获取就业星级（mock）
+function getCareerStars(uni, major) {
+  var stars = 3;
+  if (uni.type.includes('985')) stars += 1;
+  if (major && (major.includes('计算机') || major.includes('软件') || major.includes('金融') || major.includes('电子信息'))) stars += 1;
+  if (major && (major.includes('生物') || major.includes('历史') || major.includes('哲学'))) stars -= 1;
+  return Math.min(5, Math.max(1, stars));
+}
+
+// 获取学科评估标签（mock）
+function getEvalBadge(uni, major) {
+  var map = { 'A+': 'eval-a-plus', 'A': 'eval-a', 'A-': 'eval-a-minus', 'B+': 'eval-b-plus', 'B': 'eval-b' };
+  var evals = ['A+', 'A', 'A-', 'B+', 'B'];
+  var isTop = uni.type.includes('985');
+  var idx = isTop ? Math.floor(Math.random() * 3) : Math.floor(Math.random() * 3) + 2;
+  var grade = evals[idx] || 'B';
+  return '<span class="eval-badge ' + (map[grade] || 'eval-other') + '">' + grade + '</span>';
+}
+
+// 生成个性化建议
+function getSuggestions(data, competency) {
+  var s = [];
+  if (competency.initial < 18) {
+    s.push({ icon: '📈', title: '初试提分建议', body: '您的初试预估分竞争力一般，建议重点突破专业课和薄弱科目。如果数学是短板，可考虑不考数学的专业方向。每天增加1-2小时针对性训练。' });
+  }
+  if (competency.reexam < 15) {
+    s.push({ icon: '🎤', title: '复试竞争力提升', body: '复试竞争力有待加强。建议提前准备英语口语自我介绍，整理本科期间的课程设计/项目经历。如有条件，可尝试参与线上科研项目或竞赛。' });
+  }
+  if (data.crossMajor === 'cross') {
+    s.push({ icon: '📚', title: '跨专业备考策略', body: '跨考需要更早开始专业课复习。建议先通读目标专业本科核心教材，建立知识框架。可联系目标院校学长获取专业课重点。' });
+  }
+  if (data.english === 'none' || data.english === 'cet4') {
+    s.push({ icon: '🌍', title: '英语能力提升', body: '英语是考研的关键科目。建议每天背诵50个单词，精读1篇真题阅读。复试英语口语也需要提前准备，可从英文自我介绍开始练习。' });
+  }
+  if (competency.total >= 75) {
+    s.push({ icon: '🚀', title: '冲刺高分策略', body: '您的综合竞争力较强！建议适当提高目标院校层次，同时保留1-2所稳妥院校作为保底。关注自主划线院校的提前面试机会。' });
+  }
+  if (s.length === 0) {
+    s.push({ icon: '💪', title: '稳步前行', body: '您的备考状态良好，建议按照当前节奏继续复习。定期模考检验复习效果，及时调整复习计划。' });
+  }
+  return s;
+}
+
+// 历史记录（localStorage）
+var AI_HISTORY_KEY = 'kaoyan_ai_history_v3';
+
+function saveAIHistory(data, summary) {
+  try {
+    var list = JSON.parse(localStorage.getItem(AI_HISTORY_KEY) || '[]');
+    var item = { time: new Date().toLocaleString('zh-CN'), data: data, summary: summary };
+    list.unshift(item);
+    if (list.length > 10) list = list.slice(0, 10);
+    localStorage.setItem(AI_HISTORY_KEY, JSON.stringify(list));
+    renderAIHistory();
+  } catch (e) {}
+}
+
+function loadAIHistory() {
+  try {
+    return JSON.parse(localStorage.getItem(AI_HISTORY_KEY) || '[]');
+  } catch (e) { return []; }
+}
+
+function clearAIHistory() {
+  localStorage.removeItem(AI_HISTORY_KEY);
+  renderAIHistory();
+}
+
+function renderAIHistory() {
+  var panel = document.getElementById('aiHistoryPanel');
+  var listEl = document.getElementById('aiHistoryList');
+  if (!panel || !listEl) return;
+  var list = loadAIHistory();
+  if (list.length === 0) { panel.style.display = 'none'; return; }
+  panel.style.display = 'block';
+  listEl.innerHTML = list.map(function(item, idx) {
+    var d = item.data;
+    var majorName = (majorCategoryMap[d.major] || {}).name || d.major;
+    return '<div class="history-chip" onclick="restoreAIHistory(' + idx + ')">'
+      + '<span>' + majorName + ' · ' + d.score + '分</span>'
+      + '<span class="del" onclick="event.stopPropagation();deleteAIHistory(' + idx + ')">&times;</span>'
+      + '</div>';
+  }).join('');
+}
+
+function deleteAIHistory(idx) {
+  var list = loadAIHistory();
+  list.splice(idx, 1);
+  localStorage.setItem(AI_HISTORY_KEY, JSON.stringify(list));
+  renderAIHistory();
+}
+
+function restoreAIHistory(idx) {
+  var list = loadAIHistory();
+  var item = list[idx];
+  if (!item) return;
+  var d = item.data;
+  if (d.score) document.getElementById('aiScore').value = d.score;
+  if (d.major) document.getElementById('aiMajor').value = d.major;
+  if (d.region) document.getElementById('aiRegion').value = d.region;
+  if (d.level) document.getElementById('aiLevel').value = d.level;
+  if (d.needMath) document.getElementById('aiMath').value = d.needMath;
+  if (d.degreeType) document.getElementById('aiDegree').value = d.degreeType;
+  if (d.undergradLevel) document.getElementById('aiUndergrad').value = d.undergradLevel;
+  if (d.crossMajor) document.getElementById('aiCrossMajor').value = d.crossMajor;
+  if (d.english) document.getElementById('aiEnglish').value = d.english;
+  if (d.stage) document.getElementById('aiStage').value = d.stage;
+  if (d.dailyHours) document.getElementById('aiDailyHours').value = d.dailyHours;
+  if (d.research) document.getElementById('aiResearch').value = d.research;
+  // 显示结果
+  document.getElementById('aiResult').classList.add('show');
+  document.getElementById('aiResultContent').innerHTML = item.summary;
+  document.getElementById('aiResult').scrollIntoView({ behavior: 'smooth' });
+}
+
 function runAIMatch() {
-  const score = parseInt(document.getElementById('aiScore').value);
+  var data = getAIFormData();
+
+  // 验证输入
+  if (!data.score || data.score < 200 || data.score > 450) {
+    alert('请输入有效的预估总分（200-450分）'); return;
+  }
+  if (!data.major) { alert('请选择本科专业方向'); return; }
+  if (!data.degreeType) { alert('请选择学位类型（学硕/专硕）'); return; }
+  if (!data.undergradLevel) { alert('请选择本科院校层次'); return; }
+
+  var majorInfo = majorCategoryMap[data.major] || { nationalLine: 264 };
+  var nationalLine = majorInfo.nationalLine;
+
+  // 显示loading
+  document.getElementById('aiLoading').style.display = 'block';
+  document.getElementById('aiMatchBtn').disabled = true;
+
+  setTimeout(function() {
+    // 获取匹配结果
+    var matches = findMatchingMajors(data.score, data.major, data.region, data.level, data.needMath, data.degreeType, data.undergradLevel);
+
+    // 竞争力评估
+    var competency = calcCompetency(data);
+    var suggestions = getSuggestions(data, competency);
+
+    // 分类结果
+    var charge = matches.filter(function(m) { return m.risk.level === 'stable'; }).slice(0, 4);
+    var stable = matches.filter(function(m) { return m.risk.level === 'reachable'; }).slice(0, 4);
+    var safe = matches.filter(function(m) { return m.risk.level === 'risky'; }).slice(0, 3);
+
+    var getMajorDisplay = function(key) {
+      var info = majorCategoryMap[key]; return info ? info.name : key;
+    };
+    var levelNames = { top: '顶尖985冲刺', mid: '普通985/强211稳妥', safe: '211/重点本科保底' };
+    var mathNames = { yes: '考数学', no: '不考数学', any: '都可以' };
+    var degreeNames = { academic: '学术型硕士', professional: '专业型硕士', any: '均可' };
+    var undergradNames = { top985: '985院校', mid211: '211院校', double_top: '双一流院校', normal: '普通本科', other_school: '其他' };
+    var crossNames = { no: '本专业', related: '相近跨考', cross: '完全跨考' };
+    var engNames = { none: '未过四级', cet4: '四级', cet6: '六级', high: '六级500+' };
+
+    // 竞争力颜色
+    var compColor = competency.total >= 75 ? '#10B981' : competency.total >= 55 ? '#F59E0B' : '#EF4444';
+    var compLabel = competency.total >= 75 ? '优秀' : competency.total >= 55 ? '良好' : '待提升';
+
+    // 生成结果HTML
+    var resultHTML = '';
+
+    // 1. 竞争力评估面板
+    resultHTML += '<div class="competency-panel">'
+      + '<div class="competency-score">'
+      + '<div class="competency-ring" style="--score-deg:' + (competency.total * 3.6) + 'deg;">'
+      + '<div class="competency-ring-inner">'
+      + '<div class="competency-ring-value" style="color:' + compColor + ';">' + competency.total + '</div>'
+      + '<div class="competency-ring-label">竞争力指数</div>'
+      + '</div></div>'
+      + '<div class="competency-bars">'
+      + '<div class="competency-bar-item"><span class="competency-bar-label">初试实力</span><div class="competency-bar-track"><div class="competency-bar-fill" style="width:' + (competency.initial / 30 * 100) + '%;background:' + (competency.initial >= 20 ? '#10B981' : competency.initial >= 12 ? '#F59E0B' : '#EF4444') + ';"></div></div><span class="competency-bar-value">' + competency.initial + '</span></div>'
+      + '<div class="competency-bar-item"><span class="competency-bar-label">复试竞争力</span><div class="competency-bar-track"><div class="competency-bar-fill" style="width:' + (competency.reexam / 25 * 100) + '%;background:' + (competency.reexam >= 17 ? '#10B981' : competency.reexam >= 10 ? '#F59E0B' : '#EF4444') + ';"></div></div><span class="competency-bar-value">' + competency.reexam + '</span></div>'
+      + '<div class="competency-bar-item"><span class="competency-bar-label">备考充分度</span><div class="competency-bar-track"><div class="competency-bar-fill" style="width:' + (competency.prepare / 20 * 100) + '%;background:' + (competency.prepare >= 14 ? '#10B981' : competency.prepare >= 8 ? '#F59E0B' : '#EF4444') + ';"></div></div><span class="competency-bar-value">' + competency.prepare + '</span></div>'
+      + '<div class="competency-bar-item"><span class="competency-bar-label">院校匹配度</span><div class="competency-bar-track"><div class="competency-bar-fill" style="width:' + (competency.match / 15 * 100) + '%;background:' + (competency.match >= 10 ? '#10B981' : competency.match >= 6 ? '#F59E0B' : '#EF4444') + ';"></div></div><span class="competency-bar-value">' + competency.match + '</span></div>'
+      + '<div class="competency-bar-item"><span class="competency-bar-label">专业基础</span><div class="competency-bar-track"><div class="competency-bar-fill" style="width:' + (competency.base / 10 * 100) + '%;background:' + (competency.base >= 7 ? '#10B981' : competency.base >= 4 ? '#F59E0B' : '#EF4444') + ';"></div></div><span class="competency-bar-value">' + competency.base + '</span></div>'
+      + '</div></div></div>';
+
+    // 2. 分数概览
+    resultHTML += '<div class="result-section">'
+      + '<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px;">'
+      + '<div style="padding: 14px; background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border-radius: 8px; text-align: center;">'
+      + '<div style="font-size: 12px; color: var(--text-light);">预估分数</div><div style="font-size: 24px; font-weight: 700; color: var(--primary);">' + data.score + '分</div></div>'
+      + '<div style="padding: 14px; background: linear-gradient(135deg, #FEF3C7, #FDE68A); border-radius: 8px; text-align: center;">'
+      + '<div style="font-size: 12px; color: var(--text-light);">' + majorInfo.name + '国家线</div><div style="font-size: 24px; font-weight: 700; color: #D97706;">' + nationalLine + '分</div></div>'
+      + '<div style="padding: 14px; background: linear-gradient(135deg, #D1FAE5, #A7F3D0); border-radius: 8px; text-align: center;">'
+      + '<div style="font-size: 12px; color: var(--text-light);">超出国家线</div><div style="font-size: 24px; font-weight: 700; color: #059669;">+' + (data.score - nationalLine) + '分</div></div>'
+      + '</div>'
+      + '<div class="result-card" style="background: #F8FAFC;">'
+      + '<div style="font-size: 13px; color: var(--text-light);">'
+      + '<strong>您的画像：</strong>' + getMajorDisplay(data.major) + ' | ' + degreeNames[data.degreeType] + ' | ' + undergradNames[data.undergradLevel] + ' | ' + crossNames[data.crossMajor] + ' | 英语' + engNames[data.english]
+      + ' | ' + (data.region || '全国') + ' | ' + (levelNames[data.level] || '不限层次') + ' | ' + (mathNames[data.needMath] || '不限')
+      + '</div></div></div>';
+
+    // 3. 个性化建议
+    resultHTML += '<div class="result-section"><h4>💡 个性化备考建议</h4>';
+    suggestions.forEach(function(s) {
+      resultHTML += '<div class="suggest-card">'
+        + '<div class="suggest-card-title">' + s.icon + ' ' + s.title + '</div>'
+        + '<div class="suggest-card-body">' + s.body + '</div>'
+        + '</div>';
+    });
+    resultHTML += '</div>';
+
+    // 4. 三档推荐
+    function renderTierCard(m, tierType) {
+      var stars = getCareerStars(m.uni, m.major);
+      var starHTML = '';
+      for (var i = 0; i < 5; i++) starHTML += i < stars ? '<span class="career-star">★</span>' : '<span style="color:#E5E7EB;">★</span>';
+      var badgeColor = tierType === 'charge' ? '#DC2626' : tierType === 'stable' ? '#059669' : '#D97706';
+      var bgGrad = tierType === 'charge' ? 'linear-gradient(135deg, #FEF2F2, #FEE2E2)' : tierType === 'stable' ? 'linear-gradient(135deg, #F0FDF4, #DCFCE7)' : 'linear-gradient(135deg, #FFFBEB, #FEF3C7)';
+      var borderColor = tierType === 'charge' ? '#EF4444' : tierType === 'stable' ? '#10B981' : '#F59E0B';
+      var tierLabel = tierType === 'charge' ? '冲刺' : tierType === 'stable' ? '稳妥' : '保底';
+      var evalBadge = getEvalBadge(m.uni, m.major);
+      return '<div class="result-card" style="border-left-color:' + borderColor + ';background:' + bgGrad + ';cursor:pointer;" onclick="showUniDetail(\'' + m.uni.name.replace(/'/g, "\\'") + '\')">'
+        + '<div style="display: flex; justify-content: space-between; align-items: start;">'
+        + '<div style="flex: 1;">'
+        + '<div class="result-card-title">' + m.uni.name + ' ' + evalBadge + '<span style="font-size: 12px; color: var(--text-light); font-weight: normal;">' + m.uni.city + '</span></div>'
+        + '<div style="font-size: 13px; color: var(--primary); margin: 4px 0;">📚 ' + m.major + '<span class="career-tag">就业:' + starHTML + '</span></div>'
+        + '<div style="font-size: 12px; color: var(--text-light);">' + (m.isSelfLine ? '🏛️ 自主划线' : '📋 国家线院校') + ' | 外语:' + m.req.lang + ' | 数学:' + (m.req.math || '无') + '</div>'
+        + '<div style="margin-top: 8px;"><div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-light); margin-bottom: 4px;"><span>录取概率</span><span style="font-weight: 600; color:' + m.risk.color + ';">' + m.risk.probability + '%</span></div>'
+        + '<div style="width: 100%; height: 6px; background: #E5E7EB; border-radius: 3px; overflow: hidden;"><div style="width: ' + m.risk.probability + '%; height: 100%; background: ' + m.risk.color + '; border-radius: 3px; transition: width 0.3s;"></div></div></div>'
+        + '</div>'
+        + '<div style="text-align: right; margin-left: 12px;">'
+        + '<div style="padding: 4px 10px; background: ' + badgeColor + '; color: white; border-radius: 12px; font-size: 12px; font-weight: 600;">' + tierLabel + '</div>'
+        + '<div style="font-size: 18px; font-weight: 700; color: ' + badgeColor + '; margin-top: 6px;">' + (m.scoreDiff >= 0 ? '+' : '') + m.scoreDiff + '分</div>'
+        + '<div style="font-size: 11px; color: var(--text-lighter);">' + (m.scoreDiff >= 0 ? '超专业线' : '低于专业线') + '</div>'
+        + '</div></div>'
+        + '<div style="margin-top: 8px; padding: 8px; background: rgba(255,255,255,0.7); border-radius: 6px; font-size: 12px; color: var(--text-light);">'
+        + '💡 <strong>推荐理由：</strong>' + m.risk.desc + (m.uni.type.includes('985') ? ' 985院校，综合实力强。' : m.uni.type.includes('211') && !m.uni.type.includes('985') ? ' 211院校，行业认可度高。' : '') + ' 报录比' + m.uni.ratio + '。'
+        + '</div>'
+        + '<div class="compare-check" id="compareCheck_' + m.uni.name.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g, '') + '" onclick="event.stopPropagation();toggleCompareAI(\'' + m.uni.name.replace(/'/g, "\\'") + '\', this)">'
+        + '<span>+</span> 加入对比'
+        + '</div></div>';
+    }
+
+    // 冲刺推荐
+    if (charge.length > 0) {
+      resultHTML += '<div class="tier-section">'
+        + '<div class="tier-header"><span class="tier-badge charge">🔥 冲刺院校</span><span class="tier-count">您的分数有竞争力，可勇敢尝试</span></div>'
+        + charge.map(function(m) { return renderTierCard(m, 'charge'); }).join('')
+        + '</div>';
+    }
+    // 稳妥推荐
+    if (stable.length > 0) {
+      resultHTML += '<div class="tier-section">'
+        + '<div class="tier-header"><span class="tier-badge stable">✅ 稳妥院校</span><span class="tier-count">录取把握较大，建议重点关注</span></div>'
+        + stable.map(function(m) { return renderTierCard(m, 'stable'); }).join('')
+        + '</div>';
+    }
+    // 保底推荐
+    if (safe.length > 0) {
+      resultHTML += '<div class="tier-section">'
+        + '<div class="tier-header"><span class="tier-badge safe">🛡️ 保底院校</span><span class="tier-count">分数优势大，确保有学上</span></div>'
+        + safe.map(function(m) { return renderTierCard(m, 'safe'); }).join('')
+        + '</div>';
+    }
+
+    // 无匹配结果
+    if (charge.length === 0 && stable.length === 0 && safe.length === 0) {
+      resultHTML += '<div style="text-align: center; padding: 30px; color: var(--text-light);">'
+        + '<div style="font-size: 48px; margin-bottom: 12px;">🔍</div><p>未找到符合条件的院校</p>'
+        + '<p style="font-size: 13px; margin-top: 8px;">建议尝试"全国不限"或放宽筛选条件</p></div>';
+    }
+
+    // 调剂备选提示
+    if (data.score < nationalLine + 20) {
+      resultHTML += '<div class="backup-tip">'
+        + '<span>⚠️</span><div><strong>调剂备选提醒：</strong>您的分数接近国家线，建议同时关注B区院校调剂信息，增加录取机会。</div>'
+        + '</div>';
+    }
+
+    // 温馨提示
+    resultHTML += '<div style="margin-top: 20px; padding: 14px; background: #EFF6FF; border-radius: 8px; font-size: 13px; color: #1E40AF;">'
+      + '💡 <strong>重要提示：</strong><br>'
+      + '• 自主划线院校分数线通常比国家线高20-40分<br>'
+      + '• 本科院校层次会影响实际录取难度，985/211院校在复试中可能有一定优势<br>'
+      + '• 以上推荐基于院校历史数据估算，仅供参考<br>'
+      + '• 实际录取受报录比、复试表现、面试发挥等因素影响<br>'
+      + '• 建议同时关注调剂信息，增加录取机会'
+      + '</div>';
+
+    document.getElementById('aiResultContent').innerHTML = resultHTML;
+    document.getElementById('aiResult').classList.add('show');
+    document.getElementById('aiLoading').style.display = 'none';
+    document.getElementById('aiMatchBtn').disabled = false;
+    document.getElementById('aiResult').scrollIntoView({ behavior: 'smooth' });
+
+    // 保存历史
+    saveAIHistory(data, resultHTML);
+  }, 1200);
+}
+
+// AI择校院校对比勾选
+function toggleCompareAI(name, el) {
+  toggleCompare(name);
+  var isActive = isInCompare(name);
+  if (isActive) {
+    el.classList.add('checked');
+    el.innerHTML = '<span>✓</span> 已加入对比';
+  } else {
+    el.classList.remove('checked');
+    el.innerHTML = '<span>+</span> 加入对比';
+  }
+}
+
+// 显示群信息弹窗
+function showGroupModal(name, number) {
   const major = document.getElementById('aiMajor').value;
   const region = document.getElementById('aiRegion').value;
   const level = document.getElementById('aiLevel').value;
@@ -4391,13 +5230,6 @@ function filterExam(cat, btn) {
 var adjustData = [
   {
     "cat": "cs",
-    "title": "调剂系统操作要点：三个平行志愿的策略填报",
-    "content": "调剂技巧",
-    "time": "调剂技巧",
-    "tag": "hot"
-  },
-  {
-    "cat": "cs",
     "title": "调剂信息获取渠道：研招网/院校官网/考研社群",
     "content": "信息渠道",
     "time": "信息渠道",
@@ -4409,6 +5241,13 @@ var adjustData = [
     "content": "重要提醒",
     "time": "重要提醒",
     "tag": "important"
+  },
+  {
+    "cat": "cs",
+    "title": "调剂系统操作要点：三个平行志愿的策略填报",
+    "content": "调剂技巧",
+    "time": "调剂技巧",
+    "tag": "hot"
   }
 ];
 
@@ -4571,76 +5410,6 @@ function filterReexamExp(cat, btn) {
   btn.classList.add('active');
   reexamExpFilter = cat;
   renderReexamExp();
-}
-
-// 调剂策略评估
-function evaluateAdjust() {
-  var score = parseInt(document.getElementById('adjustScore').value) || 0;
-  var single1 = parseInt(document.getElementById('adjustSingle1').value) || 0;
-  var single2 = parseInt(document.getElementById('adjustSingle2').value) || 0;
-  var targetLevel = document.getElementById('adjustTargetLevel').value;
-  var sourceLevel = document.getElementById('adjustSourceLevel').value;
-  var major = document.getElementById('adjustMajor').value || '未知专业';
-
-  var resultDiv = document.getElementById('adjustResult');
-  if (!score || !single1 || !single2) {
-    resultDiv.innerHTML = '<div style="padding: 12px; background: #FEE2E2; color: #991B1B; border-radius: 8px; font-size: 13px;">⚠️ 请填写完整的分数信息</div>';
-    resultDiv.style.display = 'block';
-    return;
-  }
-
-  // 简单评估逻辑
-  var totalScore = score;
-  var levelScore = { '985': 50, '211': 35, 'double': 20, '普通': 10 };
-  var sourceScore = { '985': 30, '211': 20, 'double': 10, '普通': 0 };
-  var chance = totalScore + levelScore[sourceLevel] - levelScore[targetLevel];
-
-  var level, color, bg, advice;
-  if (chance >= 360) {
-    level = 'A级 · 调剂成功率很高';
-    color = '#166534';
-    bg = '#DCFCE7';
-    advice = '你的分数优势明显，可以积极冲刺比本科层次更高的院校。建议同时填报3个志愿：1个冲刺、1个稳妥、1个保底。提前联系导师增加成功率。';
-  } else if (chance >= 330) {
-    level = 'B级 · 调剂成功率中等';
-    color = '#92400E';
-    bg = '#FEF3C7';
-    advice = '分数有一定竞争力，建议重点考虑与本科同层次或略低的院校。多关注B区院校和新开硕士点的学校，调剂机会更多。';
-  } else if (chance >= 300) {
-    level = 'C级 · 调剂有一定风险';
-    color = '#9A3412';
-    bg = '#FFEDD5';
-    advice = '分数处于边缘地带，需要精准定位。建议优先考虑B区普通院校、地方院校，以及新开设相关专业的学校。同时做好二战或就业准备。';
-  } else {
-    level = 'D级 · 调剂难度较大';
-    color = '#991B1B';
-    bg = '#FEE2E2';
-    advice = '分数竞争力较弱，建议扩大调剂范围至所有可能接受的院校和专业。可以考虑非全日制、专业学位等方向。必要时做好其他规划。';
-  }
-
-  // 单科提醒
-  var singleWarning = '';
-  if (single1 < 50 || single2 < 70) {
-    singleWarning = '<div style="margin-top: 10px; padding: 10px; background: #FEF3C7; border-radius: 6px; font-size: 12px; color: #92400E;">⚠️ 你的单科成绩可能低于部分院校要求，填报前务必确认目标院校的单科线要求。</div>';
-  }
-
-  resultDiv.innerHTML =
-    '<div style="padding: 20px; background: ' + bg + '; border-radius: 10px;">' +
-      '<div style="font-size: 18px; font-weight: 700; color: ' + color + '; margin-bottom: 8px;">' + level + '</div>' +
-      '<div style="font-size: 13px; color: var(--text-light); line-height: 1.8;">' +
-        '<strong>综合评分：</strong>' + chance + '分<br>' +
-        '<strong>专业：</strong>' + major + '<br>' +
-        '<strong>目标层次：</strong>' + targetLevel + ' | <strong>本科层次：</strong>' + sourceLevel +
-      '</div>' +
-      '<div style="margin-top: 12px; padding: 12px; background: white; border-radius: 8px; font-size: 13px; color: var(--text); line-height: 1.7;">' +
-        '<strong>💡 策略建议：</strong>' + advice +
-      '</div>' +
-      singleWarning +
-      '<div style="margin-top: 12px; font-size: 12px; color: var(--text-lighter);">' +
-        '* 评估结果仅供参考，实际录取受多种因素影响。建议主动联系目标院校研招办确认调剂政策。' +
-      '</div>' +
-    '</div>';
-  resultDiv.style.display = 'block';
 }
 
 // 详情弹窗
@@ -5040,6 +5809,7 @@ function init() {
   renderAdjustTimeline();
   renderReexamExp();
   initCompareSelects();
+  renderAIHistory();
 }
 
 init();
