@@ -2146,12 +2146,16 @@
           </div>
         </div>
 
-        <!-- 备考指南 -->
+        <!-- 分科备考指南 -->
         <div class="card" style="margin-top: 24px;">
           <div class="card-header">
             <div class="card-title">✍️ 分科备考指南</div>
+            <span class="card-more" style="font-size: 12px; color: var(--text-lighter);">点击科目卡片可快速筛选</span>
           </div>
           <div class="card-body">
+            <!-- 科目概览卡片 -->
+            <div id="subjectOverviewGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px;"></div>
+            <!-- 筛选按钮 -->
             <div class="filter-bar" style="margin-bottom: 16px;">
               <button class="filter-btn active" onclick="filterPrepare('all', this)">全部</button>
               <button class="filter-btn" onclick="filterPrepare('politics', this)">政治</button>
@@ -2881,65 +2885,703 @@ const timelineData = [
 
 // 备考技巧（分科分类）
 const tipsData = [
+  // ===== 综合规划 =====
   {
     "icon": "💡",
-    "title": "2026考研超详细全年复习规划：从现在到明年2月预热阶段",
+    "title": "2027考研超详细全年复习规划：从现在到明年2月预热阶段",
     "content": "备考规划",
-    "tag": "hot"
+    "tag": "hot",
+    "category": "general",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">📌 预热阶段（当前 - 2月）核心任务</h4>
+<ul style="padding-left:20px;line-height:2.2;">
+<li><strong>确定目标院校和专业</strong>：结合自身实力、兴趣和就业方向，初步筛选3-5所目标院校</li>
+<li><strong>搜集备考信息</strong>：关注研招网、目标院校研究生院官网，了解招生简章、考试科目、参考书目</li>
+<li><strong>建立学习习惯</strong>：每天保证4-6小时有效学习时间，逐步进入备考状态</li>
+<li><strong>英语先行</strong>：开始背考研词汇（推荐5500词大纲词汇），每天50-80个，配合阅读英文文章培养语感</li>
+<li><strong>数学预热</strong>：如果考数学，开始过教材，理解基本概念和定理，做课后习题</li>
+<li><strong>专业课摸底</strong>：购买指定参考书目，通读目录和前言，了解知识体系</li>
+</ul>
+<div style="background:#EFF6FF;padding:12px 16px;border-radius:8px;margin-top:12px;font-size:13px;color:#1E40AF;">
+<strong>💡 关键提醒：</strong>预热阶段最重要的是"进入状态"而非"刷量"。养成每天固定时间学习的习惯，比突击学习更有效。
+</div>`
   },
   {
     "icon": "📌",
-    "title": "26考研全攻略：三阶九步备考法+择校策略",
+    "title": "27考研全攻略：三阶九步备考法+择校策略",
     "content": "备考攻略",
-    "tag": "hot"
+    "tag": "hot",
+    "category": "general",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">🎯 三阶九步备考法</h4>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;color:#333;">第一阶段：筑基期（3-6月）</p>
+<ul style="padding-left:20px;line-height:2;">
+<li>Step 1：完成各科第一轮基础知识学习</li>
+<li>Step 2：建立知识框架，整理核心笔记</li>
+<li>Step 3：完成基础习题训练，标记薄弱环节</li>
+</ul>
+</div>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;color:#333;">第二阶段：强化期（7-10月）</p>
+<ul style="padding-left:20px;line-height:2;">
+<li>Step 4：刷真题，总结高频考点和出题规律</li>
+<li>Step 5：专项攻克薄弱环节，强化重难点</li>
+<li>Step 6：建立错题本，定期回顾和重做</li>
+</ul>
+</div>
+<div>
+<p style="font-weight:600;color:#333;">第三阶段：冲刺期（11-12月）</p>
+<ul style="padding-left:20px;line-height:2;">
+<li>Step 7：全科模拟考试，训练时间分配</li>
+<li>Step 8：背诵重点知识，巩固高频考点</li>
+<li>Step 9：调整心态，保持状态，从容应考</li>
+</ul>
+</div>
+<h4 style="color:var(--primary);margin:16px 0 12px;">🏫 择校五步法</h4>
+<ol style="padding-left:20px;line-height:2.2;">
+<li>确定学科门类 → 2. 按地区/城市筛选 → 3. 对比院校层次（985/211/双一流） → 4. 研究报录比和分数线 → 5. 结合自身实力最终确定</li>
+</ol>`
   },
   {
     "icon": "⭐",
     "title": "备考周期拉长至18-24个月，超72%考生选择3月前启动",
     "content": "备考趋势",
-    "tag": "new"
+    "tag": "new",
+    "category": "general",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">📊 最新备考趋势分析</h4>
+<p style="line-height:2;">近年来考研竞争持续加剧，备考时间线明显前移。数据显示：</p>
+<ul style="padding-left:20px;line-height:2.2;">
+<li><strong>备考周期延长</strong>：从传统的12个月延长至18-24个月，超72%的考生选择在考前一年的3月前启动备考</li>
+<li><strong>提前规划意识增强</strong>：大二下学期开始准备的比例从5年前的15%上升至38%</li>
+<li><strong>多轮复习成主流</strong>：超过85%的上岸考生至少完成3轮复习</li>
+<li><strong>信息差缩小</strong>：社交媒体使备考信息更透明，但也导致"卷"的程度加剧</li>
+</ul>
+<div style="background:#FEF3C7;padding:12px 16px;border-radius:8px;margin-top:12px;font-size:13px;color:#92400E;">
+<strong>⚠️ 应对建议：</strong>不要盲目跟风"超长备考"，关键是效率。3-6月启动完全来得及，重点是要有清晰的阶段目标和执行计划。
+</div>`
   },
   {
     "icon": "🎯",
-    "title": "26考研全年阶段规划：预热-基础-强化-冲刺",
+    "title": "27考研全年阶段规划：预热-基础-强化-冲刺",
     "content": "阶段规划",
-    "tag": "note"
+    "tag": "note",
+    "category": "general",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">📅 全年四阶段规划详解</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+<div style="padding:12px;background:#EFF6FF;border-radius:8px;">
+<p style="font-weight:600;">🌱 预热期（12月-2月）</p>
+<p style="font-size:13px;color:#666;margin-top:4px;">每天4-6h · 信息搜集+英语预热+习惯养成</p>
+</div>
+<div style="padding:12px;background:#F0FDF4;border-radius:8px;">
+<p style="font-weight:600;">📖 基础期（3-6月）</p>
+<p style="font-size:13px;color:#666;margin-top:4px;">每天6-8h · 全面学习基础知识，建立框架</p>
+</div>
+<div style="padding:12px;background:#FFF7ED;border-radius:8px;">
+<p style="font-weight:600;">🔥 强化期（7-10月）</p>
+<p style="font-size:13px;color:#666;margin-top:4px;">每天8-10h · 刷题+真题+错题总结</p>
+</div>
+<div style="padding:12px;background:#FEF2F2;border-radius:8px;">
+<p style="font-weight:600;">🚀 冲刺期（11-12月）</p>
+<p style="font-size:13px;color:#666;margin-top:4px;">每天10-12h · 模考+背诵+心态调整</p>
+</div>
+</div>
+<p style="line-height:2;">每个阶段结束时进行自测评估，未达标的内容及时补强，不把问题留到下一阶段。</p>`
   },
   {
     "icon": "📚",
-    "title": "2026考研上岸必备：3大系统+52个关键动作",
+    "title": "2027考研上岸必备：3大系统+52个关键动作",
     "content": "上岸清单",
-    "tag": "note"
+    "tag": "note",
+    "category": "general",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">✅ 上岸必备三大系统</h4>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;">1️⃣ 信息管理系统</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>目标院校信息追踪表（招生人数、分数线、报录比）</li>
+<li>考试大纲变化监控（每年9月关注新增/删减考点）</li>
+<li>备考资源库（网课、讲义、真题、笔记分门别类整理）</li>
+</ul>
+</div>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;">2️⃣ 学习执行系统</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>每日学习计划表（固定时间+弹性时间）</li>
+<li>每周复盘机制（周日回顾本周进度，调整下周计划）</li>
+<li>错题本+知识盲点追踪</li>
+</ul>
+</div>
+<div>
+<p style="font-weight:600;">3️⃣ 心态调节系统</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>定期运动（每周3次，每次30分钟以上）</li>
+<li>备考伙伴/学习小组互相监督</li>
+<li>焦虑应对策略（冥想、倾诉、适时休息）</li>
+</ul>
+</div>`
   },
+  // ===== 政治 =====
   {
-    "icon": "✍️",
-    "title": "数学复习：基础阶段完成高数、线代、概率第一轮",
-    "content": "数学",
-    "tag": "note"
-  },
-  {
-    "icon": "🎤",
-    "title": "英语复习：真题阅读精做，每篇文章逐句分析长难句",
-    "content": "英语",
-    "tag": "note"
+    "icon": "📕",
+    "title": "政治全年复习规划：分阶段攻克的完整路线图",
+    "content": "政治 · 全年规划",
+    "tag": "hot",
+    "category": "politics",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">📕 政治全年复习路线图</h4>
+<div style="margin-bottom:16px;padding:12px;background:#FEF2F2;border-radius:8px;">
+<p style="font-weight:600;">🌿 基础阶段（6-8月）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>重点学习马原（哲学+政经），理解核心概念和逻辑</li>
+<li>搭配网课（推荐徐涛/腿姐），每天1-1.5小时</li>
+<li>不需要背诵，重在理解框架和原理</li>
+</ul>
+</div>
+<div style="margin-bottom:16px;padding:12px;background:#FFF7ED;border-radius:8px;">
+<p style="font-weight:600;">🔥 强化阶段（9-10月）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>全面学习四科：马原+毛中特+史纲+思修</li>
+<li>刷肖秀荣1000题，每题搞懂错误原因</li>
+<li>整理知识点框架，建立各科知识体系</li>
+</ul>
+</div>
+<div style="margin-bottom:16px;padding:12px;background:#EFF6FF;border-radius:8px;">
+<p style="font-weight:600;">📝 提升阶段（11月）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>刷肖八+各类模拟卷选择题</li>
+<li>整理时政热点，关注年度重大会议和政策</li>
+<li>开始练习分析题答题思路和框架</li>
+</ul>
+</div>
+<div style="padding:12px;background:#F0FDF4;border-radius:8px;">
+<p style="font-weight:600;">🚀 冲刺阶段（12月）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>狂背肖四分析题（必背！命中率极高）</li>
+<li>回顾错题本和薄弱知识点</li>
+<li>模拟考试，训练答题速度和排版</li>
+</ul>
+</div>`
   },
   {
     "icon": "🔥",
-    "title": "政治复习：9月前主攻选择题，后期重点背分析题",
-    "content": "政治",
-    "tag": "note"
+    "title": "政治选择题高分攻略：马原+毛中特+史纲+思修分科突破",
+    "content": "政治 · 选择题",
+    "tag": "note",
+    "category": "politics",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">🎯 选择题分科突破策略</h4>
+<p style="line-height:2;margin-bottom:12px;">政治选择题占50分，是拿高分的关键。各科特点和解题方法不同：</p>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">📘 马原（14分）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>重在理解，不死记硬背。掌握唯物论、辩证法、认识论核心原理</li>
+<li>做题技巧：先判断考查原理，再排除明显错误选项</li>
+<li>多选题是重灾区，注意"绝对化"表述往往是错的</li>
+</ul>
+</div>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">📗 毛中特（14分）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>时政性最强，重点关注新思想、新论断、新提法</li>
+<li>多选题注意"全选"概率较高，但也要警惕干扰项</li>
+</ul>
+</div>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">📙 史纲（10分）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>时间线是关键，用时间轴串起重大事件</li>
+<li>注意"根本原因""根本标志"等关键词的固定搭配</li>
+</ul>
+</div>
+<div>
+<p style="font-weight:600;">📕 思修（12分）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>相对简单，很多选项凭常识就能判断</li>
+<li>注意法律部分的精确表述，容易混淆</li>
+</ul>
+</div>`
   },
+  {
+    "icon": "📝",
+    "title": "政治分析题答题模板与万能句式",
+    "content": "政治 · 分析题",
+    "tag": "note",
+    "category": "politics",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">✍️ 分析题答题模板</h4>
+<p style="line-height:2;margin-bottom:12px;">分析题占50分，掌握答题框架和万能句式可以大幅提分：</p>
+<div style="margin-bottom:16px;padding:12px;background:#F8FAFC;border-radius:8px;">
+<p style="font-weight:600;">通用答题结构（三段式）</p>
+<ol style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li><strong>原理表述</strong>：明确指出考查的理论/原理，完整表述核心内容</li>
+<li><strong>联系材料</strong>：将原理与材料中的具体内容对应分析</li>
+<li><strong>总结提升</strong>：得出结论，适当联系实际升华</li>
+</ol>
+</div>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;">🔑 万能句式示例</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li>"这体现了……的哲学原理，揭示了……的内在联系"</li>
+<li>"材料中……的做法，正是……理论在实践中的具体运用"</li>
+<li>"我们要坚持……，反对……，在……中推动……"</li>
+<li>"新时代背景下，……具有更加重要的现实意义"</li>
+</ul>
+</div>
+<div style="background:#FEF3C7;padding:12px;border-radius:8px;font-size:13px;color:#92400E;">
+<strong>⚠️ 注意：</strong>万能句式是保底工具，切忌生搬硬套。高分答案必须紧贴材料和题目要求，体现对知识点的准确理解。
+</div>`
+  },
+  {
+    "icon": "📖",
+    "title": "政治时政热点汇总与命题方向预测",
+    "content": "政治 · 时政",
+    "tag": "new",
+    "category": "politics",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">🌟 时政热点复习要点</h4>
+<p style="line-height:2;margin-bottom:12px;">时政在政治考试中占比约16分，主要集中在毛中特和当代世界经济与政治：</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li><strong>重大会议</strong>：党的全国代表大会、中央全会、全国两会等重要会议的核心精神和新提法</li>
+<li><strong>重要政策</strong>：年度政府工作报告重点内容、重大改革举措</li>
+<li><strong>重要纪念日</strong>：重大历史事件周年纪念及其现实意义</li>
+<li><strong>国际热点</strong>：中国重大外交活动、国际组织重要会议</li>
+<li><strong>科技成就</strong>：年度重大科技突破和工程成就</li>
+</ul>
+<div style="background:#EFF6FF;padding:12px;border-radius:8px;margin-top:12px;font-size:13px;color:#1E40AF;">
+<strong>💡 复习建议：</strong>时政不需要过早开始，11月集中整理即可。重点关注肖秀荣形势与政策小册子和各大机构的时政总结。选择题考细节，分析题考大方向。
+</div>`
+  },
+  // ===== 英语 =====
+  {
+    "icon": "📘",
+    "title": "英语全年复习规划：词汇+阅读+写作三线并进",
+    "content": "英语 · 全年规划",
+    "tag": "hot",
+    "category": "english",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">📘 英语全年复习路线图</h4>
+<div style="margin-bottom:16px;padding:12px;background:#EFF6FF;border-radius:8px;">
+<p style="font-weight:600;">🌱 词汇奠基期（现在-6月）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>每天背50-80个单词，使用艾宾浩斯遗忘曲线复习</li>
+<li>推荐工具：墨墨背单词/不背单词APP</li>
+<li>单词要"多轮快速"而非"一轮精背"</li>
+<li>同时开始精读真题阅读（2005-2015年），逐句分析长难句</li>
+</ul>
+</div>
+<div style="margin-bottom:16px;padding:12px;background:#FFF7ED;border-radius:8px;">
+<p style="font-weight:600;">🔥 真题攻坚期（7-10月）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>精做2010-2024年真题阅读，每篇限时15-18分钟</li>
+<li>做完后逐句翻译、分析题目类型和出题逻辑</li>
+<li>9月开始练习完型、新题型和翻译</li>
+<li>积累作文素材，整理万能句式和高级表达</li>
+</ul>
+</div>
+<div style="padding:12px;background:#F0FDF4;border-radius:8px;">
+<p style="font-weight:600;">🚀 冲刺提分期（11-12月）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>背诵作文模板（大作文+小作文各准备2-3个模板）</li>
+<li>用2022-2026年真题进行全套模拟</li>
+<li>回顾错题，总结阅读做题套路</li>
+<li>每天保持30分钟阅读手感</li>
+</ul>
+</div>`
+  },
+  {
+    "icon": "🎤",
+    "title": "英语阅读理解高分攻略：五大题型解题方法论",
+    "content": "英语 · 阅读理解",
+    "tag": "note",
+    "category": "english",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">📖 阅读五大题型解题法</h4>
+<p style="line-height:2;margin-bottom:12px;">考研英语阅读共4篇20题，占40分，是英语的"半壁江山"：</p>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">1️⃣ 细节题（占比约40%）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>定位关键词回原文找答案</li>
+<li>注意同义替换，答案往往不是原文原话</li>
+</ul>
+</div>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">2️⃣ 推理题（占比约20%）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>答案在定位句的上下文中，不要过度推断</li>
+<li>注意作者态度词（暗示立场）</li>
+</ul>
+</div>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">3️⃣ 主旨题（占比约15%）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>重点关注首段首句和各段首句</li>
+<li>排除过于片面或过于宽泛的选项</li>
+</ul>
+</div>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">4️⃣ 词义题（占比约10%）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>根据上下文逻辑关系推断</li>
+<li>注意转折、因果、并列等逻辑词</li>
+</ul>
+</div>
+<div>
+<p style="font-weight:600;">5️⃣ 态度题（占比约15%）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>区分作者态度和文中人物态度</li>
+<li>积累常见态度词：positive/negative/neutral/critical/approving等</li>
+</ul>
+</div>`
+  },
+  {
+    "icon": "✍️",
+    "title": "英语作文高分模板：大作文+小作文万能框架",
+    "content": "英语 · 作文",
+    "tag": "note",
+    "category": "english",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">✍️ 作文高分策略</h4>
+<div style="margin-bottom:16px;padding:12px;background:#EFF6FF;border-radius:8px;">
+<p style="font-weight:600;">📝 大作文（英语一20分/英语二15分）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li><strong>三段式结构</strong>：描述图画/图表 → 分析原因/内涵 → 给出建议/展望</li>
+<li><strong>开头万能句</strong>：As is vividly depicted in the picture... / The chart clearly illustrates that...</li>
+<li><strong>过渡高级表达</strong>：What lies behind the phenomenon is... / It is worth noting that...</li>
+<li><strong>结尾升华句</strong>：Only in this way can we... / It is imperative that measures be taken to...</li>
+</ul>
+</div>
+<div style="margin-bottom:16px;padding:12px;background:#FFF7ED;border-radius:8px;">
+<p style="font-weight:600;">✉️ 小作文（10分）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li><strong>常考类型</strong>：推荐信、邀请信、投诉信、感谢信、道歉信、通知</li>
+<li><strong>格式规范</strong>：称呼+正文+结束语+签名，注意格式分</li>
+<li><strong>开头句</strong>：I am writing to express my... / I would like to recommend...</li>
+</ul>
+</div>
+<div style="background:#FEF3C7;padding:12px;border-radius:8px;font-size:13px;color:#92400E;">
+<strong>⚠️ 避坑：</strong>模板不能照搬，一定要改写+融合自己的表达。阅卷老师对千篇一律的模板很敏感，改写度越高分数越高。
+</div>`
+  },
+  {
+    "icon": "🔤",
+    "title": "英语词汇高效记忆法：5500词通关策略",
+    "content": "英语 · 词汇",
+    "tag": "note",
+    "category": "english",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">🔤 5500词高效通关策略</h4>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;">📊 词汇分层策略</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li><strong>核心词汇（约2000词）</strong>：高频出现，必须熟记拼写、用法和搭配</li>
+<li><strong>认知词汇（约2500词）</strong>：见到能认出意思即可，不需要拼写</li>
+<li><strong>超纲词汇（约1000词）</strong>：不必刻意背，通过阅读积累</li>
+</ul>
+</div>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;">🧠 高效记忆方法</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li><strong>词根词缀法</strong>：掌握200个常用词根词缀，可推导上千词汇</li>
+<li><strong>艾宾浩斯法</strong>：按1天-2天-4天-7天-15天间隔复习</li>
+<li><strong>语境记忆法</strong>：在真题阅读中记忆单词，理解用法和搭配</li>
+<li><strong>联想记忆法</strong>：将形近词、意近词分组对比记忆</li>
+</ul>
+</div>
+<div style="background:#EFF6FF;padding:12px;border-radius:8px;font-size:13px;color:#1E40AF;">
+<strong>💡 效率贴士：</strong>背单词的最佳时间是早晨起床后和晚上睡前。利用碎片时间（通勤、排队）用APP刷词，大块时间用于真题精读。
+</div>`
+  },
+  // ===== 数学 =====
+  {
+    "icon": "📗",
+    "title": "数学全年复习规划：高数+线代+概率三科路线图",
+    "content": "数学 · 全年规划",
+    "tag": "hot",
+    "category": "math",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">📗 数学全年复习路线图</h4>
+<div style="margin-bottom:16px;padding:12px;background:#EFF6FF;border-radius:8px;">
+<p style="font-weight:600;">🌱 基础阶段（3-6月）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>按"高数→线代→概率"顺序学习</li>
+<li>高数占比最大（56%），投入60%时间</li>
+<li>过教材+基础网课，理解概念和定理</li>
+<li>做教材课后习题和基础660题</li>
+</ul>
+</div>
+<div style="margin-bottom:16px;padding:12px;background:#FFF7ED;border-radius:8px;">
+<p style="font-weight:600;">🔥 强化阶段（7-9月）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>刷复习全书/辅导讲义，建立题型方法体系</li>
+<li>大量做题：880题+660题+330题</li>
+<li>整理错题本，标注错误类型和知识点</li>
+<li>每周做1套真题练手（2010年之前）</li>
+</ul>
+</div>
+<div style="padding:12px;background:#F0FDF4;border-radius:8px;">
+<p style="font-weight:600;">🚀 冲刺阶段（10-12月）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>精做2010-2026年真题，每套限时3小时</li>
+<li>做模拟卷（李林6+4、合工大共创等）</li>
+<li>回顾错题本和薄弱专题</li>
+<li>考前2周每天做几道题保持手感</li>
+</ul>
+</div>`
+  },
+  {
+    "icon": "✍️",
+    "title": "高数重难点突破：极限+微分+积分+级数",
+    "content": "数学 · 高等数学",
+    "tag": "note",
+    "category": "math",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">📐 高数四大重难点突破</h4>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">1️⃣ 极限（基础中的基础）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>掌握7种未定式和对应解法</li>
+<li>重点：洛必达法则、等价无穷小替换、泰勒展开</li>
+<li>数列极限注意夹逼准则和单调有界原理</li>
+</ul>
+</div>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">2️⃣ 一元微积分（计算核心）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>导数计算重点：复合函数、隐函数、参数方程</li>
+<li>积分计算重点：换元法、分部积分、有理函数积分</li>
+<li>中值定理证明题是拉分项，要多练</li>
+</ul>
+</div>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">3️⃣ 多元微积分（计算量大）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>偏导数和全微分计算</li>
+<li>二重积分：直角坐标和极坐标转换</li>
+<li>数学一额外要求：三重积分、曲线曲面积分</li>
+</ul>
+</div>
+<div>
+<p style="font-weight:600;">4️⃣ 无穷级数（抽象+计算）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>判别法重点：比值法、根值法、莱布尼茨判别法</li>
+<li>幂级数求和与展开是必考题</li>
+<li>傅里叶级数（仅数学一）</li>
+</ul>
+</div>`
+  },
+  {
+    "icon": "🧮",
+    "title": "线性代数知识体系与高频考点梳理",
+    "content": "数学 · 线性代数",
+    "tag": "note",
+    "category": "math",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">🔢 线代知识体系与考点</h4>
+<p style="line-height:2;margin-bottom:12px;">线代看似零散，实际逻辑链非常紧密。核心主线：</p>
+<div style="padding:12px;background:#F8FAFC;border-radius:8px;margin-bottom:12px;text-align:center;font-size:14px;">
+<strong>行列式 → 矩阵 → 向量 → 方程组 → 特征值 → 二次型</strong>
+</div>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">🔑 高频考点</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li><strong>行列式计算</strong>：展开定理、性质化简、特殊行列式</li>
+<li><strong>矩阵运算</strong>：逆矩阵、伴随矩阵、初等变换</li>
+<li><strong>向量组</strong>：线性相关/无关判定、极大无关组、秩</li>
+<li><strong>方程组</strong>：Ax=0和Ax=b解的结构、基础解系</li>
+<li><strong>特征值</strong>：计算方法、相似对角化、实对称矩阵</li>
+<li><strong>二次型</strong>：化标准形、正定判定、合同变换</li>
+</ul>
+</div>
+<div style="background:#FEF3C7;padding:12px;border-radius:8px;font-size:13px;color:#92400E;">
+<strong>💡 学习建议：</strong>线代一定要"打通关"，前后知识高度关联。学不懂特征值往往是因为向量没学好，建议按顺序系统学习，不要跳跃。
+</div>`
+  },
+  {
+    "icon": "📊",
+    "title": "概率论与数理统计核心公式与解题技巧",
+    "content": "数学 · 概率统计",
+    "tag": "note",
+    "category": "math",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">📈 概率统计核心要点</h4>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">🎲 概率论部分</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li><strong>随机事件与概率</strong>：加法公式、乘法公式、全概率公式、贝叶斯公式</li>
+<li><strong>一维随机变量</strong>：离散型（分布律）和连续型（密度函数），重点掌握六大常见分布</li>
+<li><strong>二维随机变量</strong>：联合分布、边缘分布、条件分布、独立性</li>
+<li><strong>数字特征</strong>：期望、方差、协方差、相关系数的计算</li>
+</ul>
+</div>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">📊 数理统计部分</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li><strong>抽样分布</strong>：卡方分布、t分布、F分布的定义和性质</li>
+<li><strong>参数估计</strong>：矩估计和最大似然估计（必考计算题）</li>
+<li><strong>假设检验</strong>：理解检验思想，掌握常见检验方法（数学一）</li>
+</ul>
+</div>
+<div style="background:#EFF6FF;padding:12px;border-radius:8px;font-size:13px;color:#1E40AF;">
+<strong>💡 备考策略：</strong>概率统计的题型相对固定，计算套路性强。把历年真题的概率统计题单独整理，按题型训练，提分最快。数二不考概率，数三概率统计占比约22%。
+</div>`
+  },
+  // ===== 专业课 =====
   {
     "icon": "💡",
-    "title": "专业课复习：以目标院校指定参考书目为主，研究历年真题",
-    "content": "专业课",
-    "tag": "note"
+    "title": "专业课复习总论：信息搜集+参考书+真题三件套",
+    "content": "专业课 · 总论",
+    "tag": "hot",
+    "category": "pro",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">📘 专业课复习三件套</h4>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;">1️⃣ 信息搜集（重中之重）</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li>研招网查考试科目和大纲</li>
+<li>目标院校研究生院官网查参考书目（以最新招生简章为准）</li>
+<li>知乎/豆瓣/贴吧找学长学姐经验贴和内部信息</li>
+<li>加入目标院校考研群，获取真题和笔记资源</li>
+<li>关注目标院校导师近期发表论文方向</li>
+</ul>
+</div>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;">2️⃣ 参考书精读</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li>第一遍通读，理解整体框架（2-3周/本）</li>
+<li>第二遍精读，做笔记、画思维导图（3-4周/本）</li>
+<li>第三遍背诵+做题巩固（持续到考前）</li>
+<li>注意：参考书不是看一遍就够的，至少3遍</li>
+</ul>
+</div>
+<div>
+<p style="font-weight:600;">3️⃣ 真题研究</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li>收集近10年真题，分析出题规律和高频考点</li>
+<li>有些院校真题重复率高达30-40%</li>
+<li>真题是最好的模拟题，务必精做每一套</li>
+<li>整理真题答案，形成自己的答题模板</li>
+</ul>
+</div>`
   },
   {
-    "icon": "📌",
-    "title": "复试准备：提前了解导师研究方向，准备英文自我介绍",
-    "content": "复试",
-    "tag": "note"
+    "icon": "📚",
+    "title": "计算机408专业课复习攻略：数据结构+计组+OS+网络",
+    "content": "专业课 · 计算机408",
+    "tag": "hot",
+    "category": "pro",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">💻 408四科复习攻略</h4>
+<div style="margin-bottom:12px;padding:12px;background:#EFF6FF;border-radius:8px;">
+<p style="font-weight:600;">📊 数据结构（45分）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>最核心科目，编程题占大头</li>
+<li>重点：线性表、树与二叉树、图、排序、查找</li>
+<li>算法题要多动手写代码，手写+调试</li>
+</ul>
+</div>
+<div style="margin-bottom:12px;padding:12px;background:#FFF7ED;border-radius:8px;">
+<p style="font-weight:600;">🔧 计算机组成原理（45分）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>难度最大，概念抽象</li>
+<li>重点：数据表示、运算器、存储器、指令系统、CPU、总线</li>
+<li>建议配合王道网课理解，多做图示题</li>
+</ul>
+</div>
+<div style="margin-bottom:12px;padding:12px;background:#F0FDF4;border-radius:8px;">
+<p style="font-weight:600;">⚙️ 操作系统（35分）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>概念+计算并重</li>
+<li>重点：进程管理、内存管理、文件管理、I/O管理</li>
+<li>PV操作是必考难点，要反复练习</li>
+</ul>
+</div>
+<div style="padding:12px;background:#FEF2F2;border-radius:8px;">
+<p style="font-weight:600;">🌐 计算机网络（25分）</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>记忆量最大，知识点琐碎</li>
+<li>重点：物理层→数据链路层→网络层→传输层→应用层</li>
+<li>建议后期集中记忆，用思维导图串联</li>
+</ul>
+</div>`
+  },
+  {
+    "icon": "🏛️",
+    "title": "法学专业课复习方法：法理+宪法+民法+刑法要点",
+    "content": "专业课 · 法学",
+    "tag": "note",
+    "category": "pro",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">⚖️ 法学专业课复习要点</h4>
+<p style="line-height:2;margin-bottom:12px;">法学考研专业课以"理解+背诵"并重，不同科目方法不同：</p>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">📘 法理学</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>最抽象，需先建立概念体系再深入理解</li>
+<li>重点：法的本体、法的运行、法与社会</li>
+<li>背诵关键词和核心定义，答题要有逻辑层次</li>
+</ul>
+</div>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">📕 宪法学</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>以宪法条文为核心，重点掌握公民基本权利和国家机构</li>
+<li>注意宪法修正案的内容和意义</li>
+</ul>
+</div>
+<div style="margin-bottom:12px;">
+<p style="font-weight:600;">📗 民法学</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>体系庞大，建议按"总则→物权→债权→婚姻继承→侵权"顺序</li>
+<li>民法典新修内容是重点</li>
+</ul>
+</div>
+<div>
+<p style="font-weight:600;">📙 刑法学</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;">
+<li>总则重理论（犯罪构成、正当防卫、未遂等），分则重记忆</li>
+<li>重点罪名要深入掌握构成要件和司法解释</li>
+</ul>
+</div>`
+  },
+  {
+    "icon": "💰",
+    "title": "经济学/管理学专业课备考策略：从教材到真题",
+    "content": "专业课 · 经管类",
+    "tag": "note",
+    "category": "pro",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">📊 经管类专业课备考策略</h4>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;">📘 经济学（西方经济学/政治经济学）</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li><strong>微观经济学</strong>：消费者理论、生产者理论、市场结构、一般均衡是核心</li>
+<li><strong>宏观经济学</strong>：IS-LM模型、AD-AS模型、经济增长理论是必考</li>
+<li>画图能力很重要！每个模型都要能手画图形+解释</li>
+<li>计算题掌握基本公式和推导过程</li>
+</ul>
+</div>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;">📗 管理学</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li>背诵量极大，建议用"关键词+框架"记忆法</li>
+<li>重点：计划、组织、领导、控制四大职能</li>
+<li>案例分析题要结合理论框架作答</li>
+</ul>
+</div>
+<div style="background:#EFF6FF;padding:12px;border-radius:8px;font-size:13px;color:#1E40AF;">
+<strong>💡 通用建议：</strong>经管类专业课很多院校考的不一样，一定要先确认目标院校的参考书目。部分院校用统考卷（如396经济类联考），部分自命题，备考策略完全不同。
+</div>`
+  },
+  {
+    "icon": "🔬",
+    "title": "理工科专业课复习方法：以目标院校指定参考书为核心",
+    "content": "专业课 · 理工科",
+    "tag": "new",
+    "category": "pro",
+    "detail": `<h4 style="color:var(--primary);margin-bottom:12px;">🔬 理工科专业课复习方法</h4>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;">📌 复习策略</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li><strong>紧扣指定参考书</strong>：理工科自命题往往直接从参考书出题，课后习题更是重要题源</li>
+<li><strong>重视课后习题</strong>：很多真题就是课后题的变体，每道题都要做会</li>
+<li><strong>建立公式卡片</strong>：理工科专业课公式多，制作公式卡片方便随时复习</li>
+<li><strong>实验和设计题</strong>：部分专业考实验设计和方案，要熟悉典型实验流程</li>
+</ul>
+</div>
+<div style="margin-bottom:16px;">
+<p style="font-weight:600;">🎯 常见理工科专业课特点</p>
+<ul style="padding-left:20px;line-height:2.2;font-size:14px;">
+<li><strong>机械类</strong>：机械原理+机械设计，画图题多，注意规范作图</li>
+<li><strong>电气类</strong>：电路分析是基础，注重计算和推导</li>
+<li><strong>材料类</strong>：记忆+理解并重，注意材料性能对比</li>
+<li><strong>化工类</strong>：物理化学/化工原理，计算量大，注意单位换算</li>
+</ul>
+</div>
+<div style="background:#FEF3C7;padding:12px;border-radius:8px;font-size:13px;color:#92400E;">
+<strong>⚠️ 特别提醒：</strong>理工科自命题院校间差异巨大，同一专业不同院校的参考书、考试范围可能完全不同。务必以目标院校的最新招生简章为准！
+</div>`
   }
 ];
 
@@ -3988,26 +4630,73 @@ function renderDailyTips() {
 
 // 渲染备考指南（支持分类筛选）
 let prepareFilter = 'all';
+
+// 科目概览数据
+const subjectOverview = [
+  { key: 'politics', icon: '📕', name: '政治', color: '#EF4444', bgColor: '#FEF2F2', desc: '选择题+分析题', tip: '9月前主攻选择题' },
+  { key: 'english', icon: '📘', name: '英语', color: '#3B82F6', bgColor: '#EFF6FF', desc: '阅读+作文', tip: '真题阅读是核心' },
+  { key: 'math', icon: '📗', name: '数学', color: '#10B981', bgColor: '#F0FDF4', desc: '高数+线代+概率', tip: '刷题量决定分数' },
+  { key: 'pro', icon: '📙', name: '专业课', color: '#F59E0B', bgColor: '#FFF7ED', desc: '参考书+真题', tip: '信息差是关键' },
+  { key: 'general', icon: '📓', name: '综合规划', color: '#8B5CF6', bgColor: '#F5F3FF', desc: '全年规划+方法', tip: '规划先行效率翻倍' }
+];
+
+function renderSubjectOverview() {
+  const grid = document.getElementById('subjectOverviewGrid');
+  if (!grid) return;
+  grid.innerHTML = subjectOverview.map(s => {
+    const count = tipsData.filter(t => t.category === s.key).length;
+    const isActive = prepareFilter === s.key;
+    return `
+    <div onclick="filterPrepare('${s.key}', document.querySelector('.filter-bar button[onclick*=\\'${s.key}\\']'))"
+         style="padding:14px 12px;background:${isActive ? s.bgColor : '#F8FAFC'};border-radius:10px;cursor:pointer;transition:all .2s;border:2px solid ${isActive ? s.color : 'transparent'};text-align:center;"
+         onmouseover="this.style.borderColor='${s.color}';this.style.transform='translateY(-2px)'"
+         onmouseout="this.style.borderColor='${isActive ? s.color : 'transparent'}';this.style.transform='translateY(0)'">
+      <div style="font-size:28px;margin-bottom:6px;">${s.icon}</div>
+      <div style="font-size:15px;font-weight:600;color:${s.color};">${s.name}</div>
+      <div style="font-size:11px;color:#999;margin-top:2px;">${s.desc}</div>
+      <div style="margin-top:8px;display:inline-block;padding:2px 10px;background:${s.bgColor};border-radius:10px;font-size:11px;color:${s.color};font-weight:500;">${count}篇指南</div>
+    </div>`;
+  }).join('');
+}
+
 function renderTips() {
   const list = document.getElementById('tipsList');
   if (!list) return;
   const data = prepareFilter === 'all' ? tipsData : tipsData.filter(t => t.category === prepareFilter);
+  const catLabels = { politics: '政治', english: '英语', math: '数学', pro: '专业课', general: '综合规划' };
+  const catColors = { politics: '#EF4444', english: '#3B82F6', math: '#10B981', pro: '#F59E0B', general: '#8B5CF6' };
+  const catBgColors = { politics: '#FEF2F2', english: '#EFF6FF', math: '#F0FDF4', pro: '#FFF7ED', general: '#F5F3FF' };
+  const tagLabels = { hot: '热门', new: '最新', note: '干货' };
+
+  if (data.length === 0) {
+    list.innerHTML = '<div style="text-align:center;padding:40px 0;color:#999;">📝 该分类暂无指南，敬请期待</div>';
+    return;
+  }
+
   list.innerHTML = data.map(t => `
-    <li class="article-item" onclick="showTipDetail('${t.title.replace(/'/g, "\\'")}')">
-      <span class="article-tag tag-${t.tag}">${t.icon}</span>
-      <div class="article-content">
-        <div class="article-title">${t.title}</div>
-        <div class="article-meta">${t.content}</div>
+    <li class="article-item" onclick="showTipDetail('${t.title.replace(/'/g, "\\'")}')"
+        style="cursor:pointer;display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);transition:background .15s;"
+        onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='transparent'">
+      <span style="display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:40px;border-radius:10px;background:${catBgColors[t.category] || '#F8FAFC'};font-size:20px;">${t.icon}</span>
+      <div style="flex:1;min-width:0;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <span style="display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;background:${catBgColors[t.category] || '#F8FAFC'};color:${catColors[t.category] || '#666'};font-weight:500;">${catLabels[t.category] || '综合'}</span>
+          ${t.tag === 'hot' ? '<span style="display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;background:#FEF2F2;color:#EF4444;font-weight:500;">🔥 热门</span>' : t.tag === 'new' ? '<span style="display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;background:#EFF6FF;color:#3B82F6;font-weight:500;">✨ 最新</span>' : ''}
+        </div>
+        <div class="article-title" style="margin-top:6px;font-size:15px;font-weight:500;">${t.title}</div>
+        <div class="article-meta" style="margin-top:4px;font-size:13px;color:#999;">${t.content}</div>
       </div>
+      <span style="color:#ccc;font-size:18px;align-self:center;">›</span>
     </li>
   `).join('');
 }
 
 // 筛选备考指南
 function filterPrepare(cat, btn) {
-  btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+  if (btn) btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
   prepareFilter = cat;
+  renderSubjectOverview();
   renderTips();
 }
 
@@ -4019,18 +4708,45 @@ function showTipDetail(title) {
   const modalTitle = document.getElementById('modalTitle');
   const modalBody = document.getElementById('modalBody');
   const catLabels = { politics: '政治', english: '英语', math: '数学', pro: '专业课', general: '综合规划' };
+  const catColors = { politics: '#EF4444', english: '#3B82F6', math: '#10B981', pro: '#F59E0B', general: '#8B5CF6' };
+  const catIcons = { politics: '📕', english: '📘', math: '📗', pro: '📙', general: '📓' };
+
+  // 找同分类的其他文章
+  const related = tipsData.filter(x => x.category === t.category && x.title !== t.title).slice(0, 3);
+
   modalTitle.textContent = '备考指南详情';
   modalBody.innerHTML = `
     <div style="padding: 20px;">
-      <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
-        <div style="font-size: 12px; opacity: 0.9;">${t.icon} ${catLabels[t.category] || '备考指南'}</div>
-        <div style="font-size: 18px; font-weight: 600; margin-top: 8px;">${t.title}</div>
+      <div style="background: linear-gradient(135deg, ${catColors[t.category] || 'var(--primary)'} 0%, ${catColors[t.category] || 'var(--primary)'}99 100%); color: white; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;opacity:0.9;margin-bottom:8px;">
+          <span style="background:rgba(255,255,255,0.2);padding:2px 10px;border-radius:4px;">${catIcons[t.category] || '📋'} ${catLabels[t.category] || '备考指南'}</span>
+          ${t.tag === 'hot' ? '<span style="background:rgba(255,255,255,0.2);padding:2px 10px;border-radius:4px;">🔥 热门</span>' : t.tag === 'new' ? '<span style="background:rgba(255,255,255,0.2);padding:2px 10px;border-radius:4px;">✨ 最新</span>' : ''}
+        </div>
+        <div style="font-size: 18px; font-weight: 600; line-height: 1.5;">${t.title}</div>
       </div>
-      <div style="background: #f8f9fa; padding: 16px; border-radius: 8px; font-size: 15px; color: #333; line-height: 1.8;">
+      <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; font-size: 14px; color: #333; line-height: 1.8;">
         ${t.detail || t.content}
       </div>
+      ${related.length > 0 ? `
       <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #eee;">
+        <div style="font-size:14px;font-weight:600;color:#333;margin-bottom:12px;">📎 相关推荐</div>
+        ${related.map(r => `
+          <div onclick="closeModal();setTimeout(()=>showTipDetail('${r.title.replace(/'/g, "\\'")}'),300)"
+               style="padding:10px 12px;background:#F8FAFC;border-radius:8px;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:background .15s;"
+               onmouseover="this.style.background='#EFF6FF'" onmouseout="this.style.background='#F8FAFC'">
+            <span style="font-size:18px;">${r.icon}</span>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:13px;font-weight:500;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.title}</div>
+              <div style="font-size:11px;color:#999;margin-top:2px;">${r.content}</div>
+            </div>
+            <span style="color:#ccc;">›</span>
+          </div>
+        `).join('')}
+      </div>
+      ` : ''}
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #eee; display:flex;gap:10px;flex-wrap:wrap;">
         <button onclick="closeModal()" style="padding: 10px 24px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">关闭</button>
+        <button onclick="navigator.clipboard.writeText(window.location.href+'#prepare');alert('链接已复制！')" style="padding: 10px 24px; background: #F8FAFC; color: #666; border: 1px solid #E5E7EB; border-radius: 6px; cursor: pointer; font-size: 14px;">📋 复制链接</button>
       </div>
     </div>
   `;
@@ -5798,6 +6514,7 @@ function init() {
   renderMajors();
   renderPrepareStages();
   renderDailyTips();
+  renderSubjectOverview();
   renderTips();
   renderHotArticles();
   renderLinks();
